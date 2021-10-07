@@ -1,0 +1,40 @@
+.image-gallery {
+	width: 100%;
+	display: flex;
+	align-items: center;
+	flex-direction: row;
+}
+.image-gallery .card {
+	width: 33%;
+	padding: 2em;
+}
+.image-gallery .card .image-container {
+	position: relative;
+}
+.image-gallery .card .image-container:hover {
+	cursor: pointer;
+}
+.image-gallery .card .image-container:hover .image {
+	opacity: 0.5;
+	transform: scale(0.9);
+
+}
+.image-gallery .card .image-container .image {
+	width: 100%;
+	height: auto;
+	transition: transform .5s ease-in-out,-webkit-transform .5s ease-in-out;
+	
+}
+.image-gallery .card .image-container .image:hover {
+	
+}
+.image-gallery .card .image-container .image-title {
+	position: absolute;
+	bottom: 8em; 
+	left: 1em;
+	color: #ffff;
+	font-size: 22px;
+}
+.image-gallery .card .image-container .image-autor {
+
+}

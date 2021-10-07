@@ -11,7 +11,6 @@
   margin-left: 1em;
   color: #ffffff;
   font-size: 1.5em;
-  padding: 1em 0;
   font-weight: bold;
 }
 .navbar-nav {
@@ -21,8 +20,7 @@
   list-style: none;
   transition: 1s;
 }
-.nav-item {
-}
+
 .nav-icon {
   width: 100px;
   height: auto;
@@ -32,13 +30,15 @@
   fill: #ffffff;
 }
 .nav-item .link {
+  text-decoration: none;
   color: #ffff;
   font-size: 1.1em;
-  padding: 33px 2em;
+  margin-right: 2em;  
+  padding: 1.5em 0;
 }
-.nav-item .link .slider {
-  border-bottom: 1px solid #ffff;
-  
+.nav-item .link:hover {
+  border-bottom: 1px solid #ffffff;
+  cursor: pointer;
 }
 .hamburger {
   display: none;
