@@ -32,14 +32,13 @@
   fill: #ffffff;
 }
 .nav-item .link {
-  text-decoration: none;
   color: #ffff;
   font-size: 1.1em;
   padding: 33px 2em;
 }
-.nav-item .link:hover {
-  border-bottom: 1px solid #ffffff;
-  cursor: pointer;
+.nav-item .link .slider {
+  border-bottom: 1px solid #ffff;
+  
 }
 .hamburger {
   display: none;

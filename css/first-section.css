@@ -33,9 +33,8 @@
   align-items: center;
   color: #ff4545;
   font-size: 15px;
-  border-bottom: 1px solid transparent;
 }
-.box .link-box .link:hover {
+.box .link-box .link .slider {
   border-bottom: 1px solid #ff4545;
 }
 .box .link-box .link:hover > .arrow-icon {

@@ -9,6 +9,7 @@
       <a class="link" href="#" title="saber-mas">
         <span>Know more</span>
         <i class="fas fa-angle-double-right arrow-icon"></i>
+        <span class="slider"></span>
       </a>
     </span>
   </div>
@@ -21,6 +22,7 @@
       <a class="link" href="#" title="saber-mas">
         <span>Know more</span>
         <i class="fas fa-angle-double-right arrow-icon"></i>
+        <span class="slider"></span>
       </a>
     </span>
   </div>
