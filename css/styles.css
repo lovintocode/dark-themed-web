@@ -5,9 +5,10 @@
 /* End Fonts */
 /* Files */
 @import url('hamburgers.min.css');
-@import url('header.css');
+@import url('nav.css');
 @import url('slider.css');
 @import url('first-section.css');
+@import url('second-section.css');
 @import url('footer.css');
 /* End Files */
 /* General */
@@ -18,6 +19,34 @@
 body {
   width: 100%;
   background-color: #292929;
+}
+#wrapper {
+  width: 100%;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
+#preloader-box {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 500vh;
+  z-index: 9999;
+  background-color: #010101;
+  z-index: 9999;
+}
+#preloader-box .preloader {
+  display: flex;
+  position: fixed;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+}
+#preloader-box img {
+  width: 200px;
+  height: auto;
 }
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Atkinson Hyperlegible', sans-serif;
@@ -36,17 +65,21 @@ p, a {
 .link {
   position: relative;
   text-decoration: none;
+  cursor: pointer;
 }
-.link .slider {
+.border-move {
   position: absolute;
   width: 0;
-  height: 95%;
+  height: 100%;
   top: 0;
   left: 0;
   transition: 1s;
   border-width: 2px;
 }
-.link:hover .slider {
+.link:hover .border-move {
   width: 100%;
 }
 
+.moving-box:hover .border-move {
+  width: 100%;
+}

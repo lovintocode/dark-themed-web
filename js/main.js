@@ -1,27 +1,16 @@
-
-
 $( document ).ready(function() {
+  // Variables //
   var swiper
   var window_width
-  getGeoLocation()
+
   window_width = $(window).width()
   if (window_width < 768){
     hideNavbar()
   }
   hamburgerClickHandler()
-  var swiper = new Swiper('.swiper', {
-    direction: 'horizontal',
-    loop: true,
-    effect: 'cube',
-    cubeEffect: {
-      slideShadows: true,
-    },
-    allowTouchMove: false,
-    autoplay: {
-     delay: 5000
-    },
-    speed: 600
-  });
+  swiperHandler()
+  preloaderHandler()
+  loadDinamicImages()
 })
 $( window ).resize(function() {
   window_width = $(window).width()
@@ -33,7 +22,21 @@ $( window ).resize(function() {
     $('#first-section').css('margin-top', '0')
   }
 })
-
+function swiperHandler() {
+  swiper = new Swiper('.swiper', {
+    direction: 'horizontal',
+    loop: true,
+    effect: 'cube',
+    cubeEffect: {
+      slideShadows: true,
+    },
+    allowTouchMove: false,
+    autoplay: {
+     delay: 5000
+   },
+   speed: 600
+ });
+}
 function hideNavbar() {
   $(".navbar-nav").css('z-index', '-1')
 }
@@ -55,16 +58,36 @@ function hamburgerAction() {
     $('#swiper').css('margin-top', '0')
     $('#first-section').css('margin-top', '0')
     $('.navbar-nav').css('z-index', '-1')
+    $('.hamburger').attr('disabled', true)
+    setTimeout(function() {
+      $('.hamburger').attr('disabled', false)
+    },1000)
   } else{
     $('.hamburger').addClass('is-active')
     $('.navbar-nav').addClass('show-navbar-nav')
     $('#swiper').css('margin-top', '4.5em')
-    // $('#first-section').css('margin-top', '2em')
-    setTimeout(function() {$('.navbar-nav').css('z-index', '0')}, 1000)
+    $('.hamburger').attr('disabled', true)
+    setTimeout(function() {
+      $('.navbar-nav').css('z-index', '0')
+      $('.hamburger').attr('disabled', false)
+    }, 1000)
   }
 }
-function getGeoLocation() {
-  navigator.geolocation.getCurrentPosition(function(position) {
-  haz_algo(position.coords.latitude, position.coords.longitude);
-});
+function preloaderHandler() {
+  setTimeout(function() {$('#preloader-box').fadeOut('slow')}, 3000)
 }
+function loadDinamicImages() {
+  let doc = document.documentElement;
+  let window_top
+  $( window ).scroll(function() {
+    window_top = (window.pageYOffset || doc.scrollTop)  - (doc.clientTop || 0);
+    console.log(window_top)
+    console.log(getOffsetY('image-gallery') - 100)
+  })
+}
+function getOffsetY(el) {
+  var offsets = $('#'+el).offset();
+  var top = offsets.top;
+  return top
+}
+

@@ -33,12 +33,11 @@
   text-decoration: none;
   color: #ffff;
   font-size: 1.1em;
-  margin-right: 2em;  
+  margin-right: 2em; 
   padding: 1.5em 0;
 }
-.nav-item .link:hover {
+.nav-item .link .border-move {
   border-bottom: 1px solid #ffffff;
-  cursor: pointer;
 }
 .hamburger {
   display: none;
