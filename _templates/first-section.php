@@ -1,3 +1,5 @@
+<div class="first-section-wrapper">
+  
 <div id="first-section" class="container">
   <div class="box box-left">
     <h3 class="title">
@@ -26,4 +28,5 @@
       </a>
     </span>
   </div>
+</div>
 </div>

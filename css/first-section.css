@@ -22,7 +22,7 @@
 #first-section .box .text {
   color: #b1b1b1;
   margin-top: 2em;
-  font-size: 16px;
+  font-size: 18px;
 }
 #first-section .box .link-box {
   display: flex;
@@ -38,6 +38,7 @@
 }
 #first-section .box .link-box .link .border-move {
   border-bottom: 1px solid #ff4545;
+  transition: 1s;
 }
 #first-section .box .link-box .link:hover > .arrow-icon {
   transform: translate(0.5em, 0em);
@@ -66,9 +67,17 @@
     margin-left: 4em;
   }
   #first-section .box-right {
-    float: right;
     margin-right: 4em;
     margin-top: 2em;
+  }
+  #first-section .box .title {
+    font-size: 30px;
+  }
+  #first-section .box .text {
+    font-size: 18px;
+  }
+  #first-section .box .link-box .link {
+    font-size: 17px;
   }
 }
 @media only screen and (min-width: 1500px) {

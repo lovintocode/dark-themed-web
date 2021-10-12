@@ -17,8 +17,12 @@
   <?php
     require_once "_templates/first-section.php";
   ?>
+  
   <?php
     require_once "_templates/second-section.php";
+  ?>
+  <?php
+    require_once "_templates/third-section.php";
   ?>
   <?php
     require_once "_templates/footer.php";

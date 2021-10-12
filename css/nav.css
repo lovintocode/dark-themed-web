@@ -38,6 +38,8 @@
 }
 .nav-item .link .border-move {
   border-bottom: 1px solid #ffffff;
+  border-width: 2px;
+  transition: 0.3s;
 }
 .hamburger {
   display: none;

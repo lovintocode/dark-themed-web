@@ -9,6 +9,7 @@
 @import url('slider.css');
 @import url('first-section.css');
 @import url('second-section.css');
+@import url('third-section.css');
 @import url('footer.css');
 /* End Files */
 /* General */
@@ -51,9 +52,12 @@ body {
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Atkinson Hyperlegible', sans-serif;
 }
-p, a {
+p, a, li {
   font-family: 'Poppins', sans-serif;
   text-decoration: none;
+}
+ul, ol {
+  list-style: none;
 }
 /* End General */
 /* Cotainer */
@@ -62,6 +66,7 @@ p, a {
 }
 /* End Container */
 
+/* Border animation */
 .link {
   position: relative;
   text-decoration: none;
@@ -73,7 +78,6 @@ p, a {
   height: 100%;
   top: 0;
   left: 0;
-  transition: 1s;
   border-width: 2px;
 }
 .link:hover .border-move {
@@ -83,3 +87,4 @@ p, a {
 .moving-box:hover .border-move {
   width: 100%;
 }
+/* End Border animation */
