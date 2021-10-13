@@ -5,12 +5,17 @@
 	flex-direction: column;
 	color: #ffff;
 	padding: 2em 0;
+  background-color: #232222;
 }
 #footer .location, #footer .contact, #footer .social-media {
 	width: 100%;
 	display: flex;
 	align-items: center;
 	margin: 1em 0;
+}
+#footer .location, #footer .contact {
+  padding: 1em 0 2em 0;
+  border-bottom: 1px solid #8c8080;
 }
 #footer .footer-list {
 	width: 100%;
@@ -49,6 +54,10 @@
 		width: 33%;
 		margin: 0;
 	}
+  #footer .location, #footer .contact {
+    padding: 0;
+    border: none;
+  }
 }
 @media only screen and (min-width: 1200px) {
 	#footer .footer-list .footer-item .link .icon {

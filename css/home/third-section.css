@@ -1,10 +1,6 @@
 #image-background {
 	width: 100%;
 	height: auto;
-	background-image: url('../img/photos/background1.jpg');
-	background-repeat: no-repeat;
-	background-position: center;
-	background-attachment: fixed;
 	padding: 2em 0;
 }
 #image-background .title {
@@ -26,7 +22,7 @@
 	display: flex;
     align-items: center;
     flex-direction: column;
-	background-color: #292929;
+	background-color: #232222;
 	padding: 2em;
 	color: #ffff;
 	margin: 2em 0;
@@ -45,6 +41,7 @@
 #image-background .box-container .box .author {
 	margin-top: 2em;
 	font-size: 22px;
+  font-weight: bold;
 }
 @media only screen and (min-width: 992px) {
 	#image-background .box-container {

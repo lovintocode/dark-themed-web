@@ -3,13 +3,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,700;1,400&display=swap');
 /* End Fonts */
+/* Libraries */
+@import url('libraries/hamburgers.min.css');
+/* End Libraries */
 /* Files */
-@import url('hamburgers.min.css');
 @import url('nav.css');
-@import url('slider.css');
-@import url('first-section.css');
-@import url('second-section.css');
-@import url('third-section.css');
+@import url('home/slider.css');
+@import url('home/first-section.css');
+@import url('home/second-section.css');
+@import url('home/third-section.css');
+@import url('contact/show.css');
 @import url('footer.css');
 /* End Files */
 /* General */
@@ -27,32 +30,26 @@ body {
   margin: 0;
   padding: 0;
 }
-#preloader-box {
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 100%;
-  height: 500vh;
-  z-index: 9999;
-  background-color: #010101;
-  z-index: 9999;
-}
-#preloader-box .preloader {
+#preloader {
   display: flex;
+  display: none;
   position: fixed;
   justify-content: center;
   align-items: center;
+  z-index: 99999;
   width: 100%;
   height: 100vh;
+  background-color: #292929;
 }
-#preloader-box img {
+#preloader img {
+  display: none;
   width: 200px;
   height: auto;
 }
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Atkinson Hyperlegible', sans-serif;
 }
-p, a, li {
+p, a, li, span {
   font-family: 'Poppins', sans-serif;
   text-decoration: none;
 }

@@ -2,21 +2,28 @@ $( document ).ready(function() {
   // Variables //
   var swiper
   var window_width
+  var myLazyLoad
 
   window_width = $(window).width()
   if (window_width < 768){
     hideNavbar()
   }
+  // hamburguer menu handler
   hamburgerClickHandler()
+  // swiper menu handler
   swiperHandler()
+  // preloader start handler
   preloaderHandler()
-  loadDinamicImages()
+  // image lazy loader
+  lazyLoader()
+  // loadDinamicImages()
+  equalHeightHandler()
 })
 $( window ).resize(function() {
   window_width = $(window).width()
-  if (window_width < 768)
+  if (window_width <= 768)
     hideNavbar()
-  else if (window_width >= 768){
+  else if (window_width > 768){
     showNavbar()
     $('#swiper').css('margin-top', '0')
     $('#first-section').css('margin-top', '0')
@@ -24,13 +31,17 @@ $( window ).resize(function() {
 })
 function swiperHandler() {
   swiper = new Swiper('.swiper', {
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
     direction: 'horizontal',
     loop: true,
-    effect: 'cube',
-    cubeEffect: {
-      slideShadows: true,
-    },
-    allowTouchMove: false,
+    // effect: 'cube',
+    // cubeEffect: {
+    //   slideShadows: true,
+    // },
+    allowTouchMove: true,
     autoplay: {
      delay: 5000
    },
@@ -74,20 +85,30 @@ function hamburgerAction() {
   }
 }
 function preloaderHandler() {
-  setTimeout(function() {$('#preloader-box').fadeOut('slow')}, 3000)
+  setTimeout(function() {$('#preloader').fadeOut('slow')}, 3000)
 }
-function loadDinamicImages() {
-  let doc = document.documentElement;
-  let window_top
-  $( window ).scroll(function() {
-    window_top = (window.pageYOffset || doc.scrollTop)  - (doc.clientTop || 0);
-    console.log(window_top)
-    console.log(getOffsetY('image-gallery') - 100)
-  })
+
+function lazyLoader() {
+  myLazyLoad = new LazyLoad({
+    elements_selector: ".lazy"
+  });
 }
-function getOffsetY(el) {
-  var offsets = $('#'+el).offset();
-  var top = offsets.top;
-  return top
+function equalHeightHandler() {
+  $('.equalheight').matchHeight();
 }
+// function loadDinamicImages() {
+//   let doc = document.documentElement;
+//   let window_top
+//   $( window ).scroll(function() {
+//     window_top = (window.pageYOffset || doc.scrollTop)  - (doc.clientTop || 0);
+//     console.log(window_top)
+//     console.log(getOffsetY('image-gallery') - 100)
+//   })
+// }
+
+// function getOffsetY(el) {
+//   var offsets = $('#'+el).offset();
+//   var top = offsets.top;
+//   return top
+// }
 

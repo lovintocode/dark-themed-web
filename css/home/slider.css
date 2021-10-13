@@ -1,0 +1,29 @@
+.swiper {
+  width: 100%;
+  transition: 1s;
+}
+.swiper .swiper-slide img {
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
+  display: block;
+}
+
+.swiper .swiper-button-prev, .swiper .swiper-button-next {
+  color: #ffff;
+  background-color: rgba(0,0,0,0.5);
+  height: 100%;
+  top: 0;
+  width: 3em;
+  margin: 0;
+  padding: 0;
+}
+.swiper .swiper-button-prev:hover, .swiper .swiper-button-next:hover {
+  color: #ff4545;
+}
+.swiper .swiper-button-prev {
+  left: 0;
+}
+.swiper .swiper-button-next {
+  right: 0;
+}

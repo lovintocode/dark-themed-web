@@ -1,0 +1,32 @@
+#contact {
+  width: 100%;
+}
+#contact .show {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+#contact .show .image {
+  display: none;
+}
+#contact .show .text-container {
+}
+#contact .show .text-container .title {
+  color: #ffff;
+  margin: 2em 0 1em 0;
+  text-align: center;
+  font-size: 30px;
+}
+#contact .show .text-container .text {
+  color: #ffff;
+  width: 80%;
+  margin: 0 auto;
+  padding: 1em 2em 2em 2em;
+}
+@media only screen and (min-width: 992px) {
+  #contact .show .image {
+    display: block;
+    width: 50%;
+    height: auto;
+  }
+}
