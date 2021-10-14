@@ -16,7 +16,11 @@ require_once "_templates/header.php";
       break;
       case 'contact': require_once "pages/contact.php";
       break;
+      case 'recipes': require_once "pages/recipes.php";
+      break;
     }
+  } else {
+    require_once "pages/home.php";
   }
 ?>
 <?php

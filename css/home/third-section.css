@@ -1,22 +1,22 @@
-#image-background {
+#quotes {
 	width: 100%;
 	height: auto;
 	padding: 2em 0;
 }
-#image-background .title {
+#quotes .title {
 	color: #ffff;
 	font-size: 30px;
 	text-align: center;
 	width: 100%;
 	padding-top: 2em;
 }
-#image-background .box-container {
+#quotes .box-container {
 	width: 100%;
 	display: flex;
 	align-items: center;
 	flex-direction: column;
 }
-#image-background .box-container .box {
+#quotes .box-container .box {
 	width: 80%;
 	height: auto;
 	display: flex;
@@ -27,10 +27,10 @@
 	color: #ffff;
 	margin: 2em 0;
 }
-#image-background .box-container .box .icon {
+#quotes .box-container .box .icon {
 	font-size: 40px;
 }
-#image-background .box-container .box .text {
+#quotes .box-container .box .text {
 	margin-top: 2em;
 	width: 350px;
 	text-align: center;
@@ -38,20 +38,22 @@
 	line-height: 36px;
 	color: #b1b1b1;
 }
-#image-background .box-container .box .author {
+#quotes .box-container .box .author {
 	margin-top: 2em;
 	font-size: 22px;
   font-weight: bold;
 }
 @media only screen and (min-width: 992px) {
-	#image-background .box-container {
+	#quotes .box-container {
 		flex-direction: row;
 		justify-content: space-evenly;
 		margin: 2em 0;
 	}
-	#image-background .box-container .box {
-		width: 45%;
+	#quotes .box-container .box {
+    width: 45%;
 		max-width: 500px;
 		padding: 2em 0.5em;
 	}
+  #quotes .box-container .box .author {
+  }
 }

@@ -1,17 +1,16 @@
-#first-section {
+#presentation {
   padding: 2em 0em;
   min-width: 400px;
-  transition: 1s;
 }
-#first-section .box {
+#presentation .box {
   width: 90%;
   margin: 0 auto;
 }
-#first-section .box-right {
+#presentation .box-right {
   margin-top: 4em;
   padding-bottom: 2em;
 }
-#first-section .box .title{
+#presentation .box .title{
   width: fit-content;
   font-size: 26px;
   color: #ffffff;
@@ -19,72 +18,72 @@
   border-left: 1px solid #fff;
   padding-left: 1em;
 }
-#first-section .box .text {
+#presentation .box .text {
   color: #b1b1b1;
   margin-top: 2em;
   font-size: 18px;
 }
-#first-section .box .link-box {
+#presentation .box .link-box {
   display: flex;
   margin-top: 2em;
 }
 
-#first-section .box .link-box .link {
+#presentation .box .link-box .link {
   display: flex;
   width: fit-content;
   align-items: center;
   color: #ff4545;
   font-size: 15px;
 }
-#first-section .box .link-box .link .border-move {
+#presentation .box .link-box .link .border-move {
   border-bottom: 1px solid #ff4545;
   transition: 1s;
 }
-#first-section .box .link-box .link:hover > .arrow-icon {
+#presentation .box .link-box .link:hover > .arrow-icon {
   transform: translate(0.5em, 0em);
 }
-#first-section .box .link-box .arrow-icon {
+#presentation .box .link-box .arrow-icon {
   margin-left: 0.5em;
   color: #ff4545;
   transition: 0.5s;
 }
 @media only screen and (max-width: 400px) {
-  #first-section .box {
+  #presentation .box {
     width: 75%;
   }
-  #first-section .box .title {
+  #presentation .box .title {
     font-size: 18px;
   }
-  #first-section .box .text {
+  #presentation .box .text {
     font-size: 14px;
   }
 }
 @media only screen and (min-width: 768px) {
-  #first-section .box {
+  #presentation .box {
     width: 650px;
   }
-  #first-section .box-left {
+  #presentation .box-left {
     margin-left: 4em;
   }
-  #first-section .box-right {
+  #presentation .box-right {
     margin-right: 4em;
     margin-top: 2em;
   }
-  #first-section .box .title {
+  #presentation .box .title {
     font-size: 30px;
   }
-  #first-section .box .text {
+  #presentation .box .text {
     font-size: 18px;
   }
-  #first-section .box .link-box .link {
+  #presentation .box .link-box .link {
     font-size: 17px;
   }
 }
 @media only screen and (min-width: 1500px) {
-  #first-section .box-left {
+  #presentation .box-left {
     margin-left: 10em;
   }
-  #first-section .box-right {
+  #presentation .box-right {
     margin-right: 10em;
   }
 }

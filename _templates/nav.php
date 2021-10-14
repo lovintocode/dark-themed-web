@@ -1,5 +1,5 @@
-<nav class="navbar container">
-  <h4 class="nav-title">Health Consultor</h4>
+<nav id="nav">
+  <h4 class="nav-title"><a class="link" href="index.php?page=home" title="Health Consultor">Health Consultor</a></h4>
   <ul class="navbar-nav">
     <li class="nav-item">
       <a class="link" href="index.php?page=home">
@@ -16,9 +16,9 @@
       </a>
     </li>
     <li class="nav-item">
-      <a class="link" href="index.php?page=food">
+      <a class="link" href="index.php?page=recipes">
         <i class="icon fas fa-apple-alt"></i>
-        Food
+        Recipes
         <span class="border-move"></span>
       </a>
     </li>

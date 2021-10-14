@@ -1,7 +1,7 @@
-<div id="contact">
+<div id="contact-wrapper">
   <div class="show">
     <div class="image-container">
-      <img class="image" src="img/photos/person1.jpg" alt="">
+      <img class="image" src="img/photos/contact.jpg" alt="">
     </div>
     <div class="text-container">
       <h2 class="title">Contact us</h2>

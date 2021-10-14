@@ -8,13 +8,9 @@
 /* End Libraries */
 /* Files */
 @import url('nav.css');
-@import url('home/slider.css');
-@import url('home/first-section.css');
-@import url('home/second-section.css');
-@import url('home/third-section.css');
-@import url('contact/show.css');
-@import url('contact/team.css');
-@import url('contact/form.css');
+@import url('home/general.css');
+@import url('contact/general.css');
+@import url('recipes/general.css');
 @import url('footer.css');
 /* End Files */
 /* General */

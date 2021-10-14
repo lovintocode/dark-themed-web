@@ -1,0 +1,9 @@
+@import url('slider.css');
+@import url('first-section.css');
+@import url('second-section.css');
+@import url('third-section.css');
+#home-wrapper {
+  width: 100%;
+  height: auto;
+  transition: 1s;
+}

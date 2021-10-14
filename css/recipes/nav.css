@@ -1,0 +1,22 @@
+#recipes {
+  width: 100%;
+  height: auto;
+  padding: 2em 0;
+}
+#recipes .recipes-container {
+  width: 100%;
+}
+#recipes .recipes-container .recipes-navbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+#recipes .recipes-container .recipes-navbar .recipes-item .recipes-title .link {
+  color: #ffff;
+}
+#recipes .recipes-container .recipes-navbar .hidden-menu {
+  display: none;
+}
+#recipes .recipes-container .recipes-navbar:hover > .hidden-menu{
+  display: block;
+}

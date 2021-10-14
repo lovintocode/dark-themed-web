@@ -66,8 +66,9 @@ function hamburgerAction() {
   if ($('.hamburger').hasClass('is-active')){
     $('.hamburger').removeClass('is-active')
     $('.navbar-nav').removeClass('show-navbar-nav')
-    $('#swiper').css('margin-top', '0')
-    $('#first-section').css('margin-top', '0')
+    $('#home-wrapper').css('margin-top', '0')
+    $('#contact-wrapper').css('margin-top', '0')
+    $('#recipes-wrapper').css('margin-top', '0');
     $('.navbar-nav').css('z-index', '-1')
     $('.hamburger').attr('disabled', true)
     setTimeout(function() {
@@ -76,7 +77,9 @@ function hamburgerAction() {
   } else{
     $('.hamburger').addClass('is-active')
     $('.navbar-nav').addClass('show-navbar-nav')
-    $('#swiper').css('margin-top', '4.5em')
+    $('#home-wrapper').css('margin-top', '4.5em')
+    $('#contact-wrapper').css('margin-top', '4.5em')
+    $('#recipes-wrapper').css('margin-top', '4.5em');
     $('.hamburger').attr('disabled', true)
     setTimeout(function() {
       $('.navbar-nav').css('z-index', '0')

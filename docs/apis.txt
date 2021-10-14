@@ -1,0 +1,4 @@
+Recipes
+https://rapidapi.com/edamam/api/recipe-search-and-diet/
+Filters
+https://developer.edamam.com/edamam-docs-recipe-api

@@ -1,0 +1,6 @@
+@import url("nav.css");
+#recipes-wrapper {
+  width: 100%;
+  height: auto;
+  transition: 1s;
+}
