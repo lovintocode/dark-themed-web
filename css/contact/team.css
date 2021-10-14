@@ -1,0 +1,55 @@
+#contact .team {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+	padding: 4em 2em;
+	background-color: #232222;
+}
+#contact .team .card {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	color: #ffff;
+	margin-top: 4em;
+}
+#contact .team .card .image {
+	width: 350px;
+	height: auto;
+	border-radius: 50%;
+}
+#contact .team .card .name {
+	margin-top: 2em;
+	font-size: 28px;
+}
+#contact .team .card .position {
+	margin-top: 1em;
+	font-size: 20px;
+}
+#contact .team .card .experience {
+	color: #b1b1b1;
+	width: 250px;
+	text-align: center;
+	margin-top: 1em;
+	font-size: 18px;
+}
+
+@media only screen and (min-width: 992px) {
+	#contact .team {
+		flex-direction: row;
+	}
+	#contact .team .card .image {
+		width: 250px;
+	}
+}
+@media only screen and (min-width: 1200px) {
+	#contact .team .card .image {
+		width: 350px;
+		max-width: 500px;
+	}
+	#contact .team .card .experience {
+		width: 350px;
+	}
+}

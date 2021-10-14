@@ -13,6 +13,8 @@
 @import url('home/second-section.css');
 @import url('home/third-section.css');
 @import url('contact/show.css');
+@import url('contact/team.css');
+@import url('contact/form.css');
 @import url('footer.css');
 /* End Files */
 /* General */
@@ -49,7 +51,7 @@ body {
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Atkinson Hyperlegible', sans-serif;
 }
-p, a, li, span {
+p, a, li, span, input {
   font-family: 'Poppins', sans-serif;
   text-decoration: none;
 }

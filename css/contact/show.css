@@ -5,11 +5,15 @@
   width: 100%;
   display: flex;
   flex-direction: row;
+  padding: 2em 0;
+}
+#contact .show .image-container {
 }
 #contact .show .image {
   display: none;
 }
 #contact .show .text-container {
+  width: 100%;
 }
 #contact .show .text-container .title {
   color: #ffff;
@@ -18,15 +22,22 @@
   font-size: 30px;
 }
 #contact .show .text-container .text {
-  color: #ffff;
+  color: #b1b1b1;
   width: 80%;
   margin: 0 auto;
   padding: 1em 2em 2em 2em;
+  font-size: 18px;
 }
 @media only screen and (min-width: 992px) {
+  #contact .show .image-container {
+    width: 50%;
+  }
   #contact .show .image {
     display: block;
-    width: 50%;
+    width: 100%;
     height: auto;
+  }
+  #contact .show .text-container {
+    width: 50%;
   }
 }
