@@ -14,12 +14,11 @@
   width: fit-content;
   font-size: 26px;
   color: #ffffff;
-  margin-top: 1em;
   border-left: 1px solid #fff;
   padding-left: 1em;
 }
 #presentation .box .text {
-  color: #b1b1b1;
+  color: rgba(255, 255, 255, 0.9);
   margin-top: 2em;
   font-size: 18px;
 }
@@ -67,7 +66,6 @@
   }
   #presentation .box-right {
     margin-right: 4em;
-    margin-top: 2em;
   }
   #presentation .box .title {
     font-size: 30px;

@@ -17,6 +17,3 @@
 #recipes .recipes-container .recipes-navbar .hidden-menu {
   display: none;
 }
-#recipes .recipes-container .recipes-navbar:hover > .hidden-menu{
-  display: block;
-}

@@ -3,7 +3,7 @@
     <div class="recipes-container">
       <ul class="recipes-navbar">
         <li class="recipes-item">
-          <h4 class="recipes-title"><a class="link" href="#" title="">Cuisine Type</a></h4>
+          <h4 class="recipes-title"><a id="1" class="link recipe" href="#" title="">Cuisine Type</a></h4>
           <ul class="hidden-menu">
             <li class="hidden-item"><a class="link" href="" title="">American</a></li>
             <li class="hidden-item"><a class="link" href="" title="">Chinese</a></li>
@@ -12,7 +12,7 @@
           </ul>
         </li>
         <li class="recipes-item">
-          <h4 class="recipes-title"><a class="link" href="" title="">Dish Types</a></h4>
+          <h4 class="recipes-title"><a id="2" class="link recipe" href="" title="">Dish Types</a></h4>
           <ul class="hidden-menu">
             <li class="hidden-item"><a class="link" href="" title="">Salad</a></li>
             <li class="hidden-item"><a class="link" href="" title="">Bread</a></li>
@@ -21,7 +21,7 @@
           </ul>
         </li>
         <li class="recipes-item">
-          <h4 class="recipes-title"><a class="link" href="" title="">Meal Types</a></h4>
+          <h4 class="recipes-title"><a id="3" class="link recipe" href="" title="">Meal Types</a></h4>
           <ul class="hidden-menu">
             <li class="hidden-item"><a class="link" href="" title="">Breakfast</a></li>
             <li class="hidden-item"><a class="link" href="" title="">Lunch</a></li>
@@ -30,7 +30,7 @@
           </ul>
         </li>
         <li class="recipes-item">
-          <h4 class="recipes-title"><a class="link" href="" title="">Food Types</a></h4>
+          <h4 class="recipes-title"><a id="4" class="link recipe" href="" title="">Food Types</a></h4>
           <ul class="hidden-menu">
             <li class="hidden-item"><a class="link" href="" title="">Vegetarian</a></li>
             <li class="hidden-item"><a class="link" href="" title="">Sugar - conscious</a></li>

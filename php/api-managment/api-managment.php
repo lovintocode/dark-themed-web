@@ -1,7 +1,13 @@
 <?php
 
+
 //echo getNutritionAPIData();
 echo getFood();
+
+
+function getRecipes() {
+
+}
 
 function getRecipes() {
   $curl = curl_init();

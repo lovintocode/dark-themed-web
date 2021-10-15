@@ -18,6 +18,8 @@ $( document ).ready(function() {
   lazyLoader()
   // loadDinamicImages()
   equalHeightHandler()
+  // Manages recipes nav
+  recipesNavHandler()
 })
 $( window ).resize(function() {
   window_width = $(window).width()
@@ -98,6 +100,11 @@ function lazyLoader() {
 }
 function equalHeightHandler() {
   $('.equalheight').matchHeight();
+}
+function recipesNavHandler() {
+  $('.recipe').hover(function () {
+    console.log("works")
+  })
 }
 // function loadDinamicImages() {
 //   let doc = document.documentElement;
