@@ -1,10 +1,10 @@
-Primary : #ffff(light purple)
+Primary : #ffff(white)
 Primary variant : #3700B3(blue)
 Secondary : #03DAC6(light blue)
 Background: #292929(light black)
 Surface: #121212(black)
 Error: #ff4545(red)
-Links: #ff4545
+Links: #ff4545 (red)
 Hovers: #0000000(black)
-LightText: #b1b1b1
+LightText: rgba(255, 255, 255, 0.9) (light-white)
 

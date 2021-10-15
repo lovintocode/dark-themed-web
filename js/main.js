@@ -16,7 +16,7 @@ $( document ).ready(function() {
   preloaderHandler()
   // image lazy loader
   lazyLoader()
-  // loadDinamicImages()
+  loadDinamicImages()
   equalHeightHandler()
   // Manages recipes nav
   recipesNavHandler()
@@ -27,8 +27,9 @@ $( window ).resize(function() {
     hideNavbar()
   else if (window_width > 768){
     showNavbar()
-    $('#swiper').css('margin-top', '0')
-    $('#first-section').css('margin-top', '0')
+    $('#home-wrapper').css('margin-top', '0')
+    $('#contact-wrapper').css('margin-top', '0')
+    $('#recipes-wrapper').css('margin-top', '0');
   }
 })
 function swiperHandler() {
@@ -102,23 +103,26 @@ function equalHeightHandler() {
   $('.equalheight').matchHeight();
 }
 function recipesNavHandler() {
-  $('.recipe').hover(function () {
-    console.log("works")
+  $('.hidden-menu').hide()
+  $(".recipes-item").click(function() {
+    let list_id = this.id
+    $('#'+list_id+'.hidden-menu').toggle('normal')
   })
 }
-// function loadDinamicImages() {
-//   let doc = document.documentElement;
-//   let window_top
-//   $( window ).scroll(function() {
-//     window_top = (window.pageYOffset || doc.scrollTop)  - (doc.clientTop || 0);
-//     console.log(window_top)
-//     console.log(getOffsetY('image-gallery') - 100)
-//   })
-// }
+function loadDinamicImages() {
+  var observer = new IntersectionObserver(function(entries) {
+    if(entries[0].isIntersecting === true)
+      setTimeout(function() {
+        $('#image-gallery .card:first-child()').css('margin-top', '0')
+      },200)
+    setTimeout(function() {
+      $('#image-gallery .card:nth-child(2)').css('margin-top', '0')
+    },300)
+    setTimeout(function() {
+      $('#image-gallery .card:last-child()').css('margin-top', '0')
+    },400)
+  }, { threshold: [0]
+  });
 
-// function getOffsetY(el) {
-//   var offsets = $('#'+el).offset();
-//   var top = offsets.top;
-//   return top
-// }
-
+  observer.observe(document.querySelector("#image-gallery"));
+}
