@@ -67,7 +67,7 @@
       </div>
       <div class="text-container">
         <h3 class="image-title">Cereals</h3>
-        <p class="image-description">There are a lot of them available, do you know whose are the best for every moment in your day ?</p>
+        <p class="image-description">There are a lot of cereals available, would you like to know whose are the best ?</p>
         <div class="image-autor">
           <i class="fas fa-user"></i>
           <p class="autor-text">Studios-z</p>
@@ -81,7 +81,7 @@
       </div>
       <div class="text-container">
         <h3 class="image-title">Fruit</h3>
-        <p class="image-description">From bannanas to apples, there is a huge variety of them and each one is different. Learn why you should eat them.</p>
+        <p class="image-description">There is a huge variety of fruits and each one is different. Learn why you should eat them.</p>
         <div class="image-autor">
           <i class="fas fa-user"></i>
           <p class="autor-text">Studios-z</p>

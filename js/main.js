@@ -93,7 +93,6 @@ function hamburgerAction() {
 function preloaderHandler() {
   setTimeout(function() {$('#preloader').fadeOut('slow')}, 3000)
 }
-
 function lazyLoader() {
   myLazyLoad = new LazyLoad({
     elements_selector: ".lazy"
@@ -110,19 +109,67 @@ function recipesNavHandler() {
   })
 }
 function loadDinamicImages() {
-  var observer = new IntersectionObserver(function(entries) {
-    if(entries[0].isIntersecting === true)
+  if ($(".moving-box").length > 0){
+    var observer = new IntersectionObserver(function(entries) {
+      if(entries[0].isIntersecting === true)
+        setTimeout(function() {
+          $('#image-gallery .card:first-child()').css('margin-top', '0')
+        },200)
       setTimeout(function() {
-        $('#image-gallery .card:first-child()').css('margin-top', '0')
-      },200)
-    setTimeout(function() {
-      $('#image-gallery .card:nth-child(2)').css('margin-top', '0')
-    },300)
-    setTimeout(function() {
-      $('#image-gallery .card:last-child()').css('margin-top', '0')
-    },400)
-  }, { threshold: [0]
-  });
+        $('#image-gallery .card:nth-child(2)').css('margin-top', '0')
+      },300)
+      setTimeout(function() {
+        $('#image-gallery .card:last-child()').css('margin-top', '0')
+      },400)
+    }, { threshold: [0]
+    })
+    observer.observe(document.querySelector("#image-gallery"))
+  }
+}
+function recipesNavHandler() {
+  var ingredient = ''
+  var cuisine_type = 'None'
+  var meal_type = 'None'
+  var dish_type = 'None'
+  var health_label = 'None'
 
-  observer.observe(document.querySelector("#image-gallery"));
+  $('.selection-box').change(function() {
+    cuisine_type = $('#cuisine_type').find('.option-box:selected').text()
+    meal_type = $('#meal_type').find('.option-box:selected').text()
+    dish_type = $('#dish_type').find('.option-box:selected').text()
+    health_label = $('#health_label').find('.option-box:selected').val()
+    if (meal_type == '')
+      meal_type = 'None'
+    if (dish_type == '')
+      dish_type = 'None'
+    if (health_label == '')
+      health_label = 'None'
+    if (ingredient.length > 1) {
+      setTimeout(function() {
+        sendAjaxRecipe(ingredient, cuisine_type, meal_type, dish_type, health_label)
+      }, 500)
+    }
+  })
+  $('#recipe-search').on('input', function() {
+    ingredient = $(this).val()
+    if (ingredient.length > 1) {
+      setTimeout(function() {
+        sendAjaxRecipe(ingredient, cuisine_type, meal_type, dish_type, health_label)
+      }, 500)
+    }
+  })
+}
+function sendAjaxRecipe(ingredient, cuisine_type, meal_type, dish_type, health_label) {
+  $.ajax({
+    url: 'php/api-managment/api-managment.php', 
+    method: 'post', 
+    data: { 'ingredient':ingredient,'cuisine_type':cuisine_type,'meal_type':meal_type,'dish_type':dish_type,'health_label':health_label},
+    success: function(data){
+        // Cuando se pasa la consulta aqui se muestran los datos data recibidos por el echo
+        console.log(data)
+      },
+      error: function() {
+        console.log('error recipe')
+      } 
+    });
 }

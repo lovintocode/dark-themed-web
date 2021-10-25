@@ -78,7 +78,11 @@
     background-image: linear-gradient(147deg, #121212 0%, #2c3e50 74%);
     z-index: -1;
   }
+  #nav .nav-item {
+    margin-right: 1em;
+  }
   #nav .nav-item .link {
+    font-size: 0.8em;
   }
   #nav .hamburger {
     display: block;

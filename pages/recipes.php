@@ -1,43 +1,61 @@
 <div id="recipes-wrapper">
-  <div class="recipes-container">
-    <ul class="recipes-navbar">
-      <li id="1" class="recipes-item">
-        <h4 class="recipes-title"><a class="link recipe" href="#" title="">Cuisine Type</a></h4>
-        <ul id='1' class="hidden-menu">
-          <li class="hidden-item"><a class="link" href="" title="">American</a></li>
-          <li class="hidden-item"><a class="link" href="" title="">Chinese</a></li>
-          <li class="hidden-item"><a class="link" href="" title="">Eastern Europe</a></li>
-          <li class="hidden-item"><a class="link" href="" title="">Indian</a></li>
-        </ul>
+  <div id="recipes-filter">
+    <div class="title-container">
+      <h2 class="title">Filters</h2>      
+    </div>
+    <div class="search-container">
+      <i class="fas fa-search icon"></i>
+      <input class="search" type="text" id="recipe-search" placeholder="Search for food">
+    </div>
+    <ul class="list">
+      <li class="list-item">
+        <h3 class="list-title">Cuisine Type</h3>
+        <select class="selection-box" class="selection-box" id="cuisine_type" placeholder="Cuisine Type">
+          <option class="option-box" value="" selected>None</option>
+          <option class="option-box" class="option-box" value="">American</option>
+          <option class="option-box" value="">Mexican</option>
+          <option class="option-box" value="">Asian</option>
+          <option class="option-box" value="">Caribean</option>
+          <option class="option-box" value="">British</option>
+        </select>
       </li>
-      <li id="2" class="recipes-item">
-        <h4 class="recipes-title"><a class="link recipe" href="#" title="">Dish Types</a></h4>
-        <ul id='2' class="hidden-menu">
-          <li class="hidden-item"><a class="link" href="" title="">Salad</a></li>
-          <li class="hidden-item"><a class="link" href="" title="">Bread</a></li>
-          <li class="hidden-item"><a class="link" href="" title="">Cereals</a></li>
-          <li class="hidden-item"><a class="link" href="" title="">Eggs</a></li>
-        </ul>
+      <li class="list-item">
+        <h3 class="list-title">Meal Types</h3>
+        <select class="selection-box" id="meal_type" placeholder="Cuisine Type">
+          <option class="option-box" value="" selected>None</option>
+          <option class="option-box" value="">Breakfast</option>
+          <option class="option-box" value="">Lunch</option>
+          <option class="option-box" value="">Dinner</option>
+          <option class="option-box" value="">Snack</option>
+        </select>
       </li>
-      <li id="3" class="recipes-item">
-        <h4 class="recipes-title"><a class="link recipe" href="#" title="">Meal Types</a></h4>
-        <ul id='3' class="hidden-menu">
-          <li class="hidden-item"><a class="link" href="" title="">Breakfast</a></li>
-          <li class="hidden-item"><a class="link" href="" title="">Lunch</a></li>
-          <li class="hidden-item"><a class="link" href="" title="">Dinner</a></li>
-          <li class="hidden-item"><a class="link" href="" title="">Snack</a></li>
-        </ul>
+      <li class="list-item">
+        <h3 class="list-title">Dish Types</h3>
+        <select class="selection-box" id="dish_type">
+          <option class="option-box" value="" selected>None</option>
+          <option class="option-box" value="">Salad</option>
+          <option class="option-box" value="">Sandwiches</option>
+          <option class="option-box" value="">Drinks</option>
+          <option class="option-box" value="">Main Course</option>
+          <option class="option-box" value="">Soup</option>
+        </select>
       </li>
-      <li id="4" class="recipes-item">
-        <h4 class="recipes-title"><a class="link recipe" href="#" title="">Food Types</a></h4>
-        <ul id='4' class="hidden-menu">
-          <li class="hidden-item"><a class="link" href="" title="">Vegetarian</a></li>
-          <li class="hidden-item"><a class="link" href="" title="">Sugar - conscious</a></li>
-          <li class="hidden-item"><a class="link" href="" title="">Pork free</a></li>
-          <li class="hidden-item"><a class="link" href="" title="">Pescatarian</a></li>
-          <li class="hidden-item"><a class="link" href="" title="">Dairy Free</a></li>
-        </ul>
+      <li class="list-item">
+        <h3 class="list-title">Health Labels</h3>
+        <select class="selection-box" id="health_label" placeholder="Cuisine Type">
+          <option class="option-box" value="" selected>None</option>
+          <option class="option-box" value="gluten-free">Gluten Free</option>
+          <option class="option-box" value="low-sugar">Low Sugar</option>
+          <option class="option-box" value="pecatarian">Pescatarian</option>
+          <option class="option-box" value="vegetarian">Vegetarian</option>
+          <option class="option-box" value="vegan">Vegan</option>
+          <option class="option-box" value="soy-free">Soy Free</option>
+          <option class="option-box" value="low-potassium">Low Salt</option>
+          <option class="option-box" value="alcohol-free">Alcohol Free</option>
+        </select>
       </li>
     </ul>
+
+
   </div>
 </div>
