@@ -16,9 +16,11 @@ $( document ).ready(function() {
   preloaderHandler()
   // image lazy loader
   lazyLoader()
+  // sets move on certain images on web (when scroll reaches certain point)
   loadDinamicImages()
+  // equal height on divs
   equalHeightHandler()
-  // Manages recipes nav
+  // manages recipes nav filtering
   recipesNavHandler()
 })
 $( window ).resize(function() {
@@ -127,49 +129,56 @@ function loadDinamicImages() {
   }
 }
 function recipesNavHandler() {
+  var prevent_ajax_counter = 0
   var ingredient = ''
   var cuisine_type = 'None'
   var meal_type = 'None'
-  var dish_type = 'None'
+  var diet_label = 'None'
   var health_label = 'None'
 
   $('.selection-box').change(function() {
     cuisine_type = $('#cuisine_type').find('.option-box:selected').text()
     meal_type = $('#meal_type').find('.option-box:selected').text()
-    dish_type = $('#dish_type').find('.option-box:selected').text()
+    diet_label = $('#diet_label').find('.option-box:selected').val()
     health_label = $('#health_label').find('.option-box:selected').val()
     if (meal_type == '')
       meal_type = 'None'
-    if (dish_type == '')
-      dish_type = 'None'
+    if (diet_label == '')
+      diet_label = 'None'
     if (health_label == '')
       health_label = 'None'
     if (ingredient.length > 1) {
-      setTimeout(function() {
-        sendAjaxRecipe(ingredient, cuisine_type, meal_type, dish_type, health_label)
-      }, 500)
+      sendAjaxRecipe(ingredient, cuisine_type, meal_type, diet_label, health_label)
     }
   })
   $('#recipe-search').on('input', function() {
     ingredient = $(this).val()
-    if (ingredient.length > 1) {
-      setTimeout(function() {
-        sendAjaxRecipe(ingredient, cuisine_type, meal_type, dish_type, health_label)
-      }, 500)
-    }
+    prevent_ajax_counter ++
+    setTimeout(function() {
+      prevent_ajax_counter --
+      if (ingredient.length > 1 && prevent_ajax_counter == 0) {
+        sendAjaxRecipe(ingredient, cuisine_type, meal_type, diet_label, health_label)
+      }
+    }, 1500)
   })
 }
-function sendAjaxRecipe(ingredient, cuisine_type, meal_type, dish_type, health_label) {
+function sendAjaxRecipe(ingredient, cuisine_type, meal_type, diet_label, health_label) {
   $.ajax({
-    url: 'php/api-managment/api-managment.php', 
-    method: 'post', 
-    data: { 'ingredient':ingredient,'cuisine_type':cuisine_type,'meal_type':meal_type,'dish_type':dish_type,'health_label':health_label},
+    url: 'php/api-managment/api-managment.php',
+    method: 'post',
+    data: { 'ingredient':ingredient,'cuisine_type':cuisine_type,'meal_type':meal_type,'diet_label':diet_label,'health_label':health_label},
     success: function(data){
         // Cuando se pasa la consulta aqui se muestran los datos data recibidos por el echo
-        console.log(data)
+        var parsed_data = JSON.parse(data)
+        console.log(parsed_data['hits'])
+        for (let i = 0; i < parsed_data['hits'].length; i++) {
+          console.log(parsed_data['hits'][i]['recipe']['label'])
+        }
       },
       error: function() {
         console.log('error recipe')
-      } 
+      }
     });
 }
+
+

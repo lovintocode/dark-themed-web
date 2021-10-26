@@ -78,8 +78,10 @@ ul, ol {
 .link:hover .border-move {
   width: 100%;
 }
-
 .moving-box:hover .border-move {
+  width: 100%;
+}
+#recipes-filter .list .list-item:hover .border-move {
   width: 100%;
 }
 /* End Border animation */

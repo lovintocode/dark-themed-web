@@ -1,5 +1,4 @@
 <?php
-
 function getRecipes($params) {
   $curl = curl_init();
   curl_setopt_array($curl, [
@@ -29,7 +28,7 @@ function getRecipes($params) {
   }
 }
 function getRecipesData() {
-  if(isset($_POST['ingredient']) && isset($_POST['cuisine_type']) && isset($_POST['meal_type']) && isset($_POST['dish_type']) && isset($_POST['health_label'])){
+  if(isset($_POST['ingredient']) && isset($_POST['cuisine_type']) && isset($_POST['meal_type']) && isset($_POST['diet_label']) && isset($_POST['health_label'])){
     $params = getParams();
     echo getRecipes($params);
   }
@@ -39,7 +38,7 @@ function getParams() {
   $ingredient = trim($_POST['ingredient']);
   $cuisine_type = trim($_POST['cuisine_type']);
   $meal_type = trim($_POST['meal_type']);
-  $dish_type = trim($_POST['dish_type']);
+  $diet_label = trim($_POST['diet_label']);
   $health_label = trim($_POST['health_label']);
 
   $params .= $ingredient;
@@ -47,9 +46,9 @@ function getParams() {
     $params .= "&cuisineType=".$cuisine_type;
   if ($meal_type != 'None')
     $params .= '&mealType='.$meal_type;
-  if ($dish_type != 'None')
-    $params .= '&dishType='.$dish_type;
-  if ($health_label != 'None') 
+  if ($diet_label != 'None')
+    $params .= '&Diet='.$diet_label;
+  if ($health_label != 'None')
     $params .= '&Health='.$health_label;
   return $params;
 }

@@ -2,6 +2,7 @@
 	width: 100%;
 	height: auto;
 	padding: 2em 0;
+  background-color: #292929;
 }
 #recipes-filter .title-container {
 	width: 100%;
@@ -47,6 +48,12 @@
 }
 #recipes-filter .list .list-item {
 	margin-top: 1em;
+  position: relative;
+}
+#recipes-filter .list .list-item .border-move {
+  border-bottom: 2px solid #ff4545;
+  transition: 1s;
+  z-index: -1;
 }
 #recipes-filter .list .list-item .list-title {
 	color: #ffff;
@@ -63,6 +70,9 @@
 	font-size: 14px;
 	letter-spacing: 1px;
 	cursor: pointer;
+}
+#recipes-filter .list .list-item .selection-box:focus-visible {
+  outline: none !important;
 }
 #recipes-filter .list .list-item .selection-box .option-box {
 	text-align: center;

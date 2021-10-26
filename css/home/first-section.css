@@ -1,6 +1,6 @@
 #presentation {
   padding: 2em 0em;
-  min-width: 400px;
+  overflow: auto;
 }
 #presentation .box {
   width: 90%;

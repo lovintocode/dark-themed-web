@@ -1,4 +1,5 @@
 @import url("filter.css");
+@import url("recipes-box.css");
 #recipes-wrapper {
   width: 100%;
   height: auto;

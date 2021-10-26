@@ -1,0 +1,56 @@
+#recipes-box {
+  width: 100%;
+  height: auto;
+  padding: 2em 0;
+  overflow: auto;
+  background-color: #232222;
+}
+#recipes-box .box-container {
+  position: relative;
+  width: 100%;
+  height: auto;
+  float: left;
+  margin-top: 1em;
+}
+#recipes-box .box-container .box {
+  width: 80%;
+  height: auto;
+  background-color: #ffff;
+  margin: 0 1em;
+}
+#recipes-box .box-container .box .image-functions-container {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+#recipes-box .box-container .box .image-functions-container .image-container {
+  width: 80%;
+}
+#recipes-box .box-container .box .image-functions-container .image-container .image {
+  width: 300px;
+  height: 300px;
+}
+#recipes-box .box-container .box .image-functions-container .functions-container {
+  width: 20%;
+}
+#recipes-box .box-container .box .image-functions-container .functions-container .functions-list {
+
+}
+#recipes-box .box-container .box .image-functions-container .functions-container .functions-list .functions-item {
+
+}
+@media only screen and (min-width: 768px) {
+  #recipes-box .box-container {
+    width: 50%;
+  }
+}
+@media only screen and (min-width: 1200px) {
+  #recipes-box .box-container {
+    width: 33.3%;
+  }
+}
+@media only screen and (min-width: 1920px) {
+  #recipes-box .box-container {
+    width: 20%;
+  }
+}
