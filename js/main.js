@@ -20,6 +20,8 @@ $( document ).ready(function() {
   loadDinamicImages()
   // equal height on divs
   equalHeightHandler()
+  // manages selection boxes
+  selectionBoxHandler()
   // manages recipes nav filtering
   recipesNavHandler()
 })
@@ -127,6 +129,27 @@ function loadDinamicImages() {
     })
     observer.observe(document.querySelector("#image-gallery"))
   }
+}
+function selectionBoxHandler() {
+  $('.select-wrapper').click(function() {
+    $(this).find('.select').toggleClass('open')
+  })
+
+  $(window).click(function(e){
+    for (const select of document.querySelectorAll('.select')) {
+      if (!select.contains(e.target)) {
+        select.classList.remove('open');
+      }
+    }
+  })
+  $('.custom-option').click(function() {
+    if (!$(this).hasClass('selected')) {
+      $(this).parent().find('.custom-option.selected').removeClass('selected')
+      $(this).addClass('selected')
+      $(this).closest('.select').find('.select_trigger span').text($(this).text())
+    }
+    console.log($(this).data())
+  })
 }
 function recipesNavHandler() {
   var prevent_ajax_counter = 0

@@ -8,7 +8,7 @@
       <input class="search" type="text" id="recipe-search" placeholder="Search for food">
     </div>
     <ul class="list">
-      <li class="list-item">
+      <!-- <li class="list-item">
         <h3 class="list-title">Cuisine Type</h3>
         <select class="selection-box" class="selection-box" id="cuisine_type" placeholder="Cuisine Type">
           <option class="option-box" value="" selected>None</option>
@@ -19,6 +19,24 @@
           <option class="option-box" value="">British</option>
         </select>
         <span class="border-move"></span>
+      </li> -->
+      <li class="list-item">
+        <h3 class="list-title">Cuisine Type</h3>
+        <div class="select-wrapper">
+          <div class="select">
+            <div class="selection-box"><span>None</span>
+              <div class="arrow"></div>
+            </div>
+            <div class="custom-options">
+              <span class="option-box selected" data-value="None">None</span>
+              <span class="option-box" data-value="American">American</span>
+              <span class="option-box" data-value="Mexican">Mexican</span>
+              <span class="option-box" data-value="Asian">Asian</span>
+              <span class="option-box" data-value="Caribean">Caribean</span>
+              <span class="option-box" data-value="British">British</span>
+            </div>
+          </div>
+        </div>
       </li>
       <li class="list-item">
         <h3 class="list-title">Meal Types</h3>
