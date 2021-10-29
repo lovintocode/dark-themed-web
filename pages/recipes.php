@@ -94,18 +94,18 @@
           </div>
         </div>
         <div class="data-container">
-          <h3>RECIPE TITLE EXAMPLE</h3>
-          <div class="data-box">
-            <span class="data-cuisine_type">
-              <i class="fas fa-search icon"></i>
+          <h3 class="title">RECIPE TITLE EXAMPLE</h3>
+          <div class="data-box-container">
+            <span class="data-box">
+              <i class="fas fa-globe icon"></i>
               <span class="cuisine_type">American</span>
             </span>
-            <span class="data-yield">
-              <i class="fas fa-search icon"></i>
+            <span class="data-box">
+              <i class="fas fa-users icon"></i>
               <span class="yield"><span>Serves</span> 2</span>
             </span>
-            <span class="data-meal_type">
-              <i class="fas fa-search icon"></i>
+            <span class="data-box">
+              <i class="fas fa-utensils icon"></i>
               <span class="meal_type">Lunch / Dinner</span>
             </span>
           </div>
@@ -114,20 +114,20 @@
           <div class="add-container-global">
             <div id="add-plan" class="add-container">
               <a class="link" href="#" title="">
-                <i class="fas fa-search icon"></i>
-                <span class="text">Add to Plan</span>
+                <i class="fas fa-plus icon"></i>
+                <span class="text">Add Plan</span>
               </a>
             </div>
             <div id="add-fav" class="add-container">
               <a class="link" href="#" title="">
-                <i class="fas fa-search icon"></i>
+                <i class="fas fa-heart icon"></i>
                 <span class="text">Add Favorite</span>
               </a>
             </div>
           </div>
           <div id="know-more" class="function-container">
             <a class="link" href="#" title="">
-              <i class="fas fa-search icon"></i>
+              <i class="fas fa-info icon"></i>
               <span class="text">More info</span>
             </a>
           </div>
@@ -136,48 +136,151 @@
     </div>
     <div class="box-container">
       <div class="box">
-        <p>hola</p>
+        <div class="image-container">
+          <img class="image" src="img/photos/recipe-card.jpg" alt="Recipe Card">
+          <div class="calories-container">
+            <span class="calories">600 Kcal</span>
+          </div>
+        </div>
+        <div class="data-container">
+          <h3 class="title">RECIPE TITLE EXAMPLE</h3>
+          <div class="data-box-container">
+            <span class="data-box">
+              <i class="fas fa-globe icon"></i>
+              <span class="cuisine_type">American</span>
+            </span>
+            <span class="data-box">
+              <i class="fas fa-users icon"></i>
+              <span class="yield"><span>Serves</span> 2</span>
+            </span>
+            <span class="data-box">
+              <i class="fas fa-utensils icon"></i>
+              <span class="meal_type">Lunch / Dinner</span>
+            </span>
+          </div>
+        </div>
+        <div class="functions-box">
+          <div class="add-container-global">
+            <div id="add-plan" class="add-container">
+              <a class="link" href="#" title="">
+                <i class="fas fa-plus icon"></i>
+                <span class="text">Add Plan</span>
+              </a>
+            </div>
+            <div id="add-fav" class="add-container">
+              <a class="link" href="#" title="">
+                <i class="fas fa-heart icon"></i>
+                <span class="text">Add Favorite</span>
+              </a>
+            </div>
+          </div>
+          <div id="know-more" class="function-container">
+            <a class="link" href="#" title="">
+              <i class="fas fa-info icon"></i>
+              <span class="text">More info</span>
+            </a>
+          </div>
+        </div>
       </div>
     </div>
     <div class="box-container">
       <div class="box">
-        <p>hola</p>
+        <div class="image-container">
+          <img class="image" src="img/photos/recipe-card.jpg" alt="Recipe Card">
+          <div class="calories-container">
+            <span class="calories">600 Kcal</span>
+          </div>
+        </div>
+        <div class="data-container">
+          <h3 class="title">RECIPE TITLE EXAMPLE</h3>
+          <div class="data-box-container">
+            <span class="data-box">
+              <i class="fas fa-globe icon"></i>
+              <span class="cuisine_type">American</span>
+            </span>
+            <span class="data-box">
+              <i class="fas fa-users icon"></i>
+              <span class="yield"><span>Serves</span> 2</span>
+            </span>
+            <span class="data-box">
+              <i class="fas fa-utensils icon"></i>
+              <span class="meal_type">Lunch / Dinner</span>
+            </span>
+          </div>
+        </div>
+        <div class="functions-box">
+          <div class="add-container-global">
+            <div id="add-plan" class="add-container">
+              <a class="link" href="#" title="">
+                <i class="fas fa-plus icon"></i>
+                <span class="text">Add Plan</span>
+              </a>
+            </div>
+            <div id="add-fav" class="add-container">
+              <a class="link" href="#" title="">
+                <i class="fas fa-heart icon"></i>
+                <span class="text">Add Favorite</span>
+              </a>
+            </div>
+          </div>
+          <div id="know-more" class="function-container">
+            <a class="link" href="#" title="">
+              <i class="fas fa-info icon"></i>
+              <span class="text">More info</span>
+            </a>
+          </div>
+        </div>
       </div>
     </div>
     <div class="box-container">
       <div class="box">
-        <p>hola</p>
+        <div class="image-container">
+          <img class="image" src="img/photos/recipe-card.jpg" alt="Recipe Card">
+          <div class="calories-container">
+            <span class="calories">600 Kcal</span>
+          </div>
+        </div>
+        <div class="data-container">
+          <h3 class="title">RECIPE TITLE EXAMPLE</h3>
+          <div class="data-box-container">
+            <span class="data-box">
+              <i class="fas fa-globe icon"></i>
+              <span class="cuisine_type">American</span>
+            </span>
+            <span class="data-box">
+              <i class="fas fa-users icon"></i>
+              <span class="yield"><span>Serves</span> 2</span>
+            </span>
+            <span class="data-box">
+              <i class="fas fa-utensils icon"></i>
+              <span class="meal_type">Lunch / Dinner</span>
+            </span>
+          </div>
+        </div>
+        <div class="functions-box">
+          <div class="add-container-global">
+            <div id="add-plan" class="add-container">
+              <a class="link" href="#" title="">
+                <i class="fas fa-plus icon"></i>
+                <span class="text">Add Plan</span>
+              </a>
+            </div>
+            <div id="add-fav" class="add-container">
+              <a class="link" href="#" title="">
+                <i class="fas fa-heart icon"></i>
+                <span class="text">Add Favorite</span>
+              </a>
+            </div>
+          </div>
+          <div id="know-more" class="function-container">
+            <a class="link" href="#" title="">
+              <i class="fas fa-info icon"></i>
+              <span class="text">More info</span>
+            </a>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="box-container">
-      <div class="box">
-        <p>hola</p>
-      </div>
-    </div>
-    <div class="box-container">
-      <div class="box">
-        <p>hola</p>
-      </div>
-    </div>
-    <div class="box-container">
-      <div class="box">
-        <p>hola</p>
-      </div>
-    </div>
-    <div class="box-container">
-      <div class="box">
-        <p>hola</p>
-      </div>
-    </div>
-    <div class="box-container">
-      <div class="box">
-        <p>hola</p>
-      </div>
-    </div>
-    <div class="box-container">
-      <div class="box">
-        <p>hola</p>
-      </div>
-    </div>
+
   </div>
 </div>
