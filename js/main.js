@@ -23,7 +23,7 @@ $( document ).ready(function() {
   // manages selection boxes
   selectionBoxHandler()
   // manages recipes nav filtering
-  recipesNavHandler()
+  // recipesNavHandler()
 })
 $( window ).resize(function() {
   // console.log($("#recipes-box .box-container .box .calories")[0].offsetWidth)
@@ -150,56 +150,56 @@ function selectionBoxHandler() {
       $(this).parent().find('.option-box.selected').removeClass('selected')
       $(this).addClass('selected')
       $(this).closest('.select').find('.selection-box span').text($(this).text())
-      console.log($(this).closest('.select span').text())
+      recipesNavHandler($(this))
     }
   })
 }
-function recipesNavHandler() {
-  var prevent_ajax_counter = 0
-  var ingredient = ''
-  var cuisine_type = 'None'
-  var meal_type = 'None'
-  var diet_label = 'None'
-  var health_label = 'None'
+// function recipesNavHandler() {
+//   var prevent_ajax_counter = 0
+//   var ingredient = ''
+//   var cuisine_type = 'None'
+//   var meal_type = 'None'
+//   var diet_label = 'None'
+//   var health_label = 'None'
 
-  $('.selection-box span').each(function() {
-    let span_observed = $(this)
-    let span_id = span_observed.attr('id')
-    this.observer = new MutationObserver( function(mutations) {
-      // hola[span_id] = span_observed.text();
+//   $('.selection-box span').each(function() {
+//     let span_observed = $(this)
+//     let span_id = span_observed.attr('id')
+//     this.observer = new MutationObserver( function(mutations) {
+//       // hola[span_id] = span_observed.text();
 
-      switch (span_id) {
-        case 'cuisine_type': cuisine_type = span_observed.text()
-        break
-        case 'meal_type': meal_type = span_observed.text()
-        break
-        case 'diet_label': diet_label = span_observed.text()
-        break
-        case 'health_label': health_label = span_observed.text()
-        break
-      }
-      if (diet_label != 'None')
-        diet_label = diet_label.toLowerCase()
-      if (health_label != 'None')
-        health_label = health_label.toLowerCase()
-      // If ingredient input length is > 2 recipe request is sent
-      if (ingredient.length > 2)
-        sendAjaxRecipe(ingredient, cuisine_type, meal_type, diet_label, health_label)
+//       switch (span_id) {
+//         case 'cuisine_type': cuisine_type = span_observed.text()
+//         break
+//         case 'meal_type': meal_type = span_observed.text()
+//         break
+//         case 'diet_label': diet_label = span_observed.text()
+//         break
+//         case 'health_label': health_label = span_observed.text()
+//         break
+//       }
+//       if (diet_label != 'None')
+//         diet_label = diet_label.toLowerCase()
+//       if (health_label != 'None')
+//         health_label = health_label.toLowerCase()
+//       // If ingredient input length is > 2 recipe request is sent
+//       if (ingredient.length > 2)
+//         sendAjaxRecipe(ingredient, cuisine_type, meal_type, diet_label, health_label)
 
-    }.bind(this));
-    this.observer.observe(span_observed.get(0), {characterData: true, childList: true});
-  })
-  $('#recipe-search').on('input', function() {
-    ingredient = $(this).val()
-    prevent_ajax_counter ++
-    setTimeout(function() {
-      prevent_ajax_counter --
-      if (ingredient.length > 2 && prevent_ajax_counter == 0) {
-        sendAjaxRecipe(ingredient, cuisine_type, meal_type, diet_label, health_label)
-      }
-    }, 1500)
-  })
-}
+//     }.bind(this));
+//     this.observer.observe(span_observed.get(0), {characterData: true, childList: true});
+//   })
+//   $('#recipe-search').on('input', function() {
+//     ingredient = $(this).val()
+//     prevent_ajax_counter ++
+//     setTimeout(function() {
+//       prevent_ajax_counter --
+//       if (ingredient.length > 2 && prevent_ajax_counter == 0) {
+//         sendAjaxRecipe(ingredient, cuisine_type, meal_type, diet_label, health_label)
+//       }
+//     }, 1500)
+//   })
+// }
 function sendAjaxRecipe(ingredient, cuisine_type, meal_type, diet_label, health_label) {
   $.ajax({
     url: 'php/api-managment/api-managment.php',
