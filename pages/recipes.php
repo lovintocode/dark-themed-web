@@ -8,74 +8,79 @@
       <input class="search" type="text" id="recipe-search" placeholder="Search for food">
     </div>
     <ul class="list">
-      <!-- <li class="list-item">
-        <h3 class="list-title">Cuisine Type</h3>
-        <select class="selection-box" class="selection-box" id="cuisine_type" placeholder="Cuisine Type">
-          <option class="option-box" value="" selected>None</option>
-          <option class="option-box" class="option-box" value="">American</option>
-          <option class="option-box" value="">Mexican</option>
-          <option class="option-box" value="">Asian</option>
-          <option class="option-box" value="">Caribean</option>
-          <option class="option-box" value="">British</option>
-        </select>
-        <span class="border-move"></span>
-      </li> -->
       <li class="list-item">
         <h3 class="list-title">Cuisine Type</h3>
         <div class="select-wrapper">
           <div class="select">
-            <div class="selection-box"><span>None</span>
+            <div class="selection-box"><span id="cuisine_type">None</span>
               <div class="arrow"></div>
             </div>
             <div class="custom-options">
-              <span class="option-box selected" data-value="None">None</span>
-              <span class="option-box" data-value="American">American</span>
-              <span class="option-box" data-value="Mexican">Mexican</span>
-              <span class="option-box" data-value="Asian">Asian</span>
-              <span class="option-box" data-value="Caribean">Caribean</span>
-              <span class="option-box" data-value="British">British</span>
+              <span class="option-box selected">None</span>
+              <span class="option-box">American</span>
+              <span class="option-box">Mexican</span>
+              <span class="option-box">Asian</span>
+              <span class="option-box">Caribean</span>
+              <span class="option-box">British</span>
             </div>
           </div>
         </div>
       </li>
       <li class="list-item">
         <h3 class="list-title">Meal Types</h3>
-        <select class="selection-box" id="meal_type" placeholder="Cuisine Type">
-          <option class="option-box" value="" selected>None</option>
-          <option class="option-box" value="">Breakfast</option>
-          <option class="option-box" value="">Lunch</option>
-          <option class="option-box" value="">Dinner</option>
-          <option class="option-box" value="">Snack</option>
-        </select>
-        <span class="border-move"></span>
+        <div class="select-wrapper">
+          <div class="select">
+            <div class="selection-box"><span id="meal_type">None</span>
+              <div class="arrow"></div>
+            </div>
+            <div class="custom-options">
+              <span class="option-box selected">None</span>
+              <span class="option-box">Breakfast</span>
+              <span class="option-box">Lunch</span>
+              <span class="option-box">Dinner</span>
+              <span class="option-box">Snack</span>
+            </div>
+          </div>
+        </div>
       </li>
       <li class="list-item">
         <h3 class="list-title">Diet Label</h3>
-        <select class="selection-box" id="diet_label">
-          <option class="option-box" value="None" selected>None</option>
-          <option class="option-box" value="balanced">Balanced</option>
-          <option class="option-box" value="high-fiber">High Fiber</option>
-          <option class="option-box" value="high-protein">High Protein</option>
-          <option class="option-box" value="low-carb">Low Carb</option>
-          <option class="option-box" value="low-fat">Low Fat</option>
-          <option class="option-box" value="low-sodium">Low Sodium</option>
-        </select>
-        <span class="border-move"></span>
+        <div class="select-wrapper">
+          <div class="select">
+            <div class="selection-box"><span id="diet_label">None</span>
+              <div class="arrow"></div>
+            </div>
+            <div class="custom-options">
+              <span class="option-box selected">None</span>
+              <span class="option-box">Balanced</span>
+              <span class="option-box">High-Protein</span>
+              <span class="option-box">Low-Carb</span>
+              <span class="option-box">Low-Fat</span>
+              <span class="option-box">Low-Sodium</span>
+            </div>
+          </div>
+        </div>
       </li>
       <li class="list-item">
         <h3 class="list-title">Health Label</h3>
-        <select class="selection-box" id="health_label" placeholder="Cuisine Type">
-          <option class="option-box" value="None" selected>None</option>
-          <option class="option-box" value="gluten-free">Gluten Free</option>
-          <option class="option-box" value="low-sugar">Low Sugar</option>
-          <option class="option-box" value="pecatarian">Pescatarian</option>
-          <option class="option-box" value="vegetarian">Vegetarian</option>
-          <option class="option-box" value="vegan">Vegan</option>
-          <option class="option-box" value="soy-free">Soy Free</option>
-          <option class="option-box" value="low-potassium">Low Salt</option>
-          <option class="option-box" value="alcohol-free">Alcohol Free</option>
-        </select>
-        <span class="border-move"></span>
+        <div class="select-wrapper">
+          <div class="select">
+            <div class="selection-box"><span id="health_label">None</span>
+              <div class="arrow"></div>
+            </div>
+            <div class="custom-options">
+              <span class="option-box selected">None</span>
+              <span class="option-box">Gluten-Free</span>
+              <span class="option-box">Low-Sugar</span>
+              <span class="option-box">Pescatarian</span>
+              <span class="option-box">Vegetarian</span>
+              <span class="option-box">Vegan</span>
+              <span class="option-box">Soy-Free</span>
+              <span class="option-box">Low-Potassium</span>
+              <span class="option-box">Alcohol-Free</span>
+            </div>
+          </div>
+        </div>
       </li>
     </ul>
   </div>

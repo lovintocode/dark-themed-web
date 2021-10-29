@@ -142,13 +142,12 @@ function selectionBoxHandler() {
       }
     }
   })
-  $('.custom-option').click(function() {
+  $('.option-box').click(function() {
     if (!$(this).hasClass('selected')) {
-      $(this).parent().find('.custom-option.selected').removeClass('selected')
+      $(this).parent().find('.option-box.selected').removeClass('selected')
       $(this).addClass('selected')
-      $(this).closest('.select').find('.select_trigger span').text($(this).text())
+      $(this).closest('.select').find('.selection-box span').text($(this).text())
     }
-    console.log($(this).data())
   })
 }
 function recipesNavHandler() {
@@ -159,27 +158,37 @@ function recipesNavHandler() {
   var diet_label = 'None'
   var health_label = 'None'
 
-  $('.selection-box').change(function() {
-    cuisine_type = $('#cuisine_type').find('.option-box:selected').text()
-    meal_type = $('#meal_type').find('.option-box:selected').text()
-    diet_label = $('#diet_label').find('.option-box:selected').val()
-    health_label = $('#health_label').find('.option-box:selected').val()
-    if (meal_type == '')
-      meal_type = 'None'
-    if (diet_label == '')
-      diet_label = 'None'
-    if (health_label == '')
-      health_label = 'None'
-    if (ingredient.length > 1) {
-      sendAjaxRecipe(ingredient, cuisine_type, meal_type, diet_label, health_label)
-    }
+  $('.selection-box span').each(function() { 
+    let span_observed = $(this)
+    let span_id = span_observed.attr('id')
+    this.observer = new MutationObserver( function(mutations) {
+      switch (span_id) {
+        case 'cuisine_type': cuisine_type = span_observed.text()
+        break
+        case 'meal_type': meal_type = span_observed.text()
+        break
+        case 'diet_label': diet_label = span_observed.text()
+        break
+        case 'health_label': health_label = span_observed.text()
+        break
+      }
+      if (diet_label != 'None')
+        diet_label = diet_label.toLowerCase()
+      if (health_label != 'None')
+        health_label = health_label.toLowerCase()
+      // If ingredient input is > 2 recipe request is sent
+      if (ingredient.length > 2)
+        sendAjaxRecipe(ingredient, cuisine_type, meal_type, diet_label, health_label)
+
+    }.bind(this));
+    this.observer.observe(span_observed.get(0), {characterData: true, childList: true});
   })
   $('#recipe-search').on('input', function() {
     ingredient = $(this).val()
     prevent_ajax_counter ++
     setTimeout(function() {
       prevent_ajax_counter --
-      if (ingredient.length > 1 && prevent_ajax_counter == 0) {
+      if (ingredient.length > 2 && prevent_ajax_counter == 0) {
         sendAjaxRecipe(ingredient, cuisine_type, meal_type, diet_label, health_label)
       }
     }, 1500)

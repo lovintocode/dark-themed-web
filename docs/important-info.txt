@@ -1,0 +1,2 @@
+Mutation Observer
+https://stackoverflow.com/questions/27541004/detect-paragraph-element-change-with-jquery

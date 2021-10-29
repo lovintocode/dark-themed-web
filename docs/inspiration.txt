@@ -3,3 +3,5 @@ https://www.webdesign-inspiration.com/
 https://medium.com/nextux/design-better-cards-c0d12ab581c4
 Select styling
 https://andrejgajdos.com/custom-select-dropdown/
+Recipe cards
+https://freefrontend.com/css-recipe-cards/
