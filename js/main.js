@@ -26,6 +26,8 @@ $( document ).ready(function() {
   recipesNavHandler()
 })
 $( window ).resize(function() {
+  // console.log($("#recipes-box .box-container .box .calories")[0].offsetWidth)
+  // console.log($("#recipes-box .box-container .box .calories")[0].offsetHeight)
   window_width = $(window).width()
   if (window_width <= 768)
     hideNavbar()
@@ -142,11 +144,13 @@ function selectionBoxHandler() {
       }
     }
   })
+  // $('body').click('.option-box', function(){});
   $('.option-box').click(function() {
     if (!$(this).hasClass('selected')) {
       $(this).parent().find('.option-box.selected').removeClass('selected')
       $(this).addClass('selected')
       $(this).closest('.select').find('.selection-box span').text($(this).text())
+      console.log($(this).closest('.select span').text())
     }
   })
 }
@@ -158,10 +162,12 @@ function recipesNavHandler() {
   var diet_label = 'None'
   var health_label = 'None'
 
-  $('.selection-box span').each(function() { 
+  $('.selection-box span').each(function() {
     let span_observed = $(this)
     let span_id = span_observed.attr('id')
     this.observer = new MutationObserver( function(mutations) {
+      // hola[span_id] = span_observed.text();
+
       switch (span_id) {
         case 'cuisine_type': cuisine_type = span_observed.text()
         break
@@ -176,7 +182,7 @@ function recipesNavHandler() {
         diet_label = diet_label.toLowerCase()
       if (health_label != 'None')
         health_label = health_label.toLowerCase()
-      // If ingredient input is > 2 recipe request is sent
+      // If ingredient input length is > 2 recipe request is sent
       if (ingredient.length > 2)
         sendAjaxRecipe(ingredient, cuisine_type, meal_type, diet_label, health_label)
 

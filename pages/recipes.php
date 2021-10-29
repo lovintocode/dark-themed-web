@@ -87,14 +87,49 @@
   <div id="recipes-box">
     <div class="box-container">
       <div class="box">
-        <div class="image-functions-container">
-          <div class="image-container">
-            <img src="img/photos/card1.jpg" class="image" alt="">
+        <div class="image-container">
+          <img class="image" src="img/photos/recipe-card.jpg" alt="Recipe Card">
+          <div class="calories-container">
+            <span class="calories">600 Kcal</span>
           </div>
-          <div class="functions-container">
-            <ul class="functions-list">
-              <li class="functions-item"><i class="far fa-plus-square"></i></li>
-            </ul>
+        </div>
+        <div class="data-container">
+          <h3>RECIPE TITLE EXAMPLE</h3>
+          <div class="data-box">
+            <span class="data-cuisine_type">
+              <i class="fas fa-search icon"></i>
+              <span class="cuisine_type">American</span>
+            </span>
+            <span class="data-yield">
+              <i class="fas fa-search icon"></i>
+              <span class="yield"><span>Serves</span> 2</span>
+            </span>
+            <span class="data-meal_type">
+              <i class="fas fa-search icon"></i>
+              <span class="meal_type">Lunch / Dinner</span>
+            </span>
+          </div>
+        </div>
+        <div class="functions-box">
+          <div class="add-container-global">
+            <div id="add-plan" class="add-container">
+              <a class="link" href="#" title="">
+                <i class="fas fa-search icon"></i>
+                <span class="text">Add to Plan</span>
+              </a>
+            </div>
+            <div id="add-fav" class="add-container">
+              <a class="link" href="#" title="">
+                <i class="fas fa-search icon"></i>
+                <span class="text">Add Favorite</span>
+              </a>
+            </div>
+          </div>
+          <div id="know-more" class="function-container">
+            <a class="link" href="#" title="">
+              <i class="fas fa-search icon"></i>
+              <span class="text">More info</span>
+            </a>
           </div>
         </div>
       </div>
