@@ -87,7 +87,7 @@
 	cursor: pointer;
 	border-width: 2px 0 2px 0;
 	border-style: solid;
-	border-color: #394a6d;
+	border-color: #394a6d;		
 }
 #recipes-filter .list .list-item .custom-options {
 	position: absolute;

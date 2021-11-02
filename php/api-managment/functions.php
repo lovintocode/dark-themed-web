@@ -1,55 +1,46 @@
 <?php
-function getRecipes($params) {
-  $curl = curl_init();
-  curl_setopt_array($curl, [
-    CURLOPT_URL => "https://edamam-recipe-search.p.rapidapi.com/search?q=".$params,
-    CURLOPT_RETURNTRANSFER => true,
-    CURLOPT_FOLLOWLOCATION => true,
-    CURLOPT_ENCODING => "",
-    CURLOPT_MAXREDIRS => 10,
-    CURLOPT_TIMEOUT => 30,
-    CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-    CURLOPT_CUSTOMREQUEST => "GET",
-    CURLOPT_HTTPHEADER => [
-      "x-rapidapi-host: edamam-recipe-search.p.rapidapi.com",
-      "x-rapidapi-key: 9535be05fdmsh7b77b2702b974aep1266b6jsnc0cf0a5bd5a8"
-    ],
-  ]);
 
-  $response = curl_exec($curl);
-  $err = curl_error($curl);
-
-  curl_close($curl);
-
-  if ($err) {
-    echo "cURL Error #:" . $err;
-  } else {
-    return $response;
-  }
-}
 function getRecipesData() {
-  if(isset($_POST['ingredient']) && isset($_POST['cuisine_type']) && isset($_POST['meal_type']) && isset($_POST['diet_label']) && isset($_POST['health_label'])){
+  if (isset($_POST['recipe_variables'])){
     $params = getParams();
-    echo getRecipes($params);
+    $concatenate_url = 'https://api.edamam.com/api/recipes/v2?type=public&q='.$params.'&app_id='.API_ID.'&app_key='.API_KEY;
+    $data = getData($concatenate_url);
+    manageRecipesData($data);
+  }
+  if (isset($_POST['next_page_url'])) {
+    $next_page_url = $_POST['next_page_url'];
+  }
+  if (isset($_POST['prev_page_url'])) {
+    $prev_page_url = $_POST['prev_page_url'];
   }
 }
 function getParams() {
   $params = '';
-  $ingredient = trim($_POST['ingredient']);
-  $cuisine_type = trim($_POST['cuisine_type']);
-  $meal_type = trim($_POST['meal_type']);
-  $diet_label = trim($_POST['diet_label']);
-  $health_label = trim($_POST['health_label']);
+  $recipe_variables = $_POST['recipe_variables'];
 
-  $params .= $ingredient;
-  if ($cuisine_type != 'None')
-    $params .= "&cuisineType=".$cuisine_type;
-  if ($meal_type != 'None')
-    $params .= '&mealType='.$meal_type;
-  if ($diet_label != 'None')
-    $params .= '&Diet='.$diet_label;
-  if ($health_label != 'None')
-    $params .= '&Health='.$health_label;
+  $params .= $recipe_variables['ingredient'];
+  if ($recipe_variables['cuisine_type'] != '')
+    $params .= "&cuisineType=".$recipe_variables['cuisine_type'];
+  if ($recipe_variables['meal_type'] != '')
+    $params .= '&mealType='.$recipe_variables['meal_type'];
+  if ($recipe_variables['diet_label'] != '')
+    $params .= '&diet='.$recipe_variables['diet_label'];
+  if ($recipe_variables['health_label'] != '')
+    $params .= '&health='.$recipe_variables['health_label'];
   return $params;
+}
+function getData($url){
+ $curl = curl_init();
+ curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+ curl_setopt($curl, CURLOPT_URL, $url);
+ $result = curl_exec($curl);
+ if(!$result){die("Connection Failure");}
+ curl_close($curl);
+ return $result;
+}
+function manageRecipesData($data) {
+  $encoded_data = str_replace(API_KEY, '', $data);
+  $encoded_data = str_replace(API_ID, '', $encoded_data);
+  echo $encoded_data;
 }
 ?>

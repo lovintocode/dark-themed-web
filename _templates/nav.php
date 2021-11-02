@@ -1,5 +1,5 @@
 <nav id="nav">
-  <h4 class="nav-title"><a class="link" href="index.php?page=home" title="Health Consultor">Health Consultor</a></h4>
+  <h4 class="nav-title"><a class="link" href="index.php?page=home" title="Health Consultor"><img class="logo" src="img/icons/logo.png" alt=""></a></h4>
   <ul class="navbar-nav">
     <li class="nav-item">
       <a class="link" href="index.php?page=home">

@@ -20,7 +20,7 @@
         Who are we ?
       </h3>
       <p class="text">We are a platform that can be used completely for free in order to check
-        the values of the big variety of food categories and also look and try all the recipies we offer to you.
+        the values of a big variety of food categories and also look and try all the recipies we offer to you
       </p>
       <span class="link-box">
         <a class="link" href="#" title="saber-mas">
@@ -34,7 +34,7 @@
       <h3 class="title">
         What you plan today will be the result of tomorrow
       </h3>
-      <p class="text">Make, save and use a diet plan. Create it based on the available food found on our site and adjust it to your total calories so you can get your objectives without any doubt.</p>
+      <p class="text">Make, save and use a diet plan. Create it based on the available recipes found on our site and adjust it to your total calories so you can get your objectives without any doubt</p>
       <span class="link-box">
         <a class="link" href="#" title="saber-mas">
           <span>Know more</span>
@@ -53,7 +53,7 @@
       </div>
       <div class="text-container">
         <h3 class="image-title">Meat</h3>
-        <p class="image-description">Get all information from meat products and which one of them are good for your nutrition.</p>
+        <p class="image-description">Get all information from meat products and which one of them are good for your nutrition</p>
         <div class="image-autor">
           <i class="fas fa-user"></i>
           <p class="autor-text">Healt Care</p>

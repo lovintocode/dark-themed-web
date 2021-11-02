@@ -46,6 +46,8 @@
   <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
   <script src="js/lazyload.js"></script>
   <script src="js/equalHeight.js"></script>
+  <script src="js/styling.js"></script>
+  <script src="js/api-managment.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>
