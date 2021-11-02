@@ -55,20 +55,14 @@ function sendAjaxRecipe(recipe_variables) {
     data: {'recipe_variables': recipe_variables},
     success: function(data){
         // Cuando se pasa la consulta aqui se muestran los datos data recibidos por el echo
-          // let clean_data = data.replace('<!-- CURLOPT_URL => "https://edamam-recipe-search.p.rapidapi.com/search?q=".$params, -->', '')
-
-          // clean_data = clean_data.substring(0, clean_data.length - 1)
-          var parsed_data = JSON.parse(data)
-          if (pagination_urls.length == 0) {
-            current_page = 0
-          }
-          pagination_urls.push(parsed_data['_links']['next']['href'])
-          printRecipes(parsed_data)
+        var parsed_data = JSON.parse(data)
+        console.log(parsed_data)
+        printRecipes(parsed_data)
       },
       error: function() {
         console.log('error recipe')
       }
-  });
+    });
 }
 function printRecipes(data) {
   let title = ""
@@ -92,16 +86,22 @@ function printRecipes(data) {
       '<div class="box-container"><div class="box"><div class="image-container"><img class="image" src="'+image+'" alt="Recipe Card" onerror="imgError(this)"><div class="calories-container"><span class="calories">'+calories+' Cal</span></div></div><div class="data-container"><h3 class="title">'+title+'</h3><div class="data-box-container"><span class="data-box"><i class="fas fa-globe icon"></i><span class="cuisine_type">'+cuisine_type+'</span></span><span class="data-box"><i class="fas fa-users icon"></i><span class="yield"><span>Serves</span> '+serves+'</span></span><span class="data-box"><i class="fas fa-utensils icon"></i><span class="meal_type">'+meal_type+'</span></span></div></div><div class="functions-box"><div class="add-container-global"><div id="add-plan" class="add-container"><a class="link" href="#" title=""><i class="fas fa-plus icon"></i><span class="text">Add Plan</span></a></div><div id="add-fav" class="add-container"><a class="link" href="#" title=""><i class="fas fa-heart icon"></i><span class="text">Favorite</span></a></div></div><div id="know-more" class="function-container"><a class="link" href="#" title=""><i class="fas fa-info icon"></i><span class="text">More info</span></a></div></div></div></div>'    
       )
   }
+  pagination_urls.push(data['_links']['next']['href'])
+  if (pagination_urls.length > 0) {
+    current_page = 0
+  } else {
+    current_page = pagination_urls.length
+  }
   $('#next-page .next-page-container').append
   (
     '<span id="prev_page_url"><i class="fas fa-chevron-left"></i></span><span id="next_page_url"><i class="fas fa-chevron-right"></i></span>'
-  )
+    )
   setPaginationClickers()
 }
 function setPaginationClickers() {
   if (pagination_urls.length > 1) {
     $('#prev_page_url').click(function() {
-      
+
     });
   }
   $('#next_page_url').click(function() {
