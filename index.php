@@ -1,5 +1,5 @@
-
 <?php
+session_start();
 require_once "_templates/header.php";
 ?>
 <div id="preloader">

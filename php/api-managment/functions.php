@@ -1,21 +1,26 @@
 <?php
 
 function getRecipesData() {
-  // On input or filtering
-  if (isset($_POST['recipe_variables'])){
-    $params = getParams();
-    $concatenate_url = 'https://api.edamam.com/api/recipes/v2?type=public&q='.$params.'&app_id='.API_ID.'&app_key='.API_KEY;
-    $data = getData($concatenate_url);
-    $concatenate_url = json_encode($concatenate_url);
-    encodeApiKey($data);
-  }
   // On next page load
   if (isset($_POST['next_page_url'])) {
     $next_page_url = $_POST['next_page_url'];
+    $params = getParams();
+    $uncoded_url = decodeApiCredentials($next_page_url);
+    $api_response = getData($uncoded_url);
+    manageApiResponse($api_response);
   }
-  // On prev page load
-  if (isset($_POST['prev_page_url'])) {
+  else if (isset($_POST['prev_page_url'])) {
     $prev_page_url = $_POST['prev_page_url'];
+    $params = getParams();
+    $uncoded_url = decodeApiCredentials($prev_page_url);
+    $api_response = getData($uncoded_url);
+    manageApiResponse($api_response);
+  }
+  else {
+    $params = getParams();
+    $first_load_url = 'https://api.edamam.com/api/recipes/v2?type=public&q='.$params.'&app_id='.API_ID.'&app_key='.API_KEY;
+    $api_response = getData($first_load_url);
+    manageApiResponse($api_response, $first_load_url);
   }
 }
 // Extracts params from recipe object obtained
@@ -44,14 +49,19 @@ function getData($url){
  curl_close($curl);
  return $result;
 }
-// 
-function encodeApiKey($data) {
-  $encoded_data = str_replace(API_KEY, '', $data);
-  $encoded_data = str_replace(API_ID, '', $encoded_data);
-  $added_
-  echo $encoded_data;
+
+function manageApiResponse($api_response, $first_load_url = '') {
+  $encoded_api_data = encodeApiCredentials($api_response);
+  $encoded_first_page = encodeApiCredentials($first_load_url);
+  $json_api_data = array($encoded_api_data, $encoded_first_page);
+  echo implode('arr-separation', $json_api_data);
 }
-// function decodeApiKey(url) {
-  
-// }
+function encodeApiCredentials($string) {
+  return preg_replace('/('.API_KEY.'|'.API_ID.')/', '', $string);
+}
+https://api.edamam.com/api/recipes/v2?type=public&q=fish&app_id=&app_key=
+function decodeApiCredentials($string) {
+  $decoded_url = preg_replace('/app_key=/', 'app_key='.API_KEY, $string);
+  return preg_replace('/app_id=/', '/app_id=/'.API_ID, $decoded_url);
+}
 ?>

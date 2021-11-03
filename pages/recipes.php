@@ -86,58 +86,13 @@
   </div>
   <!-- Recipe results -->
   <div id="recipes-box">
-    <!-- <div class="box-container">
-      <div class="box">
-        <div class="image-container">
-          <img class="image" src="img/photos/recipe-card.jpg" alt="Recipe Card">
-          <div class="calories-container">
-            <span class="calories">600 Kcal</span>
-          </div>
-        </div>
-        <div class="data-container">
-          <h3 class="title">RECIPE TITLE EXAMPLE</h3>
-          <div class="data-box-container">
-            <span class="data-box">
-              <i class="fas fa-globe icon"></i>
-              <span class="cuisine_type">American</span>
-            </span>
-            <span class="data-box">
-              <i class="fas fa-users icon"></i>
-              <span class="yield"><span>Serves</span> 2</span>
-            </span>
-            <span class="data-box">
-              <i class="fas fa-utensils icon"></i>
-              <span class="meal_type">Lunch / Dinner</span>
-            </span>
-          </div>
-        </div>
-        <div class="functions-box">
-          <div class="add-container-global">
-            <div id="add-plan" class="add-container">
-              <a class="link" href="#" title="">
-                <i class="fas fa-plus icon"></i>
-                <span class="text">Add Plan</span>
-              </a>
-            </div>
-            <div id="add-fav" class="add-container">
-              <a class="link" href="#" title="">
-                <i class="fas fa-heart icon"></i>
-                <span class="text">Favorite</span>
-              </a>
-            </div>
-          </div>
-          <div id="know-more" class="function-container">
-            <a class="link" href="#" title="">
-              <i class="fas fa-info icon"></i>
-              <span class="text">More info</span>
-            </a>
-          </div>
-        </div>
-      </div>
-    </div> -->
+    <div class="no-recipes-search">
+      <p class="text">Introduce any food search and start discovering</p>
+    </div>
   </div>
   <div id="next-page">
     <div class="next-page-container">
+      <span class="prev-page" id="prev_page_url"><i class="fas fa-chevron-left"></i></span><span class="next-page" id="next_page_url"><i class="fas fa-chevron-right"></i></span>
     </div>
   </div>
 </div>

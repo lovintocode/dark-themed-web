@@ -22,4 +22,6 @@ $( document ).ready(function() {
   equalHeightHandler()
   // manages selection boxes and filtering
   selectionBoxHandler()
+  // manages Recipes pagination
+  manageRecipesPagination()
 })

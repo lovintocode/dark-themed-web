@@ -5,6 +5,18 @@
   overflow: hidden;
   background-color: #232222;
 }
+#recipes-box .no-recipes-search {
+  width: 100%;
+  height: 50vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#recipes-box .no-recipes-search .text {
+  color: #ffff;
+  font-size: 26px;
+  font-weight: bold;
+}
 #recipes-box .box-container {
   position: relative;
   width: 100%;
@@ -68,6 +80,8 @@
   background-color: #ffff;
 }
 #recipes-box .box-container .box .data-container .title {
+  height: 4em;
+  overflow: hidden;
   padding: 0.5em 0.6em;
   font-size: 20px;
   letter-spacing: 1px;
@@ -141,6 +155,26 @@
   opacity: 0.5;
   background-color: rgba(255, 255, 255, 0.2);
 }
+#next-page {
+  width: 100%;
+  height: auto;
+}
+#next-page .next-page-container {
+  display: flex;
+  justify-content: center;
+}
+#next-page .next-page-container .prev-page, #next-page .next-page-container .next-page {
+  font-size: 40px;
+  cursor: pointer;
+  display: none;
+  color: #ffff;
+}
+#next-page .next-page-container .prev-page:hover, #next-page .next-page-container .next-page:hover {
+  color: #ff4545;
+}
+#next-page .next-page-container .next-page {
+  margin-left: 1.5em;
+}
 @media only screen and (min-width: 500px) {
   #recipes-box .box-container {
     width: 50%;
@@ -199,17 +233,18 @@
 @media only screen and (min-width: 1200px) {
   #recipes-box .box-container {
     width: 25%;
-    height: 33em;
+    height: 37em;
   }
   #recipes-box .box-container .box {
-    height: 31.1em;
+    height: 27em;
   }
   #recipes-box .box-container .box:hover {
-    height: 31em;
+    height: 33.5em;
   }
   #recipes-box .box-container .box .data-container .title {
     padding: 0.1em 0 0 0.5em;
     font-size: 20px;
+    height: 3.5em;
   }
   #recipes-box .box-container .box .data-container .data-box-container .data-box {
     font-size: 14px;
