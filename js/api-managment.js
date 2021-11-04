@@ -34,9 +34,10 @@ function selectionBoxHandler() {
   $('#recipe-search').on('input', function() {
     recipe_variables['ingredient'] = $(this).val()
     prevent_ajax_counter ++
+    $('#recipes-filter .lds-ring').css('opacity', '1')
     setTimeout(function() {
       prevent_ajax_counter --
-      if (recipe_variables['ingredient'].length > 2 && prevent_ajax_counter == 0) {
+      if (recipe_variables['ingredient'].length > 0 && prevent_ajax_counter == 0) {
         pagination_urls = []
         let recipe_object = { 'recipe_variables': recipe_variables }
         sendAjaxRequest(recipe_object)
@@ -47,6 +48,10 @@ function selectionBoxHandler() {
           '<div class="no-recipes-search"><p class="text">Introduce any food search and start discovering</p></div>'
           )
       }
+    }, 1500)
+    setTimeout(function() {
+      if (recipe_variables['ingredient'].length == 0)
+        $('#recipes-filter .lds-ring').css('opacity', '0')
     }, 1500)
   })
 }
@@ -82,16 +87,56 @@ function printRecipes() {
       '<div class="box-container"><div class="box"><div class="image-container"><img class="image" src="'+image+'" alt="Recipe Card" onerror="imgError(this)"><div class="calories-container"><span class="calories">'+calories+' Cal</span></div></div><div class="data-container"><h3 class="title">'+title+'</h3><div class="data-box-container"><span class="data-box"><i class="fas fa-globe icon"></i><span class="cuisine_type">'+cuisine_type+'</span></span><span class="data-box"><i class="fas fa-users icon"></i><span class="yield"><span>Serves</span> '+serves+'</span></span><span class="data-box"><i class="fas fa-utensils icon"></i><span class="meal_type">'+meal_type+'</span></span></div></div><div class="functions-box"><div class="add-container-global"><div id="add-plan" class="add-container"><a class="link" href="#" title=""><i class="fas fa-plus icon"></i><span class="text">Add Plan</span></a></div><div id="add-fav" class="add-container"><a class="link" href="#" title=""><i class="fas fa-heart icon"></i><span class="text">Favorite</span></a></div></div><div id="know-more" class="function-container"><a class="link" href="#" title=""><i class="fas fa-info icon"></i><span class="text">More info</span></a></div></div></div></div>'
       )
   }
+  managePaginationStyle()
+}
+function managePaginationStyle() {
   $('#next_page_url').css('display', 'block')
   $('#prev_page_url').css('display', 'block')
+
+  if (pagination_urls.length >= 2) {
+    $('#prev_page_url').attr('disabled', 'false')
+  } else {
+    $('#prev_page_url').attr('disabled', 'true')
+  }
+  if (pagination_urls.length != 0) {
+    $('#page-change .pagination-container .next').text(pagination_urls.length)
+    $('#page-change .pagination-container .current').text(pagination_urls.length -1 )
+  }
+  if (pagination_urls.length > 1) {
+    $('#page-change .pagination-container .prev').text(pagination_urls.length - 2)
+    $('#prev_page_url').mouseenter(function() {
+      $('#page-change .pagination-container .prev').css('font-size', '24px')
+      $('#page-change .pagination-container .prev').css('font-weight', 'bold')
+      $('#page-change .pagination-container .current').css('font-size', '16px')
+      $('#page-change .pagination-container .current').css('font-weight', 'normal')
+    })
+    $('#prev_page_url').mouseout(function() {
+      $('#page-change .pagination-container .prev').css('font-size', '16px')
+      $('#page-change .pagination-container .prev').css('font-weight', 'normal')
+      $('#page-change .pagination-container .current').css('font-size', '24px')
+      $('#page-change .pagination-container .current').css('font-weight', 'bold')
+    })
+    $('#next_page_url').mouseenter(function() {
+      $('#page-change .pagination-container .next').css('font-size', '24px')
+      $('#page-change .pagination-container .next').css('font-weight', 'bold')
+      $('#page-change .pagination-container .current').css('font-size', '16px')
+      $('#page-change .pagination-container .current').css('font-weight', 'normal')
+    })
+    $('#next_page_url').mouseout(function() {
+      $('#page-change .pagination-container .next').css('font-size', '16px')
+      $('#page-change .pagination-container .next').css('font-weight', 'normal')
+      $('#page-change .pagination-container .current').css('font-size', '24px')
+      $('#page-change .pagination-container .current').css('font-weight', 'bold')
+    })
+  }
 }
 function manageRecipesPagination() {
-  $('#next_page_url').click(function() {
-    if (parsed_response['_links'].length !== 0){
+  $('#next_page_url').click(function(e) {
+    e.preventDefault()
+    if (next_page_url != ''){
       if (pagination_urls.length == 0)
         pagination_urls.push(first_page_url)
       pagination_urls.push(next_page_url)
-      console.log(pagination_urls)
       let next_recipe_object = { 'next_page_url': pagination_urls[pagination_urls.length - 1], 'recipe_variables': recipe_variables }
       sendAjaxRequest(next_recipe_object)
     }
@@ -103,13 +148,9 @@ function manageRecipesPagination() {
       sendAjaxRequest(next_recipe_object)
     }
   });
-  if (pagination_urls.length >= 2) {
-    $('#prev_page_url').attr('disabled', 'false')
-  } else {
-    $('#prev_page_url').attr('disabled', 'true')
-  }
 }
 function sendAjaxRequest(data_object) {
+  console.log(data_object)
   $.ajax({
     url: 'php/api-managment/api-managment.php',
     method: 'post',
@@ -117,14 +158,19 @@ function sendAjaxRequest(data_object) {
     data: data_object,
     success: function(data){
         // Cuando se pasa la consulta aqui se muestran los datos data recibidos por el echo
+        $('#recipes-filter .lds-ring').css('opacity', '0')
         let api_response = data.split('arr-separation')[0]
         if (pagination_urls.length == 0)
           first_page_url = data.split('arr-separation')[1]
         parsed_response = JSON.parse(api_response)
-        if (parsed_response['_links'].length !== 0)
-          next_page_url = parsed_response['_links']['next']['href']
-        console.log(parsed_response)
-        printRecipes()
+        if (!jQuery.isEmptyObject(parsed_response['hits'])){
+          if (!jQuery.isEmptyObject(parsed_response['_links']))
+            next_page_url = parsed_response['_links']['next']['href']
+          console.log(parsed_response)
+          printRecipes()
+        } else {
+          $('#recipes-box .no-recipes-search .text').text('No matches found, please change your search criteria')
+        }
       },
       error: function() {
         console.log('error recipe')

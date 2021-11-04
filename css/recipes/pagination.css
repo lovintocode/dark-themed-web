@@ -1,0 +1,32 @@
+#page-change {
+  width: 100%;
+  height: auto;
+}
+#page-change .page-change-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#page-change .page-change-container .prev-page, #page-change .page-change-container .next-page {
+  font-size: 40px;
+  cursor: pointer;
+  color: #ffff;
+}
+#page-change .page-change-container .prev-page:hover, #page-change .page-change-container .next-page:hover {
+  color: #ff4545;
+}
+#page-change .page-change-container .pagination-container {
+  margin: 0 2em;
+}
+#page-change .page-change-container .pagination-container .prev, #page-change .page-change-container .pagination-container .current, #page-change .page-change-container .pagination-container .next {
+  color: #ffff;
+  margin: 0 0.8em;
+  transition: all 0.5s ease;
+}
+#page-change .page-change-container .pagination-container .prev, #page-change .page-change-container .pagination-container .next {
+  font-size: 16px;
+}
+#page-change .page-change-container .pagination-container .current {
+  font-size: 24px;
+  font-weight: bold;
+}

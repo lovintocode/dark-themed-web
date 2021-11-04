@@ -38,6 +38,20 @@
 	font-size: 24px;
 	margin-right: 1em;
 }
+#recipes-filter .lds-ring {
+  display: flex;
+  opacity: 0;
+  justify-content: center;
+  align-items: center;
+}
+#recipes-filter .lds-ring div {
+  width: 32px;
+  height: 32px;
+  border: 3px solid #ffff;
+  border-radius: 50%;
+  animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  border-color: #cef transparent transparent transparent;
+}
 #recipes-filter .list {
 	width: 100%;
 	height: auto;

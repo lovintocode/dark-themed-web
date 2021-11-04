@@ -6,6 +6,7 @@
     <div class="search-container">
       <i class="fas fa-search icon"></i>
       <input class="search" type="text" id="recipe-search" placeholder="Search for food">
+      <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
     </div>
     <ul class="list">
       <li class="list-item">
@@ -90,9 +91,15 @@
       <p class="text">Introduce any food search and start discovering</p>
     </div>
   </div>
-  <div id="next-page">
-    <div class="next-page-container">
-      <span class="prev-page" id="prev_page_url"><i class="fas fa-chevron-left"></i></span><span class="next-page" id="next_page_url"><i class="fas fa-chevron-right"></i></span>
+  <div id="page-change">
+    <div class="page-change-container">
+      <span class="prev-page" id="prev_page_url"><i class="fas fa-chevron-left"></i></span>
+      <span class="pagination-container">
+        <span class="prev"></span>
+        <span class="current">0</span>
+        <span class="next"></span>
+      </span>
+      <span class="next-page" id="next_page_url"><i class="fas fa-chevron-right"></i></span>
     </div>
   </div>
 </div>
