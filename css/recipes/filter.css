@@ -159,21 +159,21 @@
 }
 #recipes-filter .list .list-item .arrow::before {
 	left: -5px;
-	transform: rotate(45deg);
+	transform: rotate(-45deg);
 	background-color: #394a6d;
 }
 #recipes-filter .list .list-item .arrow::after {
 	left: 5px;
-	transform: rotate(-45deg);
+	transform: rotate(45deg);
 	background-color: #394a6d;
 }
 #recipes-filter .list .list-item .open .arrow::before {
 	left: -5px;
-	transform: rotate(-45deg);
+	transform: rotate(45deg);
 }
 #recipes-filter .list .list-item .open .arrow::after {
 	left: 5px;
-	transform: rotate(45deg);
+	transform: rotate(-45deg);
 }
 @media only screen and (min-width: 768px) {
 	#recipes-filter .search-container .search {

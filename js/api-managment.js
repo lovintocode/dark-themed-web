@@ -87,9 +87,28 @@ function printRecipes() {
       '<div class="box-container"><div class="box"><div class="image-container"><img class="image" src="'+image+'" alt="Recipe Card" onerror="imgError(this)"><div class="calories-container"><span class="calories">'+calories+' Cal</span></div></div><div class="data-container"><h3 class="title">'+title+'</h3><div class="data-box-container"><span class="data-box"><i class="fas fa-globe icon"></i><span class="cuisine_type">'+cuisine_type+'</span></span><span class="data-box"><i class="fas fa-users icon"></i><span class="yield"><span>Serves</span> '+serves+'</span></span><span class="data-box"><i class="fas fa-utensils icon"></i><span class="meal_type">'+meal_type+'</span></span></div></div><div class="functions-box"><div class="add-container-global"><div id="add-plan" class="add-container"><a class="link" href="#" title=""><i class="fas fa-plus icon"></i><span class="text">Add Plan</span></a></div><div id="add-fav" class="add-container"><a class="link" href="#" title=""><i class="fas fa-heart icon"></i><span class="text">Favorite</span></a></div></div><div id="know-more" class="function-container"><a class="link" href="#" title=""><i class="fas fa-info icon"></i><span class="text">More info</span></a></div></div></div></div>'
       )
   }
+  manageBoxesStyle()
   managePaginationStyle()
 }
+function manageBoxesStyle() {
+  let timeout = 100
+  $('#recipes-box .box').each(function() {
+    let box = $(this)
+    setTimeout(function() {
+      box.css('opacity', '1')
+    }, timeout)    
+timeout += 50
+  });
+}
 function managePaginationStyle() {
+  if (next_page_url != ''){
+    if (pagination_urls.length == 0)
+      pagination_urls.push(first_page_url)
+    pagination_urls.push(next_page_url)
+  }
+  if (pagination_urls.length >= 2)
+    pagination_urls.splice(-1)
+
   $('#next_page_url').css('display', 'block')
   $('#prev_page_url').css('display', 'block')
 
@@ -100,34 +119,41 @@ function managePaginationStyle() {
   }
   if (pagination_urls.length != 0) {
     $('#page-change .pagination-container .next').text(pagination_urls.length)
-    $('#page-change .pagination-container .current').text(pagination_urls.length -1 )
+    $('#page-change .pagination-container .current').text(pagination_urls.length -1)
   }
   if (pagination_urls.length > 1) {
     $('#page-change .pagination-container .prev').text(pagination_urls.length - 2)
-    $('#prev_page_url').mouseenter(function() {
-      $('#page-change .pagination-container .prev').css('font-size', '24px')
-      $('#page-change .pagination-container .prev').css('font-weight', 'bold')
-      $('#page-change .pagination-container .current').css('font-size', '16px')
-      $('#page-change .pagination-container .current').css('font-weight', 'normal')
-    })
-    $('#prev_page_url').mouseout(function() {
-      $('#page-change .pagination-container .prev').css('font-size', '16px')
-      $('#page-change .pagination-container .prev').css('font-weight', 'normal')
-      $('#page-change .pagination-container .current').css('font-size', '24px')
-      $('#page-change .pagination-container .current').css('font-weight', 'bold')
-    })
-    $('#next_page_url').mouseenter(function() {
-      $('#page-change .pagination-container .next').css('font-size', '24px')
-      $('#page-change .pagination-container .next').css('font-weight', 'bold')
-      $('#page-change .pagination-container .current').css('font-size', '16px')
-      $('#page-change .pagination-container .current').css('font-weight', 'normal')
-    })
-    $('#next_page_url').mouseout(function() {
-      $('#page-change .pagination-container .next').css('font-size', '16px')
-      $('#page-change .pagination-container .next').css('font-weight', 'normal')
-      $('#page-change .pagination-container .current').css('font-size', '24px')
-      $('#page-change .pagination-container .current').css('font-weight', 'bold')
-    })
+    $( '#prev_page_url' ).hover(
+      function() {
+        $('#page-change .pagination-container .prev').css('font-size', '30px')
+        $('#page-change .pagination-container .prev').css('font-weight', 'bold')
+        $('#page-change .pagination-container .current').css('font-size', '16px')
+        $('#page-change .pagination-container .current').css('font-weight', 'normal')
+      }, 
+      function() {
+        $('#page-change .pagination-container .prev').css('font-size', '18px')
+        $('#page-change .pagination-container .prev').css('font-weight', 'normal')
+        $('#page-change .pagination-container .current').css('font-size', '30px')
+        $('#page-change .pagination-container .current').css('font-weight', 'bold')
+      }
+      )
+  } else 
+    $('#page-change .pagination-container .prev').text('')
+  if (pagination_urls.length >= 1) {
+    $( '#next_page_url' ).hover(
+      function() {
+        $('#page-change .pagination-container .next').css('font-size', '30px')
+        $('#page-change .pagination-container .next').css('font-weight', 'bold')
+        $('#page-change .pagination-container .current').css('font-size', '18px')
+        $('#page-change .pagination-container .current').css('font-weight', 'normal')
+      }, 
+      function() {
+        $('#page-change .pagination-container .next').css('font-size', '18px')
+        $('#page-change .pagination-container .next').css('font-weight', 'normal')
+        $('#page-change .pagination-container .current').css('font-size', '30px')
+        $('#page-change .pagination-container .current').css('font-weight', 'bold')
+      }
+      )
   }
 }
 function manageRecipesPagination() {
@@ -150,7 +176,6 @@ function manageRecipesPagination() {
   });
 }
 function sendAjaxRequest(data_object) {
-  console.log(data_object)
   $.ajax({
     url: 'php/api-managment/api-managment.php',
     method: 'post',
@@ -166,7 +191,6 @@ function sendAjaxRequest(data_object) {
         if (!jQuery.isEmptyObject(parsed_response['hits'])){
           if (!jQuery.isEmptyObject(parsed_response['_links']))
             next_page_url = parsed_response['_links']['next']['href']
-          console.log(parsed_response)
           printRecipes()
         } else {
           $('#recipes-box .no-recipes-search .text').text('No matches found, please change your search criteria')

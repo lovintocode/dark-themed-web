@@ -11,11 +11,15 @@
   font-size: 40px;
   cursor: pointer;
   color: #ffff;
+  width: 1em;
+  text-align: center;
 }
 #page-change .page-change-container .prev-page:hover, #page-change .page-change-container .next-page:hover {
   color: #ff4545;
 }
 #page-change .page-change-container .pagination-container {
+  width: 250px;
+  text-align: center;
   margin: 0 2em;
 }
 #page-change .page-change-container .pagination-container .prev, #page-change .page-change-container .pagination-container .current, #page-change .page-change-container .pagination-container .next {
@@ -24,9 +28,17 @@
   transition: all 0.5s ease;
 }
 #page-change .page-change-container .pagination-container .prev, #page-change .page-change-container .pagination-container .next {
-  font-size: 16px;
+  font-size: 18px;
 }
 #page-change .page-change-container .pagination-container .current {
-  font-size: 24px;
+  font-size: 30px;
   font-weight: bold;
+}
+.dominant-page {
+  font-size: 30px!important;
+  font-weight: bold!important;
+}
+.submissive-page {
+  font-size: 18px!important;
+  font-weight: normal!important;
 }
