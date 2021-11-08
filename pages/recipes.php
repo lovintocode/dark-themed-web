@@ -89,7 +89,7 @@
 
   <div id="recipes-box">
     <!-- [1] -->
-    <div class="modal micromodal-slide" id="modal-1" aria-hidden="true">
+    <!-- <div class="modal micromodal-slide" id="modal-1" aria-hidden="true">
       <div class="modal__overlay" tabindex="-1" data-micromodal-close>
         <div class="modal__container" role="dialog" aria-modal="true" aria-labelledby="modal-1-title">
           <header class="modal__header">
@@ -132,6 +132,10 @@
                   <span>Low Carb, Low Carb, Low Carb</span>
                 </li>
               </ul>
+            </div>
+            <div class="">
+              <h3 class="subtitle">Health Labels</h3>
+              <ul class="health-item">
             </div>
             <div class="nutritional-info">
               <h3 class="subtitle">Nutritional Information</h3>
@@ -291,8 +295,8 @@
           </main>
         </div>
       </div>
-    </div>
-    <button type="button" id="modal-trigger" data-micromodal-trigger="modal-1">Open Modal</button>
+    </div> -->
+    <!-- <button type="button" id="modal-trigger" data-micromodal-trigger="modal-1">Open Modal</button> -->
     <div class="no-recipes-search">
       <p class="text">Introduce any food search and start discovering</p>
       <div class="image-container">

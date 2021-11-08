@@ -66,8 +66,8 @@ ul, ol {
 .lds-ring {
   display: inline-block;
   position: relative;
-  width: 80px;
-  height: 80px;
+  width: 40px;
+  height: 40px;
 }
 .lds-ring div {
   box-sizing: border-box;
@@ -146,3 +146,9 @@ ul, ol {
   background: #ff4545;
 }
 /* End Scroll bar styling */
+@media only screen and (min-width: 768px) {
+  .lds-ring {
+    width: 80px;
+    height: 80px;
+  }
+}

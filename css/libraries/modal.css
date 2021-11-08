@@ -1,5 +1,7 @@
 .modal {
   font-family: -apple-system,BlinkMacSystemFont,avenir next,avenir,helvetica neue,helvetica,ubuntu,roboto,noto,segoe ui,arial,sans-serif;
+  position: absolute;
+  z-index: 1;
 }
 
 .modal__overlay {
@@ -54,6 +56,11 @@
   line-height: 1.5;
   color: rgba(0,0,0,.8);
 }
+.modal__content .general-info, .modal__content .image-title-container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
 .modal__content .image {
   display: block;
   width: 100%;
@@ -76,7 +83,7 @@
   margin-top: 20px;
 }
 .modal__content .nutritional-info {
-  margin-top: 2em 0;
+  margin-top: 2em;
 }
 .modal__content .nutritional-info .nutritional-item {
   margin-top: 1.5em;
@@ -208,15 +215,21 @@
       float: left;
       text-align: center;
     }
-    .modal__content .general-info .general-item .diet-label {
+    .modal__content .general-info .general-item .list-item h4 {
+      font-size: 20px;
+    }
+    .modal__content .general-info .general-item .list-item span {
+      font-size: 16px;
+    }
+    .modal__content .general-info .general-item .health-label {
       width: 100%;
+    }
+    .modal__content .general-info .general-item .health-label .health-label-list {
+      line-height: 2em;
     }
     .modal__content .general-info, .modal__content .image-title-container {
       width: 50%;
       float: left;
-      display: flex;
-      align-items: center;
-      flex-direction: column;
     }
     .modal__content .nutritional-info {
       width: 100%;

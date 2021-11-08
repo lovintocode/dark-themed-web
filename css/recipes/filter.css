@@ -24,33 +24,32 @@
 	width: 100%;
 	height: auto;
 	display: flex;
-	justify-content: center;
+	justify-content: space-around;
 	align-items: center;
 	margin: 1em 0;
 }
 #recipes-filter .search-container .search {
-	padding: 1em 2em;
+	padding: 1em 1em;
 	text-align: center;
 	font-size: 15px;
 }
 #recipes-filter .search-container .icon {
 	color: #ffff;
 	font-size: 24px;
-	margin-right: 1em;
 }
 #recipes-filter .lds-ring {
-  display: flex;
-  opacity: 0;
-  justify-content: center;
-  align-items: center;
+	display: flex;
+	opacity: 0;
+	justify-content: center;
+	align-items: center;
 }
 #recipes-filter .lds-ring div {
-  width: 32px;
-  height: 32px;
-  border: 3px solid #ffff;
-  border-radius: 50%;
-  animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
-  border-color: #cef transparent transparent transparent;
+	width: 32px;
+	height: 32px;
+	border: 3px solid #ffff;
+	border-radius: 50%;
+	animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+	border-color: #cef transparent transparent transparent;
 }
 #recipes-filter .list {
 	width: 100%;
@@ -176,9 +175,16 @@
 	transform: rotate(-45deg);
 }
 @media only screen and (min-width: 768px) {
+	#recipes-filter .search-container {
+		justify-content: center;
+	}
 	#recipes-filter .search-container .search {
+		padding: 1em 2em;
 		width: 400px;
 		font-size: 18px;
+	}
+	#recipes-filter .search-container .icon {
+		margin-right: 1em;
 	}
 	#recipes-filter .list {
 		flex-direction: row;
