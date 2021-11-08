@@ -18,7 +18,7 @@ function getRecipesData() {
   }
   else {
     $params = getParams();
-    $first_load_url = 'https://api.edamam.com/api/recipes/v2?type=public&q='.$params.'&app_id='.API_ID.'&app_key='.API_KEY;
+    $first_load_url = API_URL.$params.'&app_id='.API_ID.'&app_key='.API_KEY;
     $api_response = getData($first_load_url);
     manageApiResponse($api_response, $first_load_url);
   }

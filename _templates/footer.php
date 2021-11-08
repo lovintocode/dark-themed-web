@@ -44,8 +44,9 @@
   src="https://code.jquery.com/jquery-3.6.0.min.js"
   integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
   <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
-  <script src="js/lazyload.js"></script>
-  <script src="js/equalHeight.js"></script>
+  <script src="js/libraries/lazyload.js"></script>
+  <script src="js/libraries/equalHeight.js"></script>
+  <script src="js/libraries/modal.js"></script>
   <script src="js/styling.js"></script>
   <script src="js/api-managment.js"></script>
   <script src="js/main.js"></script>

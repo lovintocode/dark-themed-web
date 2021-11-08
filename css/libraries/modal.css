@@ -1,0 +1,239 @@
+.modal {
+  font-family: -apple-system,BlinkMacSystemFont,avenir next,avenir,helvetica neue,helvetica,ubuntu,roboto,noto,segoe ui,arial,sans-serif;
+}
+
+.modal__overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal__container {
+  background-color: #fff;
+  padding: 30px;
+  max-width: 90%;
+  max-height: 90vh;
+  border-radius: 4px;
+  overflow-y: auto;
+  box-sizing: border-box;
+}
+
+.modal__header {
+  display: flex;
+  justify-content: right;
+  align-items: center;
+}
+
+.modal__title {
+  margin-top: 0;
+  margin-bottom: 0;
+  font-weight: 600;
+  font-size: 1.25rem;
+  line-height: 1.25;
+  color: #000000;
+  box-sizing: border-box;
+}
+
+.modal__close {
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+}
+
+.modal__header .modal__close:before { content: "\2715"; }
+
+.modal__content {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  line-height: 1.5;
+  color: rgba(0,0,0,.8);
+}
+.modal__content .image {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: 300px;
+  margin: 0 auto;
+}
+.modal__content .title {
+  padding: 1em 0;
+  color: #000000;
+  max-width: 300px;
+}
+.modal__content .subtitle {
+  text-align: center;
+}
+.modal__content .general-info .general-item {
+  overflow: hidden;
+}
+.modal__content .general-info .general-item .list-item {
+  margin-top: 20px;
+}
+.modal__content .nutritional-info {
+  margin-top: 2em 0;
+}
+.modal__content .nutritional-info .nutritional-item {
+  margin-top: 1.5em;
+}
+.modal__content .nutritional-info .nutritional-item .title-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+.modal__content .nutritional-info .nutritional-item .title-container:hover {
+  background-color: #fff2f2;
+}
+.modal__content .nutritional-info .nutritional-item .title-container .list-title, .modal__content .nutritional-info .nutritional-item .title-container .icon {
+  width: 50%;
+  text-align: center;
+}
+.modal__content .nutritional-info .nutritional-item .list-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+.modal__content .nutritional-info .nutritional-item .list-container {
+  height: 0;
+  overflow: hidden;
+  transition: 0.5s ease all;
+}
+.modal__content .nutritional-info .nutritional-item .list-item .left, .modal__content .nutritional-info .nutritional-item .list-item .right {
+  width: 50%;
+  text-align: center;
+  font-size: 14px;
+}
+.modal__btn {
+  font-size: .875rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: .5rem;
+  padding-bottom: .5rem;
+  background-color: #e6e6e6;
+  color: rgba(0,0,0,.8);
+  border-radius: .25rem;
+  border-style: none;
+  border-width: 0;
+  cursor: pointer;
+  -webkit-appearance: button;
+  text-transform: none;
+  overflow: visible;
+  line-height: 1.15;
+  margin: 0;
+  will-change: transform;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  transition: -webkit-transform .25s ease-out;
+  transition: transform .25s ease-out;
+  transition: transform .25s ease-out,-webkit-transform .25s ease-out;
+}
+
+.modal__btn:focus, .modal__btn:hover {
+  -webkit-transform: scale(1.05);
+  transform: scale(1.05);
+}
+
+.modal__btn-primary {
+  background-color: #00449e;
+  color: #fff;
+}
+
+/**************************\
+  Demo Animation Style
+  \**************************/
+  @keyframes mmfadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes mmfadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+  }
+
+  @keyframes mmslideIn {
+    from { transform: translateY(15%); }
+    to { transform: translateY(0); }
+  }
+
+  @keyframes mmslideOut {
+    from { transform: translateY(0); }
+    to { transform: translateY(-10%); }
+  }
+
+  .micromodal-slide {
+    display: none;
+  }
+
+  .micromodal-slide.is-open {
+    display: block;
+  }
+
+  .micromodal-slide[aria-hidden="false"] .modal__overlay {
+    animation: mmfadeIn .3s cubic-bezier(0.0, 0.0, 0.2, 1);
+  }
+
+  .micromodal-slide[aria-hidden="false"] .modal__container {
+    animation: mmslideIn .3s cubic-bezier(0, 0, .2, 1);
+  }
+
+  .micromodal-slide[aria-hidden="true"] .modal__overlay {
+    animation: mmfadeOut .3s cubic-bezier(0.0, 0.0, 0.2, 1);
+  }
+
+  .micromodal-slide[aria-hidden="true"] .modal__container {
+    animation: mmslideOut .3s cubic-bezier(0, 0, .2, 1);
+  }
+
+  .micromodal-slide .modal__container,
+  .micromodal-slide .modal__overlay {
+    will-change: transform;
+  }
+
+  @media only screen and (min-width: 992px) {
+    .modal__content .image {
+      margin: 0;
+    }
+    .modal__content .general-info .general-item .list-item {
+      width: 50%;
+      float: left;
+      text-align: center;
+    }
+    .modal__content .general-info .general-item .diet-label {
+      width: 100%;
+    }
+    .modal__content .general-info, .modal__content .image-title-container {
+      width: 50%;
+      float: left;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+    }
+    .modal__content .nutritional-info {
+      width: 100%;
+      float: right;
+      padding: 3em 0;
+    }
+  }
+  @media only screen and (min-width: 1200px) {
+    .modal__content .nutritional-info .nutritional-item .title-container {
+      padding: 1em 0;
+    }
+    .modal__content .general-info .general-item .list-item {
+      margin-top: 2em;
+    }
+  }
+  @media only screen and (min-width: 1920px) {
+    .modal__content .general-info .general-item .list-item {
+      margin-top: 5em;
+    }
+  }

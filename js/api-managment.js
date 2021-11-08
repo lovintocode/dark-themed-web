@@ -73,26 +73,65 @@ function sendRecipesData(select_changed) {
   }
 }
 function printRecipes() {
-  let title = ""
-  let image = ""
-  let cal = ""
-  let cuisine_type = ""
-  let serves = ""
-  let meal_type = ""
-  let next_page = ""
+  // Small card
+  let title = ''
+  let image = ''
+  let cal = ''
+  let cuisine_type = ''
+  let serves = ''
+  let meal_type = ''
+
+  // Modal card
+  let cautions = ''
+  let diet_labels = ''
+  let dish_type = ''
+  let health_labels = ''
+  let preparation_url = ''
+
+  // Nutrient information
+  let proteins = ''
+  let water = ''
+  let cholesterol = ''
+  let carbs = ['']
+  let fats = ['']
+  let vitamins = ['']
+  let minerals = ['']
+
+  let id_counter = 1
   $('#recipes-box').empty()
   for (let i = 0; i < parsed_response['hits'].length; i++){
     let recipe = parsed_response['hits'][i]['recipe']
+
+    // Get api general data
     title = recipe['label']
     image = recipe['image']
     calories = Math.round(recipe['calories'])
     cuisine_type = firstToUpperCase(recipe['cuisineType'])
     serves = recipe['yield']
     meal_type = firstToUpperCase(recipe['mealType'])
+    cautions = recipe['cautions'].join(', ')
+    diet_labels = recipe['dietLabels'].join(', ')
+    dish_type = firstToUpperCase(recipe['dishType'])
+    health_labels = recipe['healthLabels'].join(', ')
+    preparation_url = recipe['url']
+
+    // Get api nutrients data
+    proteins = recipe['digest'][2]['total']
+    water = recipe['digest'][25]['total']
+    cholesterol = recipe['digest'][3]['total']
+    carbs = getNutrientData(recipe['digest'][1])
+    fat = getNutrientData(recipe['digest'][0])
+    vitamins = getVitamins(recipe['digest'])
+    minerals = getMinerals(recipe['digest'])
+
     $('#recipes-box').append
     (
       '<div class="box-container"><div class="box"><div class="image-container"><img class="image" src="'+image+'" alt="Recipe Card" onerror="imgError(this)"><div class="calories-container"><span class="calories">'+calories+' Cal</span></div></div><div class="data-container"><h3 class="title">'+title+'</h3><div class="data-box-container"><span class="data-box"><i class="fas fa-globe icon"></i><span class="cuisine_type">'+cuisine_type+'</span></span><span class="data-box"><i class="fas fa-users icon"></i><span class="yield"><span>Serves</span> '+serves+'</span></span><span class="data-box"><i class="fas fa-utensils icon"></i><span class="meal_type">'+meal_type+'</span></span></div></div><div class="functions-box"><div class="add-container-global"><div id="add-plan" class="add-container"><a class="link" href="#" title=""><i class="fas fa-plus icon"></i><span class="text">Add Plan</span></a></div><div id="add-fav" class="add-container"><a class="link" href="#" title=""><i class="fas fa-heart icon"></i><span class="text">Favorite</span></a></div></div><div id="know-more" class="function-container"><a class="link" href="#" title=""><i class="fas fa-info icon"></i><span class="text">More info</span></a></div></div></div></div>'
       )
+    $('#recipes-box').append
+    (
+      '<div class="modal micromodal-slide" id="modal-'+id_counter+'" aria-hidden="true"><div class="modal__overlay" tabindex="-1" data-micromodal-close><div class="modal__container" role="dialog" aria-modal="true" aria-labelledby="modal-1-title"><header class="modal__header"><button class="modal__close" aria-label="Close modal" data-micromodal-close></button></header><main class="modal__content" id="modal-'+id_counter+'-content"><div class="image-title-container"><img class="image" src="'+image+'" alt="'+title+'"><h3 class="title">'+title+'</h3></div><div class="general-info"><h3 class="subtitle">General Information</h3><ul class="general-item"><li class="list-item"><h4>Calories</h4><span>'+calories+'</span></li><li class="list-item"><h4>Cusine Type</h4><span>'+cuisine_type+'</span></li><li class="list-item"><h4>Meal Type</h4><span>'+meal_type+'</span></li><li class="list-item"><h4>Dish Type</h4><span>'+dish_type+'</span></li><li class="list-item"><h4>Serves</h4><span>'+serves+'</span></li><li class="list-item"><h4>Health Labels</h4><span>'+health_labels+'</span></li><li class="list-item diet-label"><h4>Diet Labels</h4><span>'+diet_labels'</span></li></ul></div><div class="nutritional-info"><h3 class="subtitle">Nutritional Information</h3><ul class="nutritional-item"><div class="title-container"><h4 class="list-title">Protein</h4><i class="fas fa-chevron-down icon"></i></div><div class="list-container"><li class="list-item"><span class="left">Total</span><span class="right">'+proteins+'</span></li></div></ul><ul class="nutritional-item"><div class="title-container"><h4 class="list-title">Carbs</h4><i class="fas fa-chevron-down icon"></i></div><div class="list-container"><li class="list-item"><span class="left">Total</span><span class="right">'+carbs['total']+'</span></li><li class="list-item"><span class="left">'+carbs['Fiber']+'</span><span class="right">500</span></li><li class="list-item"><span class="left">Sugars</span><span class="right">'+carbs['Sugars']+'</span></li><li class="list-item"><span class="left">Sugars Added</span><span class="right">'+carbs['Sugars, added']+'</span></li></div></ul><ul class="nutritional-item"><div class="title-container"><h4 class="list-title">Fats</h4><i class="fas fa-chevron-down icon"></i></div><div class="list-container"><li class="list-item"><span class="left">Total</span><span class="right">'+fat['total']+'</span></li><li class="list-item"><span class="left">Trans</span><span class="right">'+fat['Trans']+'</span></li><li class="list-item"><span class="left">Saturated</span><span class="right">'+fat['Saturated']+'</span></li><li class="list-item"><span class="left">Monounsaturated</span><span class="right">'+fat['Monounsaturated']+'</span></li><li class="list-item"><span class="left">Polyunsaturated</span><span class="right">'+fat['Polyunsaturated']+'</span></li></div></ul><ul class="nutritional-item"><div class="title-container"><h4 class="list-title">Vitamins</h4><i class="fas fa-chevron-down icon"></i></div><div class="list-container"><li class="list-item"><span class="left">A</span><span class="right">'+vitamins['A']+'</span></li><li class="list-item"><span class="left">C</span><span class="right">'+vitamins['C']+'</span></li><li class="list-item"><span class="left">B1</span><span class="right">'+vitamins['B1']+'</span></li><li class="list-item"><span class="left">B2</span><span class="right">'+vitamins['B2']+'</span></li><li class="list-item"><span class="left">B3</span><span class="right">'+vitamins['B3']+'</span></li><li class="list-item"><span class="left">B6</span><span class="right">'+vitamins['B6']+'</span></li><li class="list-item"><span class="left">B9</span><span class="right">'+vitamins['B9']+'</span></li><li class="list-item"><span class="left">B12</span><span class="right">'+vitamins['B12']+'</span></li><li class="list-item"><span class="left">D</span><span class="right">'+vitamins['D']+'</span></li><li class="list-item"><span class="left">E</span><span class="right">'+vitamins['E']+'</span></li><li class="list-item"><span class="left">K</span><span class="right">'+vitamins['K']+'</span></li></div></ul><ul class="nutritional-item"><div class="title-container"><h4 class="list-title">Minerals</h4><i class="fas fa-chevron-down icon"></i></div><div class="list-container"><li class="list-item"><span class="left">Sodium</span><span class="right">'+minerals['Sodium']+'</span></li><li class="list-item"><span class="left">Calcium</span><span class="right">'+minerals['Calcium']+'</span></li><li class="list-item"><span class="left">Magnesium</span><span class="right">'+minerals['Magnesium']+'</span></li><li class="list-item"><span class="left">Potassium</span><span class="right">'+minerals['Magnesium']+'</span></li><li class="list-item"><span class="left">Iron</span><span class="right">'+minerals['Iron']+'</span></li><li class="list-item"><span class="left">Zinc</span><span class="right">'+minerals['Zinc']+'</span></li><li class="list-item"><span class="left">Phosphorus</span><span class="right">'+minerals['Phosphorus']+'</span></li></div></ul></div></main></div></div></div>'
+    )
   }
   manageBoxesStyle()
   managePaginationStyle()
@@ -108,8 +147,6 @@ function manageBoxesStyle() {
   });
 }
 function managePaginationStyle() {
-  console.log(pagination_urls)
-  var effects_enabled = false
   $('#next_page_url').css('display', 'block')
   $('#prev_page_url').css('display', 'block')
 
@@ -173,8 +210,9 @@ function managePaginationStyle() {
         $('#page-change .pagination-container .current').css('font-weight', 'bold')
       }
       )
-    console.log(pagination_urls)
   }
+  if (page_reset)
+    $( '#next_page_url' ).unbind('mouseenter mouseleave')
 }
 function manageRecipesPagination() {
   $('#next_page_url').click(function(e) {
@@ -209,15 +247,20 @@ function sendAjaxRequest(data_object) {
           first_page_url = data.split('arr-separation')[1]
         if (isStringJson(api_response)) {
           parsed_response = JSON.parse(api_response)
+          console.log(parsed_response)
           if (!jQuery.isEmptyObject(parsed_response['hits'])){
             if (!jQuery.isEmptyObject(parsed_response['_links']))
               next_page_url = parsed_response['_links']['next']['href']
             printRecipes()
           } else {
             changeEmptyContainerContent('No matches found, please change your search criteria')
+            page_reset = true
+            managePaginationStyle()
           }
         } else {
           changeEmptyContainerContent('No matches found, please change your search criteria')
+          page_reset = true
+          managePaginationStyle()
         }
       },
       error: function() {
@@ -229,7 +272,6 @@ function isStringJson(api_response) {
   try {
     JSON.parse(api_response)
   } catch (e) {
-    console.log(e)
     return false
   }
   return true
@@ -242,17 +284,86 @@ function changeEmptyContainerContent(text_value) {
     )
 }
 function imgError(error_image) {
-  error_image.src = "img/photos/no-image.jpg"
-  error_image.onerror = ""
+  error_image.src = 'img/photos/no-image.jpg'
+  error_image.onerror = ''
   return true
 }
-function firstToUpperCase(array) {
-  let stringified_arr = ""
-  for (let i = 0; i < array.length; i++) {
-    let upperCased = array[i].charAt(0).toUpperCase() + array[i].slice(1)
-    stringified_arr += upperCased
-    if (i < array.length - 1)
-      stringified_arr += ', '
+function firstToUpperCase(array=[]) {
+  let stringified_arr = ''
+  if (array.length > 0) {
+    for (let i = 0; i < array.length; i++) {
+      let upperCased = array[i].charAt(0).toUpperCase() + array[i].slice(1)
+      stringified_arr += upperCased
+      if (i < array.length - 1)
+        stringified_arr += ', '
+    }
   }
   return stringified_arr;
+}
+function modalHandler() {
+  var micromodal = new MicroModal.init({
+    onShow: modal => $('.link').css('position', 'static'),
+    onClose: modal => $('.link').css('position', 'relative')
+  })
+  $('.modal .nutritional-info .title-container').click(function() {
+    let list_height = '0'
+    let type = $(this).children('.list-title').text()
+    console.log($(this).siblings('.list-container').css('height'))
+    switch (type) {
+      case 'Protein': list_height = '3em'
+      break
+      case 'Carbs': list_height = '11em'
+      break
+      case 'Fats': list_height = '14em'
+      break
+      case 'Vitamins': list_height = '29em'
+      break
+      case 'Minerals': list_height = '19em'
+      break
+    }
+    if ($(this).siblings('.list-container').css('height') == '0px')
+      $(this).siblings('.list-container').css('height', list_height)
+    else {
+      $(this).siblings('.list-container').css('height', '0em')
+    }
+  });
+}
+
+// Gets data from protein and carbs
+function getNutrientData(nutrient_object) {
+  let aux_object = {}
+  aux_object['total'] = Math.round(nutrient_object['total'])
+  for (let i = 0; i < nutrient_object['sub'].length; i++) {
+    if (nutrient_object['sub'][i]['label'] != 'Carbs (net)')
+      aux_object[nutrient_object['sub'][i]['label']] = Math.round(nutrient_object['sub'][i]['total'])
+  }
+  return aux_object
+}
+function getVitamins(nutrient_object) {
+  let aux_object = {}
+  aux_object['A'] = nutrient_object[11]['total']
+  aux_object['C'] = nutrient_object[12]['total']
+  aux_object['B1'] = nutrient_object[13]['total']
+  aux_object['B2'] = nutrient_object[14]['total']
+  aux_object['B3'] = nutrient_object[15]['total']
+  aux_object['B6'] = nutrient_object[16]['total']
+  aux_object['B9'] = nutrient_object[18]['total']
+  aux_object['B12'] = nutrient_object[20]['total']
+  aux_object['D'] = nutrient_object[21]['total']
+  aux_object['E'] = nutrient_object[22]['total']
+  aux_object['K'] = nutrient_object[23]['total']
+
+  return aux_object
+}
+function getMinerals(nutrient_object) {
+  let aux_object = {}
+  aux_object['Sodium'] = nutrient_object[4]['total']
+  aux_object['Calcium'] = nutrient_object[5]['total']
+  aux_object['Magnesium'] = nutrient_object[6]['total']
+  aux_object['Potassium'] = nutrient_object[7]['total']
+  aux_object['Iron'] = nutrient_object[8]['total']
+  aux_object['Zinc'] = nutrient_object[9]['total']
+  aux_object['Phosphorous'] = nutrient_object[10]['total']
+
+  return aux_object
 }
