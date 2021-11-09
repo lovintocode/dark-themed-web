@@ -133,9 +133,16 @@
                 </li>
               </ul>
             </div>
-            <div class="">
+            <div class="health-info">
               <h3 class="subtitle">Health Labels</h3>
               <ul class="health-item">
+                  <li class="list-item">
+                    <span></span>
+                  </li>
+                  <li class="list-item">
+                    <span></span>
+                  </li>
+              </ul>
             </div>
             <div class="nutritional-info">
               <h3 class="subtitle">Nutritional Information</h3>

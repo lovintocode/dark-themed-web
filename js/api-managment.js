@@ -112,7 +112,7 @@ function printRecipes() {
     cautions = recipe['cautions'].join(', ')
     diet_labels = recipe['dietLabels'].join(', ')
     dish_type = firstToUpperCase(recipe['dishType'])
-    health_labels = recipe['healthLabels'].join(', ')
+    health_labels = getHealthLabelsHtml(recipe['healthLabels'])
     preparation_url = recipe['url']
 
     // Get api nutrients data
@@ -130,9 +130,9 @@ function printRecipes() {
       )
     $('#recipes-box').append
     (
-      '<div class="modal micromodal-slide" id="modal-'+id_counter+'" aria-hidden="true"><div class="modal__overlay" tabindex="-1" data-micromodal-close><div class="modal__container" role="dialog" aria-modal="true" aria-labelledby="modal-1-title"><header class="modal__header"><button class="modal__close" aria-label="Close modal" data-micromodal-close></button></header><main class="modal__content" id="modal-'+id_counter+'-content"><div class="image-title-container"><img class="image" src="'+image+'" alt="'+title+'"><h3 class="title">'+title+'</h3></div><div class="general-info"><h3 class="subtitle">General Information</h3><ul class="general-item"><li class="list-item"><h4>Calories</h4><span>'+calories+'</span></li><li class="list-item"><h4>Cusine Type</h4><span>'+cuisine_type+'</span></li><li class="list-item"><h4>Meal Type</h4><span>'+meal_type+'</span></li><li class="list-item"><h4>Dish Type</h4><span>'+dish_type+'</span></li><li class="list-item"><h4>Serves</h4><span>'+serves+'</span></li><li class="list-item"><h4>Diet Labels</h4><span>'+diet_labels+'</span></li><li class="list-item health-label"><h4>Health Labels</h4><span class="health-label-list">'+health_labels+'</span></li></ul></div><div class="nutritional-info"><h3 class="subtitle">Nutritional Information</h3><ul class="nutritional-item"><div class="title-container"><h4 class="list-title">Protein</h4><i class="fas fa-chevron-down icon"></i></div><div class="list-container"><li class="list-item"><span class="left">Total</span><span class="right">'+proteins+'</span></li></div></ul><ul class="nutritional-item"><div class="title-container"><h4 class="list-title">Carbs</h4><i class="fas fa-chevron-down icon"></i></div><div class="list-container"><li class="list-item"><span class="left">Total</span><span class="right">'+carbs['total']+'</span></li><li class="list-item"><span class="left">'+carbs['Fiber']+'</span><span class="right">500</span></li><li class="list-item"><span class="left">Sugars</span><span class="right">'+carbs['Sugars']+'</span></li><li class="list-item"><span class="left">Sugars Added</span><span class="right">'+carbs['Sugars, added']+'</span></li></div></ul><ul class="nutritional-item"><div class="title-container"><h4 class="list-title">Fats</h4><i class="fas fa-chevron-down icon"></i></div><div class="list-container"><li class="list-item"><span class="left">Total</span><span class="right">'+fat['total']+'</span></li><li class="list-item"><span class="left">Trans</span><span class="right">'+fat['Trans']+'</span></li><li class="list-item"><span class="left">Saturated</span><span class="right">'+fat['Saturated']+'</span></li><li class="list-item"><span class="left">Monounsaturated</span><span class="right">'+fat['Monounsaturated']+'</span></li><li class="list-item"><span class="left">Polyunsaturated</span><span class="right">'+fat['Polyunsaturated']+'</span></li></div></ul><ul class="nutritional-item"><div class="title-container"><h4 class="list-title">Vitamins</h4><i class="fas fa-chevron-down icon"></i></div><div class="list-container"><li class="list-item"><span class="left">A</span><span class="right">'+vitamins['A']+'</span></li><li class="list-item"><span class="left">C</span><span class="right">'+vitamins['C']+'</span></li><li class="list-item"><span class="left">B1</span><span class="right">'+vitamins['B1']+'</span></li><li class="list-item"><span class="left">B2</span><span class="right">'+vitamins['B2']+'</span></li><li class="list-item"><span class="left">B3</span><span class="right">'+vitamins['B3']+'</span></li><li class="list-item"><span class="left">B6</span><span class="right">'+vitamins['B6']+'</span></li><li class="list-item"><span class="left">B9</span><span class="right">'+vitamins['B9']+'</span></li><li class="list-item"><span class="left">B12</span><span class="right">'+vitamins['B12']+'</span></li><li class="list-item"><span class="left">D</span><span class="right">'+vitamins['D']+'</span></li><li class="list-item"><span class="left">E</span><span class="right">'+vitamins['E']+'</span></li><li class="list-item"><span class="left">K</span><span class="right">'+vitamins['K']+'</span></li></div></ul><ul class="nutritional-item"><div class="title-container"><h4 class="list-title">Minerals</h4><i class="fas fa-chevron-down icon"></i></div><div class="list-container"><li class="list-item"><span class="left">Sodium</span><span class="right">'+minerals['Sodium']+'</span></li><li class="list-item"><span class="left">Calcium</span><span class="right">'+minerals['Calcium']+'</span></li><li class="list-item"><span class="left">Magnesium</span><span class="right">'+minerals['Magnesium']+'</span></li><li class="list-item"><span class="left">Potassium</span><span class="right">'+minerals['Potassium']+'</span></li><li class="list-item"><span class="left">Iron</span><span class="right">'+minerals['Iron']+'</span></li><li class="list-item"><span class="left">Zinc</span><span class="right">'+minerals['Zinc']+'</span></li><li class="list-item"><span class="left">Phosphorus</span><span class="right">'+minerals['Phosphorus']+'</span></li></div></ul></div></main></div></div></div>'
-    )
-  id_counter++
+      '<div class="modal micromodal-slide" id="modal-'+id_counter+'" aria-hidden="true"><div class="modal__overlay" tabindex="-1" data-micromodal-close><div class="modal__container" role="dialog" aria-modal="true" aria-labelledby="modal-1-title"><header class="modal__header"><button class="modal__close" aria-label="Close modal" data-micromodal-close></button></header><main class="modal__content" id="modal-'+id_counter+'-content"><div class="image-title-container"><img class="image" src="'+image+'" alt="'+title+'"><h2 class="title">'+title+'</h3></div><div class="general-info"><h3 class="subtitle">General Information</h2><ul class="general-item"><li class="list-item"><h4 class="list-title">Calories</h4><span>'+calories+'</span></li><li class="list-item"><h4 class="list-title">Cusine Type</h4><span>'+cuisine_type+'</span></li><li class="list-item"><h4 class="list-title">Meal Type</h4><span>'+meal_type+'</span></li><li class="list-item"><h4 class="list-title">Dish Type</h4><span>'+dish_type+'</span></li><li class="list-item"><h4 class="list-title">Serves</h4><span>'+serves+'</span></li><li class="list-item"><h4 class="list-title">Diet Labels</h4><span>'+diet_labels+'</span></li></ul></div>'+health_labels+'<div class="nutritional-info"><h3 class="subtitle">Nutritional Information</h3><ul class="nutritional-item"><div class="title-container"><h4 class="list-title">Protein</h4><i class="fas fa-chevron-down icon"></i></div><div class="list-container"><li class="list-item"><span class="left">Total</span><span class="right">'+proteins+'</span></li></div></ul><ul class="nutritional-item"><div class="title-container"><h4 class="list-title">Carbs</h4><i class="fas fa-chevron-down icon"></i></div><div class="list-container"><li class="list-item"><span class="left">Total</span><span class="right">'+carbs['total']+'</span></li><li class="list-item"><span class="left">'+carbs['Fiber']+'</span><span class="right">500</span></li><li class="list-item"><span class="left">Sugars</span><span class="right">'+carbs['Sugars']+'</span></li><li class="list-item"><span class="left">Sugars Added</span><span class="right">'+carbs['Sugars, added']+'</span></li></div></ul><ul class="nutritional-item"><div class="title-container"><h4 class="list-title">Fats</h4><i class="fas fa-chevron-down icon"></i></div><div class="list-container"><li class="list-item"><span class="left">Total</span><span class="right">'+fat['total']+'</span></li><li class="list-item"><span class="left">Trans</span><span class="right">'+fat['Trans']+'</span></li><li class="list-item"><span class="left">Saturated</span><span class="right">'+fat['Saturated']+'</span></li><li class="list-item"><span class="left">Monounsaturated</span><span class="right">'+fat['Monounsaturated']+'</span></li><li class="list-item"><span class="left">Polyunsaturated</span><span class="right">'+fat['Polyunsaturated']+'</span></li></div></ul><ul class="nutritional-item"><div class="title-container"><h4 class="list-title">Vitamins</h4><i class="fas fa-chevron-down icon"></i></div><div class="list-container"><li class="list-item"><span class="left">A</span><span class="right">'+vitamins['A']+'</span></li><li class="list-item"><span class="left">C</span><span class="right">'+vitamins['C']+'</span></li><li class="list-item"><span class="left">B1</span><span class="right">'+vitamins['B1']+'</span></li><li class="list-item"><span class="left">B2</span><span class="right">'+vitamins['B2']+'</span></li><li class="list-item"><span class="left">B3</span><span class="right">'+vitamins['B3']+'</span></li><li class="list-item"><span class="left">B6</span><span class="right">'+vitamins['B6']+'</span></li><li class="list-item"><span class="left">B9</span><span class="right">'+vitamins['B9']+'</span></li><li class="list-item"><span class="left">B12</span><span class="right">'+vitamins['B12']+'</span></li><li class="list-item"><span class="left">D</span><span class="right">'+vitamins['D']+'</span></li><li class="list-item"><span class="left">E</span><span class="right">'+vitamins['E']+'</span></li><li class="list-item"><span class="left">K</span><span class="right">'+vitamins['K']+'</span></li></div></ul><ul class="nutritional-item"><div class="title-container"><h4 class="list-title">Minerals</h4><i class="fas fa-chevron-down icon"></i></div><div class="list-container"><li class="list-item"><span class="left">Sodium</span><span class="right">'+minerals['Sodium']+'</span></li><li class="list-item"><span class="left">Calcium</span><span class="right">'+minerals['Calcium']+'</span></li><li class="list-item"><span class="left">Magnesium</span><span class="right">'+minerals['Magnesium']+'</span></li><li class="list-item"><span class="left">Potassium</span><span class="right">'+minerals['Potassium']+'</span></li><li class="list-item"><span class="left">Iron</span><span class="right">'+minerals['Iron']+'</span></li><li class="list-item"><span class="left">Zinc</span><span class="right">'+minerals['Zinc']+'</span></li><li class="list-item"><span class="left">Phosphorus</span><span class="right">'+minerals['Phosphorus']+'</span></li></div></ul></div></main></div></div></div>'
+      )
+id_counter++
 }
 manageBoxesStyle()
 managePaginationStyle()
@@ -242,33 +242,33 @@ function sendAjaxRequest(data_object) {
     dataType: 'text',
     data: data_object,
     success: function(data){
-        // Cuando se pasa la consulta aqui se muestran los datos data recibidos por el echo
-        $('#recipes-filter .lds-ring').css('opacity', '0')
-        let api_response = data.split('arr-separation')[0]
-        if (pagination_urls.length == 0)
-          first_page_url = data.split('arr-separation')[1]
-        if (isStringJson(api_response)) {
-          parsed_response = JSON.parse(api_response)
-          console.log(parsed_response)
-          if (!jQuery.isEmptyObject(parsed_response['hits'])){
-            if (!jQuery.isEmptyObject(parsed_response['_links']))
-              next_page_url = parsed_response['_links']['next']['href']
-            printRecipes()
-          } else {
-            changeEmptyContainerContent('No matches found, please change your search criteria')
-            page_reset = true
-            managePaginationStyle()
-          }
+      // Cuando se pasa la consulta aqui se muestran los datos data recibidos por el echo
+      $('#recipes-filter .lds-ring').css('opacity', '0')
+      let api_response = data.split('arr-separation')[0]
+      if (pagination_urls.length == 0)
+        first_page_url = data.split('arr-separation')[1]
+      if (isStringJson(api_response)) {
+        parsed_response = JSON.parse(api_response)
+        console.log(parsed_response)
+        if (!jQuery.isEmptyObject(parsed_response['hits'])){
+          if (!jQuery.isEmptyObject(parsed_response['_links']))
+            next_page_url = parsed_response['_links']['next']['href']
+          printRecipes()
         } else {
           changeEmptyContainerContent('No matches found, please change your search criteria')
           page_reset = true
           managePaginationStyle()
         }
-      },
-      error: function() {
-        console.log('error recipe')
+      } else {
+        changeEmptyContainerContent('No matches found, please change your search criteria')
+        page_reset = true
+        managePaginationStyle()
       }
-    });
+    },
+    error: function() {
+      console.log('error recipe')
+    }
+  });
 }
 function isStringJson(api_response) {
   try {
@@ -312,7 +312,7 @@ function modalHandler() {
     let type = $(this).children('.list-title').text()
     console.log($(this).siblings('.list-container').css('height'))
     switch (type) {
-      case 'Protein': list_height = '3em'
+      case 'Protein': list_height = '4em'
       break
       case 'Carbs': list_height = '11em'
       break
@@ -368,4 +368,16 @@ function getMinerals(nutrient_object) {
   aux_object['Phosphorus'] = Math.round(nutrient_object[10]['total'])
 
   return aux_object
+}
+
+function getHealthLabelsHtml(nutrient_object) {
+  let added_html = ''
+
+  added_html += '<div class="health-info"><h3 class="subtitle">Health Labels</h3><ul class="health-item">'
+  for(let i = 0; i < nutrient_object.length; i++) {
+    added_html += '<li class="list-item"><span>'+nutrient_object[i]+'</span></li>'
+  }
+  added_html += '</ul></div>'
+
+  return added_html
 }

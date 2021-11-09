@@ -3,7 +3,6 @@
   position: absolute;
   z-index: 1;
 }
-
 .modal__overlay {
   position: fixed;
   top: 0;
@@ -17,13 +16,14 @@
 }
 
 .modal__container {
-  background-color: #fff;
+  background-color: #232222;
   padding: 30px;
   max-width: 90%;
   max-height: 90vh;
   border-radius: 4px;
   overflow-y: auto;
   box-sizing: border-box;
+      box-shadow: rgb(255 255 255 / 30%) 0px 3px 3px 0px, rgb(255 255 255 / 15%) 0px 1px 3px 3px;
 }
 
 .modal__header {
@@ -32,20 +32,12 @@
   align-items: center;
 }
 
-.modal__title {
-  margin-top: 0;
-  margin-bottom: 0;
-  font-weight: 600;
-  font-size: 1.25rem;
-  line-height: 1.25;
-  color: #000000;
-  box-sizing: border-box;
-}
-
 .modal__close {
   background: transparent;
   border: 0;
   cursor: pointer;
+  font-size: 20px;
+  color: #ffff;
 }
 
 .modal__header .modal__close:before { content: "\2715"; }
@@ -56,10 +48,10 @@
   line-height: 1.5;
   color: rgba(0,0,0,.8);
 }
-.modal__content .general-info, .modal__content .image-title-container {
+.modal__content .image-title-container {
   display: flex;
-  align-items: center;
   flex-direction: column;
+  align-items: center;
 }
 .modal__content .image {
   display: block;
@@ -67,23 +59,56 @@
   height: auto;
   max-width: 300px;
   margin: 0 auto;
+  border-radius: 10px;
+}
+.modal__content .general-info, .modal__content .health-info, .modal__content .nutritional-info {
+  padding: 1.5em 0;
+}
+.modal__content .nutritional-info {
+  padding-bottom: 3em;
 }
 .modal__content .title {
   padding: 1em 0;
-  color: #000000;
+  color: #ffff;
   max-width: 300px;
 }
 .modal__content .subtitle {
   text-align: center;
+  font-size: 20px;
+  color: #ffff;
+}
+.modal__content .list-title {
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.9);
+}
+.modal__content .list-item span {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.8);
 }
 .modal__content .general-info .general-item {
   overflow: hidden;
+  text-align: center;
 }
 .modal__content .general-info .general-item .list-item {
   margin-top: 20px;
 }
+.modal__content .health-info {
+  float: right;
+  padding: 1.5em 0;
+}
+.modal__content .health-info .health-item .list-item {
+  width: 50%;
+  float: left;
+  text-align: center;
+  margin-top: 1.5em;
+}
 .modal__content .nutritional-info {
-  margin-top: 2em;
+  width: 100%;
+  height: auto;
+  float: right;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
 }
 .modal__content .nutritional-info .nutritional-item {
   margin-top: 1.5em;
@@ -94,66 +119,28 @@
   align-items: center;
   cursor: pointer;
 }
-.modal__content .nutritional-info .nutritional-item .title-container:hover {
-  background-color: #fff2f2;
-}
 .modal__content .nutritional-info .nutritional-item .title-container .list-title, .modal__content .nutritional-info .nutritional-item .title-container .icon {
   width: 50%;
   text-align: center;
+}
+.modal__content .nutritional-info .nutritional-item .title-container .icon {
+  color: rgba(255, 255, 255, 0.9);
 }
 .modal__content .nutritional-info .nutritional-item .list-item {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 20px;
+  margin-top: 2em;
 }
 .modal__content .nutritional-info .nutritional-item .list-container {
   height: 0;
-  overflow: hidden;
+  overflow: auto;
   transition: 0.5s ease all;
 }
 .modal__content .nutritional-info .nutritional-item .list-item .left, .modal__content .nutritional-info .nutritional-item .list-item .right {
   width: 50%;
   text-align: center;
-  font-size: 14px;
 }
-.modal__btn {
-  font-size: .875rem;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  padding-top: .5rem;
-  padding-bottom: .5rem;
-  background-color: #e6e6e6;
-  color: rgba(0,0,0,.8);
-  border-radius: .25rem;
-  border-style: none;
-  border-width: 0;
-  cursor: pointer;
-  -webkit-appearance: button;
-  text-transform: none;
-  overflow: visible;
-  line-height: 1.15;
-  margin: 0;
-  will-change: transform;
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
-  -webkit-transform: translateZ(0);
-  transform: translateZ(0);
-  transition: -webkit-transform .25s ease-out;
-  transition: transform .25s ease-out;
-  transition: transform .25s ease-out,-webkit-transform .25s ease-out;
-}
-
-.modal__btn:focus, .modal__btn:hover {
-  -webkit-transform: scale(1.05);
-  transform: scale(1.05);
-}
-
-.modal__btn-primary {
-  background-color: #00449e;
-  color: #fff;
-}
-
 /**************************\
   Demo Animation Style
   \**************************/
@@ -210,43 +197,72 @@
     .modal__content .image {
       margin: 0;
     }
+    .modal__content .general-info {
+      margin-bottom: 12em;
+    }
     .modal__content .general-info .general-item .list-item {
       width: 50%;
       float: left;
       text-align: center;
     }
-    .modal__content .general-info .general-item .list-item h4 {
-      font-size: 20px;
+    .modal__content .general-info .general-item .list-title {
+      margin-bottom: 0em;
     }
-    .modal__content .general-info .general-item .list-item span {
-      font-size: 16px;
-    }
-    .modal__content .general-info .general-item .health-label {
-      width: 100%;
-    }
-    .modal__content .general-info .general-item .health-label .health-label-list {
-      line-height: 2em;
-    }
-    .modal__content .general-info, .modal__content .image-title-container {
+    .modal__content .nutritional-info, .modal__content .health-info, .modal__content .general-info, .modal__content .image-title-container {
       width: 50%;
       float: left;
     }
-    .modal__content .nutritional-info {
-      width: 100%;
-      float: right;
-      padding: 3em 0;
+    .modal__content .general-info {
+      padding: 1em 0;
+      margin-bottom: 8em;
+    }
+    .modal__content .nutritional-info, .modal__content .health-info {
+      padding: 0;
     }
   }
   @media only screen and (min-width: 1200px) {
+    .modal__close {
+      font-size: 25px;
+    }
     .modal__content .nutritional-info .nutritional-item .title-container {
-      padding: 1em 0;
+      padding: 0.5em 0;
     }
     .modal__content .general-info .general-item .list-item {
       margin-top: 2em;
     }
+    .modal__content .nutritional-info .nutritional-item .title-container:hover {
+      background-color: rgba(0,0,0,0.2);
+    }
+    .modal__content .title {
+      font-size: 28px;
+    }
+    .modal__content .list-title {
+      font-size: 18px;
+    }
+    .modal__content .list-item span {
+      font-size: 16px;
+    }
+    .modal__content .health-info, .modal__content .nutritional-info {
+      padding-bottom: 2em;
+    }
   }
   @media only screen and (min-width: 1920px) {
+    .modal__close {
+      font-size: 35px;
+    }
     .modal__content .general-info .general-item .list-item {
       margin-top: 5em;
+    }
+    .modal__content .title {
+      font-size: 34px;
+    }
+    .modal__content .subtitle {
+      font-size: 24px;
+    }
+    .modal__content .list-title {
+      font-size: 20px;
+    }
+    .modal__content .list-item span {
+      font-size: 18px;
     }
   }
