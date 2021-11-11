@@ -243,13 +243,13 @@ function sendAjaxRequest(data_object) {
     data: data_object,
     success: function(data){
       // Cuando se pasa la consulta aqui se muestran los datos data recibidos por el echo
+      console.log(data)
       $('#recipes-filter .lds-ring').css('opacity', '0')
       let api_response = data.split('arr-separation')[0]
       if (pagination_urls.length == 0)
         first_page_url = data.split('arr-separation')[1]
       if (isStringJson(api_response)) {
         parsed_response = JSON.parse(api_response)
-        console.log(parsed_response)
         if (!jQuery.isEmptyObject(parsed_response['hits'])){
           if (!jQuery.isEmptyObject(parsed_response['_links']))
             next_page_url = parsed_response['_links']['next']['href']

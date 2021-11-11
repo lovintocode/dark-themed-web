@@ -1,6 +1,7 @@
 <?php
-session_start();
-require_once "_templates/header.php";
+require_once "config.php";
+require_once ROOT."/php/bbdd/session.php";
+require_once ROOT."/_templates/header.php";
 ?>
 <div id="preloader">
   <img src="img/icons/preloader.gif" alt="preloader">

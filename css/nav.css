@@ -91,4 +91,9 @@
     display: block;
   }
 }
+@media only screen and (min-width: 1500px) {
+  #nav .nav-item .link {
+    font-size: 1.3em;
+  }
+}
 /* End Navbar */
