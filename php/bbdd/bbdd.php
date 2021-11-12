@@ -12,4 +12,7 @@
 // echo "Connected successfully";
 // mysqli_close($conn);
 
+// function userAlreadyExists($credentials) {
+  
+// }
 ?>
