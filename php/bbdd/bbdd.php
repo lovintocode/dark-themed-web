@@ -1,18 +1,82 @@
 <?php
-// $servername = "db5005386872.hosting-data.io";
-// $username = "dbu654331";
-// $password = "healthstep01";
-// $database = "dbs4519684";
-// // Create connection
-// $conn = mysqli_connect($servername, $username, $password, $database);
-// // Check connection
-// if (!$conn) {
-// 	die("Connection failed: " . mysqli_connect_error());
-// }
-// echo "Connected successfully";
-// mysqli_close($conn);
+class bbdd {
 
-// function userAlreadyExists($credentials) {
-  
-// }
+	protected $connection;
+	protected $query;
+
+	public function __construct($dbhost = HOST, $dbuser = USER, $dbpass = PASSWORD, $dbname = DATABASE, $charset = 'utf8') {
+		$this->connection = new mysqli($dbhost, $dbuser, $dbpass, $dbname);
+		if ($this->connection->connect_error) {
+			$this->error('Failed to connect to MySQL - ' . $this->connection->connect_error);
+		}
+		$this->connection->set_charset($charset);
+	}
+	function userAlreadyExists($credentials) {
+		$username = $credentials['username'];
+
+		$user_exists = false;
+		$query = 'SELECT * FROM users WHERE username=?';
+		$stmt = $this->connection->prepare($query);
+		if ($stmt){
+			$stmt->bind_param("s", $username);
+			$stmt->execute();
+			if(mysqli_num_rows($stmt->get_result()) > 0) 
+				$user_exists = true;
+			$stmt->close();
+		}
+		return $user_exists;
+	}
+	function insertNewUser($credentials) {
+		$username = $credentials['username'];
+		$email = $credentials['email'];
+		$password = password_hash($credentials['password'], CRYPT_BLOWFISH);
+
+		$user_inserted = false;
+		$query = 'INSERT INTO users (username, email, password) VALUES (?, ?, ?)';
+		$stmt = $this->connection->prepare($query);
+		if ($stmt){			
+			$stmt->bind_param("sss", $username, $email, $password);
+			if ($stmt->execute())
+				$user_inserted = true;
+			$stmt->close();
+		}
+		return $user_inserted;
+	}
+	function logInUser($credentials) {
+		$username = $credentials['username'];
+		$password = $credentials['password'];
+
+		$user_checked = false;
+		$query = 'SELECT * FROM users WHERE username=?';
+		$stmt = $this->connection->prepare($query);
+		if ($stmt){			
+			$stmt->bind_param("s", $username);
+			if ($stmt->execute()){
+				$result = $stmt->get_result();
+				if(mysqli_num_rows($result) > 0) {
+					while ($data = $result->fetch_assoc()) {
+						if (password_verify($password, $data['password']))
+							$user_checked = true;
+					}				
+				}		
+			}
+			$stmt->close();
+		}
+		return $user_checked;
+	}
+	function deleteUser($credentials) {
+		$username = $credentials['username'];
+		
+		$user_deleted = false;
+		$query = 'DELETE ? FROM users';
+		$stmt = $this->connection->prepare($query);
+		if ($stmt){			
+			$stmt->bind_param("s", $username);
+			if ($stmt->execute())
+				$user_deleted = true;
+			$stmt->close();
+		}
+		return $user_deleted;
+	}
+}
 ?>

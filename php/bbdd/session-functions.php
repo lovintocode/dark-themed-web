@@ -6,9 +6,9 @@ function checkValidCredentials($credentials) {
     if (!empty($value)) {
      switch ($key) {
       case 'username':
-      if (strlen($value) < 4) {
+      if (strlen($value) < 4 || strlen($value) > 16 ) {
         $return_response['username']['valid'] = 'false' ;
-        $return_response['username']['string'] = 'Username must be greater than three';
+        $return_response['username']['string'] = 'Username must be greater than three and smaller than 17';
         $valid_credentials = 'false';
       } else if (preg_match('/@[A-Za-z0-9_]+\*/', $value)) {
         $return_response['username']['valid'] = 'false';
@@ -28,18 +28,18 @@ function checkValidCredentials($credentials) {
       }
       break;
       case 'password':
-      if (strlen($value) < 8  ) {
+      if (strlen($value) < 8  || strlen($value) > 30) {
         $return_response['password']['valid'] = 'false';
-        $return_response['password']['string'] = 'Password must be greater than 8';
+        $return_response['password']['string'] = 'Password must be greater than 8 and smaller than 31';
         $valid_credentials = 'false';
       } else {
         $return_response['password']['valid'] = 'true';
       }
       break;
       case 'password_verify':
-      if (strlen($value) < 8  ) {
+      if (strlen($value) < 8 || strlen($value) > 30) {
         $return_response['password_verify']['valid'] = 'false';
-        $return_response['password_verify']['string'] = 'Password must be greater than 8';
+        $return_response['password_verify']['string'] = 'Password must be greater than 8 and smaller than 31';
         $valid_credentials = 'false';
       } else if ($credentials['password'] != $value) {
         $return_response['password_verify']['valid'] = 'false';

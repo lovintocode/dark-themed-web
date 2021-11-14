@@ -8,7 +8,14 @@ require_once ROOT."/_templates/header.php";
 </div>
 <a href="index.php?page=session_layout" title="USER">
   <div id="session-user">
-    <span>User</span>
+    <span>
+      <?php
+        if (isset($_SESSION['username']))
+          echo $_SESSION['username'];
+        else
+          echo "Not logged";
+      ?>
+    </span>
     <i class="icon fas fa-user"></i>
   </div>
 </a>
