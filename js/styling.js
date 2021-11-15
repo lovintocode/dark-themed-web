@@ -105,3 +105,6 @@ function loadDinamicImages() {
     observer.observe(document.querySelector("#image-gallery"))
   }
 }
+function sessionHandler() {
+  
+}

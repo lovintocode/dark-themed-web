@@ -32,7 +32,7 @@
     <h2 class="title">GET IN TOUCH</h2>
     <form class="form" action="">
       <input class="form-input" type="text" placeholder="Name">
-      <input class="form-input" type="text" placeholder="Email Adress">
+      <input class="form-input" type="email" placeholder="Email Adress">
       <input class="btn" type="button" value="Send">
     </form>
   </div>

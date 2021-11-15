@@ -55,4 +55,10 @@ function checkValidCredentials($credentials) {
 $return_response['credentials']['valid'] = $valid_credentials;
 return $return_response;
 }
+function changeLayoutUsername() {
+  echo '<script>
+  let session_name = document.getElementById("session-user")
+  session_name.querySelector("span").innerHTML = "'.$credentials['username'].'"
+  </script>';
+}
 ?>

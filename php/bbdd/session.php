@@ -32,10 +32,7 @@ if (isset($_POST['register_user'])) {
     if ($bbdd->userAlreadyExists($credentials)) {
       if ($bbdd->logInUser($credentials)) {
         $_SESSION['username'] = $credentials['username'];
-        echo '<script>
-        let session_name = document.getElementById("session-user")
-        session_name.querySelector("span").innerHTML = "'.$credentials['username'].'"        
-        </script>';
+        changeLayoutUsername();
       } else {
         echo "User not logged in";
       }
