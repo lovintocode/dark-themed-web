@@ -8,7 +8,8 @@ $( window ).resize(function() {
     showNavbar()
     $('#home-wrapper').css('margin-top', '0')
     $('#contact-wrapper').css('margin-top', '0')
-    $('#recipes-wrapper').css('margin-top', '0');
+    $('#recipes-wrapper').css('margin-top', '0')
+    $('#credentials-wrapper').css('margin-top', '0')
   }
 })
 function swiperHandler() {
@@ -50,7 +51,8 @@ function hamburgerAction() {
     $('.navbar-nav').removeClass('show-navbar-nav')
     $('#home-wrapper').css('margin-top', '0')
     $('#contact-wrapper').css('margin-top', '0')
-    $('#recipes-wrapper').css('margin-top', '0');
+    $('#recipes-wrapper').css('margin-top', '0')
+    $('#credentials-wrapper').css('margin-top', '0')
     $('.navbar-nav').css('z-index', '-1')
     $('.hamburger').attr('disabled', true)
     setTimeout(function() {
@@ -61,7 +63,8 @@ function hamburgerAction() {
     $('.navbar-nav').addClass('show-navbar-nav')
     $('#home-wrapper').css('margin-top', '4.5em')
     $('#contact-wrapper').css('margin-top', '4.5em')
-    $('#recipes-wrapper').css('margin-top', '4.5em');
+    $('#recipes-wrapper').css('margin-top', '4.5em')
+    $('#credentials-wrapper').css('margin-top', '4.5em');
     $('.hamburger').attr('disabled', true)
     setTimeout(function() {
       $('.navbar-nav').css('z-index', '0')
@@ -106,5 +109,32 @@ function loadDinamicImages() {
   }
 }
 function sessionHandler() {
-  
+  $('#login-btn').click(function() {
+    $('.credentials-box').css('z-index', '-1')
+    $('#register-form').css('width', '0')
+    setTimeout(function() {
+      $('#register-form').css('display', 'none')
+      $('#login-form').css('display', 'flex')
+    }, 800)
+    setTimeout(function() {
+      $('#login-form').css('width', '90%')
+    }, 900)
+    setTimeout(function() {
+      $('.credentials-box').css('z-index', '0')
+    }, 1200)
+  });
+  $('#register-btn').click(function() {
+    $('.credentials-box').css('z-index', '-1')
+    $('#login-form').css('width', '0')
+    setTimeout(function() {
+      $('#login-form').css('display', 'none')
+      $('#register-form').css('display', 'flex')
+    }, 800)
+    setTimeout(function() {
+      $('#register-form').css('width', '90%')
+    }, 900)
+    setTimeout(function() {
+      $('.credentials-box').css('z-index', '0')
+    }, 1200)
+  })
 }

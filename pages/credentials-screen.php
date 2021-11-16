@@ -1,73 +1,46 @@
-<style>
-  #credentials-wrapper {
-    width: 100%;
-    height: auto;
-    transition: 1s;
-  }
-  #credentials-wrapper .box-containers {
-    width: 85%;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    padding: 4em 0;
-  }
-  #credentials-wrapper .presentation-box {
-    display: none;
-  }
-  #credentials-wrapper .credentials-box {
-    width: 75%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-  #credentials-wrapper .credentials-box .register-form, #credentials-wrapper .credentials-box .login-form {
-    width: 100%;
-    height: auto;
-  }
-  #credentials-wrapper .credentials-box .register-form {
-    display: none;
-  }
-  @media only screen and (min-width: 992px) {
-    #credentials-wrapper .presentation-box {
-      display: block;
-      width: 400px;
-      height: 600px;
-      background: url("img/photos/card1.jpg") no-repeat center center fixed;
-      background-size: cover;
-    }
-  }
-</style>
 <div id="credentials-wrapper">
   <div class="box-containers">
-    <div class="presentation-box">
-      <h3>Welcome</h3>
+    <div class="presentation-box equalheight">
+      <div class="welcome">
+        <img src="img/favicons/favicon.png" alt="logo">
+        <h3>Welcome</h3>
+      </div>
       <ul class="list">
-        <li class="list-item">Create your diet plan</li>
-        <li class="list-item">Add your favourite recipes</li>
+        <li class="list-item">
+          <i class="fas fa-plus plan"></i>
+          <span>Create your diet plan</span>
+        </li>
+        <li class="list-item">
+          <i class="fas fa-heart add"></i>
+          <span>Add your favourite recipes</span>
+        </li>
       </ul>
     </div>
-    <div class="credentials-box">
+    <div class="credentials-box equalheight">
       <div class="choose-box">
-        <a href="#login-form" title="">
-          Login
+        <a id="login-btn" class="link" title="">
+          <span>Login</span>
+          <span class="border-move"></span>
         </a>
-        <a href="#register-form" title="">
+        <span class="bar">/</span>
+        <a id="register-btn" class="link" title="">
           Register
+          <span class="border-move"></span>
         </a>
       </div>
-      <form id="login-form" class="login-form" action="" method="post">
-        <input type="text" name="username" placeholder="Username">
-        <input type="text" name="password" placeholder="Password">
-        <input type="submit" name="login_user">
+      <form id="login-form" class="form login-form" action="" method="post">
+        <h2 class="title">Login</h2>
+        <input class="input" type="text" name="username" placeholder="Username">
+        <input class="input" type="password" name="password" placeholder="Password">
+        <input class="btn btn-login" type="submit" name="login_user" value="Login">
       </form>
-      <form id="register-form" class="register-form" action="" method="post">
-        <input type="text" name="username" placeholder="Username">
-        <input type="email" name="email" placeholder="Email">
-        <input type="text" name="password" placeholder="Password">
-        <input type="text" name="password_verify" placeholder="Re-Password">
-        <input type="submit" name="register_user">
+      <form id="register-form" class="form register-form" action="" method="post">
+        <h2 class="title">Register</h2>
+        <input class="input" type="text" name="username" placeholder="Username">
+        <input class="input" type="email" name="email" placeholder="Email">
+        <input class="input" type="password" name="password" placeholder="Password">
+        <input class="input" type="password" name="password_verify" placeholder="Re-Password">
+        <input class="btn btn-register" type="submit" name="register_user" value="Register">
       </form>
     </div>
   </div>

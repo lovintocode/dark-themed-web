@@ -4,6 +4,6 @@
 #contact-wrapper {
   width: 100%;
   height: auto;
-  transition: 1s;
+  transition: all 0.6s ease;
 }
 

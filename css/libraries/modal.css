@@ -16,14 +16,13 @@
 }
 
 .modal__container {
-  background-color: #232222;
+  background-color: #3d3c3c;
   padding: 30px;
   max-width: 90%;
   max-height: 90vh;
   border-radius: 4px;
   overflow-y: auto;
   box-sizing: border-box;
-      box-shadow: rgb(255 255 255 / 30%) 0px 3px 3px 0px, rgb(255 255 255 / 15%) 0px 1px 3px 3px;
 }
 
 .modal__header {
