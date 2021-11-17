@@ -6,10 +6,6 @@ $( window ).resize(function() {
     hideNavbar()
   else if (window_width > 768){
     showNavbar()
-    $('#home-wrapper').css('margin-top', '0')
-    $('#contact-wrapper').css('margin-top', '0')
-    $('#recipes-wrapper').css('margin-top', '0')
-    $('#credentials-wrapper').css('margin-top', '0')
   }
 })
 function swiperHandler() {
@@ -32,12 +28,10 @@ function swiperHandler() {
  });
 }
 function hideNavbar() {
-  $(".navbar-nav").css('z-index', '-1')
 }
 function showNavbar() {
-  $(".navbar-nav").css('z-index', '0')
   $('.navbar-nav').removeClass('show-navbar-nav')
-  $('.hamburger').removeClass('is-active')
+  $('.hamburger-hidden').removeClass('is-active')
 }
 
 function hamburgerClickHandler() {
@@ -47,29 +41,27 @@ function hamburgerClickHandler() {
 }
 function hamburgerAction() {
   if ($('.hamburger').hasClass('is-active')){
-    $('.hamburger').removeClass('is-active')
+    $('.hamburger-hidden').removeClass('is-active')
     $('.navbar-nav').removeClass('show-navbar-nav')
-    $('#home-wrapper').css('margin-top', '0')
-    $('#contact-wrapper').css('margin-top', '0')
-    $('#recipes-wrapper').css('margin-top', '0')
-    $('#credentials-wrapper').css('margin-top', '0')
-    $('.navbar-nav').css('z-index', '-1')
+    $('#wrapper').css({
+      'height': 'auto',
+      'overflow': 'auto'
+    });
     $('.hamburger').attr('disabled', true)
     setTimeout(function() {
       $('.hamburger').attr('disabled', false)
     },600)
   } else{
-    $('.hamburger').addClass('is-active')
+    $('.hamburger-hidden').addClass('is-active')
     $('.navbar-nav').addClass('show-navbar-nav')
-    $('#home-wrapper').css('margin-top', '4.5em')
-    $('#contact-wrapper').css('margin-top', '4.5em')
-    $('#recipes-wrapper').css('margin-top', '4.5em')
-    $('#credentials-wrapper').css('margin-top', '4.5em');
     $('.hamburger').attr('disabled', true)
     setTimeout(function() {
-      $('.navbar-nav').css('z-index', '0')
       $('.hamburger').attr('disabled', false)
     }, 600)
+    $('#wrapper').css({
+      'height': '100vh',
+      'overflow': 'hidden'
+    });
   }
 }
 function preloaderHandler() {

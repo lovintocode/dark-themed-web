@@ -6,3 +6,5 @@ Color Picker (html)
 https://color.adobe.com/es/create/color-wheel
 Check website resolutions
 http://whatismyscreenresolution.net/multi-screen-test
+Add Foreign Key
+https://parzibyte.me/blog/2019/11/12/agregar-columna-llave-foranea-fk-mysql/

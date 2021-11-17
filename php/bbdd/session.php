@@ -7,7 +7,7 @@ if (isset($_POST['register_user'])) {
   $credentials['email'] = $_POST['email'];
   $credentials['password'] = $_POST['password'];
   $credentials['password_verify'] = $_POST['password_verify'];
-  
+
   if (checkValidCredentials($credentials)['credentials']['valid'] == 'true') {
     $bbdd = new bbdd();
     if (!$bbdd->userAlreadyExists($credentials)) {
@@ -19,6 +19,7 @@ if (isset($_POST['register_user'])) {
     } else {
       echo "user already exists";
     }
+    $bbdd->close();
   } else {
     echo "credentials not valid";
   }
@@ -32,11 +33,12 @@ if (isset($_POST['register_user'])) {
     if ($bbdd->userAlreadyExists($credentials)) {
       if ($bbdd->logInUser($credentials)) {
         $_SESSION['username'] = $credentials['username'];
-        changeLayoutUsername();
+        changeLayoutUsername($credentials);
       } else {
         echo "User not logged in";
       }
-    }
+    } else
+      echo "User not exists";
   }
 } else if (isset($_POST['logout'])) {
   session_destroy();

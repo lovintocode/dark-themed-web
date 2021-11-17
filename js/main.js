@@ -11,17 +11,20 @@ $( document ).ready(function() {
   // hamburguer menu handler
   hamburgerClickHandler()
   // swiper menu handler
-  swiperHandler()
+  if ($('#swiper').length > 0)
+    swiperHandler()
   // preloader start handler
   preloaderHandler()
   // image lazy loader
-  lazyLoader()
+  if ($('.lazy').length > 0)
+    lazyLoader()
   // sets move on certain images on web (when scroll reaches certain point)
   loadDinamicImages()
   // equal height on divs
   equalHeightHandler()
   // manages selection boxes and filtering
-  selectionBoxHandler()
+  if ($('.selection-box').length > 0)
+    selectionBoxHandler()
   // manages Recipes pagination
   manageRecipesPagination()
   // Handles modal events

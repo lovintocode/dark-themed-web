@@ -5,9 +5,12 @@ define('ROOT', __DIR__);
 // Bbdd config
 /*define('HOST', 'db5005386872.hosting-data.io');*/
 define('HOST', 'localhost');
-define('USER', 'dbu654331');
-define('PASSWORD', 'healthstep01');
-define('DATABASE', 'dbs4519684');
+// define('USER', 'dbu654331');
+define('USER', 'root');
+// define('PASSWORD', 'healthstep01');
+define('PASSWORD', '');
+// define('DATABASE', 'dbs4519684');
+define('DATABASE', 'healthstep');
 
 // Recipes API config
 define('API_URL', 'https://api.edamam.com/api/recipes/v2?type=public&q=');

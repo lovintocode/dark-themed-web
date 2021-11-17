@@ -44,18 +44,20 @@ function checkValidCredentials($credentials) {
       } else if ($credentials['password'] != $value) {
         $return_response['password_verify']['valid'] = 'false';
         $return_response['password_verify']['string'] = 'Passwords must be equal';
-        $valid_credentials = false;
+        $valid_credentials = 'false';
       } else {
         $return_response['password_verify']['valid'] = 'true';
       }
       break;
     }
+  } else {
+    $valid_credentials = 'false';
   }
 }
 $return_response['credentials']['valid'] = $valid_credentials;
 return $return_response;
 }
-function changeLayoutUsername() {
+function changeLayoutUsername($credentials) {
   echo '<script>
   let session_name = document.getElementById("session-user")
   session_name.querySelector("span").innerHTML = "'.$credentials['username'].'"
