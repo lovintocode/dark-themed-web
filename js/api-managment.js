@@ -24,12 +24,15 @@ function selectionBoxHandler() {
       }
     }
   })
+
   $('.option-box').click(function() {
     if (!$(this).hasClass('selected')) {
       $(this).parent().find('.option-box.selected').removeClass('selected')
       $(this).addClass('selected')
       $(this).closest('.select').find('.selection-box span').text($(this).text())
-      sendRecipesData($(this))
+      if ($(this).closest('.question').length <= 0) {
+        sendRecipesData($(this))
+      }
     }
   })
   $('#recipe-search').on('input', function() {

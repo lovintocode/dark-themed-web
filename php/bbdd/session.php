@@ -34,9 +34,12 @@ if (isset($_POST['register_user'])) {
       if ($bbdd->logInUser($credentials)) {
         $_SESSION['username'] = $credentials['username'];
         changeLayoutUsername($credentials);
+        if ($bbdd->userHasPlan($_SESSION['username']))
+          $_SESSION['plan'] = 'true';
       } else {
         echo "User not logged in";
       }
+    $bbdd->close();
     } else
       echo "User not exists";
   }

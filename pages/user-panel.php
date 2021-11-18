@@ -3,9 +3,9 @@ $bbdd = new bbdd();
 $user_data = $bbdd->getAllUserData($_SESSION['username']);
 ?>
 
-<!-- <form action="" method="post">
+<form action="" method="post">
   <input type="submit" name="logout" value="Log Out">
-</form> -->
+</form>
 <div id="user-wrapper">
   <h1 class="title">User information</h1>
   <div class="box-containers">
@@ -27,7 +27,7 @@ $user_data = $bbdd->getAllUserData($_SESSION['username']);
       </div>
     </div>
     <?php
-    // if (!empty($user_data['bmr'])) {
+    // if (!isset($_SESSION['plan'])) {
       ?>
       <div class="plan-info">
         <div class="left-col">

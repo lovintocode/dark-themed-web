@@ -32,6 +32,8 @@ if (isset($_GET['page'])) {
     break;
     case 'recipes': require_once "pages/recipes.php";
     break;
+    case 'plan': require_once "pages/plan.php";
+    break;
     case 'session_layout': require_once "pages/session-layout.php";
     break;
   }

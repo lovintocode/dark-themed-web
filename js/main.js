@@ -29,6 +29,8 @@ $( document ).ready(function() {
   manageRecipesPagination()
   // Handles modal events
   modalHandler()
-  // Session Handler
+  // Handles session
   sessionHandler()
+  // Handles plan questions
+  planQuestionsHandler()
 })

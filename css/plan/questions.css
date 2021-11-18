@@ -1,0 +1,12 @@
+#questions-container {
+  width: 90%;
+  height: auto;
+  min-height: 80vh;
+  margin: 0 auto;
+}
+#questions-container #question-activity {
+  display: block;
+}
+#questions-container .question, #questions-container .test-end {
+  display: none;
+}
