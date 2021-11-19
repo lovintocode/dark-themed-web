@@ -1,8 +1,6 @@
+<link rel="stylesheet" type="text/css" href="css/recipes/general.css">
 <div id="recipes-wrapper">
   <div id="recipes-filter">
-    <div class="title-container">
-      <h2 class="title">Filters</h2>
-    </div>
     <div class="search-container">
       <i class="fas fa-search icon"></i>
       <input class="search" type="text" id="recipe-search" placeholder="Search for food">

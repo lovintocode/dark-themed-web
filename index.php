@@ -1,7 +1,7 @@
 <?php
 session_start();
-require_once "config.php";
-require_once ROOT."/_templates/header.php";
+require_once 'config.php';
+require_once '_templates/header.php';
 ?>
 <div id="preloader">
   <img src="img/icons/preloader.gif" alt="preloader">
@@ -13,7 +13,7 @@ require_once ROOT."/_templates/header.php";
         if (isset($_SESSION['username']))
           echo $_SESSION['username'];
         else
-          echo "Not logged";
+          echo "Log In";
       ?>
     </span>
     <i class="icon fas fa-user"></i>

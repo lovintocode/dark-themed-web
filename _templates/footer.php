@@ -48,7 +48,7 @@
   <script src="js/libraries/equalHeight.js"></script>
   <script src="js/libraries/modal.js"></script>
   <script src="js/styling.js"></script>
-  <script src="js/api-managment.js"></script>
+  <script src="js/api-management.js"></script>
   <script src="js/plan.js"></script>
   <script src="js/main.js"></script>
 </body>

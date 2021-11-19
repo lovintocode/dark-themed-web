@@ -8,24 +8,24 @@ $( document ).ready(function() {
   if (window_width < 768){
     hideNavbar()
   }
-  // hamburguer menu handler
+  // Hamburguer menu handler
   hamburgerClickHandler()
-  // swiper menu handler
+  // Swiper menu handler
   if ($('#swiper').length > 0)
     swiperHandler()
-  // preloader start handler
+  // Preloader start handler
   preloaderHandler()
-  // image lazy loader
+  // Image lazy loader
   if ($('.lazy').length > 0)
     lazyLoader()
-  // sets move on certain images on web (when scroll reaches certain point)
+  // Sets move on certain images on web (when scroll reaches certain point)
   loadDinamicImages()
-  // equal height on divs
+  // Equal height on divs (del)
   equalHeightHandler()
-  // manages selection boxes and filtering
+  // Manages selection boxes and filtering
   if ($('.selection-box').length > 0)
     selectionBoxHandler()
-  // manages Recipes pagination
+  // Manages Recipes pagination
   manageRecipesPagination()
   // Handles modal events
   modalHandler()
@@ -33,4 +33,6 @@ $( document ).ready(function() {
   sessionHandler()
   // Handles plan questions
   planQuestionsHandler()
+  // Handles user plan data (bbdd insertion)
+  handlePlanDataInsertion()
 })

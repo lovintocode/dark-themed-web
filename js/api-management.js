@@ -50,7 +50,7 @@ function selectionBoxHandler() {
         if (prevent_ajax_counter == 0) {
           managePaginationStyle()
           let recipe_object = { 'recipe_variables': recipe_variables }
-          sendAjaxRequest(recipe_object)
+          ajaxManageRecipes(recipe_object)
         }
       } else {
         page_reset = true
@@ -72,7 +72,7 @@ function sendRecipesData(select_changed) {
   recipe_variables[elem_id] = elem_value
   if (recipe_variables['ingredient'].length > 0){
     let recipe_object = { 'recipe_variables': recipe_variables }
-    sendAjaxRequest(recipe_object)
+    ajaxManageRecipes(recipe_object)
   }
 }
 function printRecipes() {
@@ -227,26 +227,25 @@ function manageRecipesPagination() {
         pagination_urls.push(first_page_url)
       pagination_urls.push(next_page_url)
       let next_recipe_object = { 'next_page_url': pagination_urls[pagination_urls.length - 1], 'recipe_variables': recipe_variables }
-      sendAjaxRequest(next_recipe_object)
+      ajaxManageRecipes(next_recipe_object)
     }
   })
   $('#prev_page_url').click(function() {
     if (pagination_urls.length >= 2 && !page_reset){
       pagination_urls.splice(-1)
       let next_recipe_object = { 'prev_page_url': pagination_urls[pagination_urls.length - 1], 'recipe_variables': recipe_variables }
-      sendAjaxRequest(next_recipe_object)
+      ajaxManageRecipes(next_recipe_object)
     }
   });
 }
-function sendAjaxRequest(data_object) {
+function ajaxManageRecipes(data_object) {
   $.ajax({
-    url: 'php/api-managment/api-managment.php',
+    url: 'php/api-management/api-management.php',
     method: 'post',
     dataType: 'text',
     data: data_object,
     success: function(data){
       // Cuando se pasa la consulta aqui se muestran los datos data recibidos por el echo
-      console.log(data)
       $('#recipes-filter .lds-ring').css('opacity', '0')
       let api_response = data.split('arr-separation')[0]
       if (pagination_urls.length == 0)

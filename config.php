@@ -1,6 +1,5 @@
 <?php
 // Server config
-define('ROOT', __DIR__);
 
 // Bbdd config
 /*define('HOST', 'db5005386872.hosting-data.io');*/

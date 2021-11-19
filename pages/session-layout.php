@@ -1,9 +1,10 @@
+<link rel="stylesheet" type="text/css" href="css/session/general.css">
 <?php
-require_once ROOT.'/php/bbdd/session.php';
+require_once 'php/bbdd/session.php';
 
 if (isset($_SESSION['username'])) {
-	include ROOT.'/pages/user-panel.php';
+	include 'pages/user-panel.php';
 } else {
-	include ROOT.'/pages/credentials-screen.php';
+	include 'pages/credentials-screen.php';
 }
 ?>

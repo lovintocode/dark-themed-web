@@ -1,3 +1,4 @@
+<link rel="stylesheet" type="text/css" href="css/home/general.css">
 <div id="home-wrapper">
   <!-- Slider -->
   <!-- Slider main container -->
@@ -23,7 +24,7 @@
         the values of a big variety of food categories and also look and try all the recipies we offer to you
       </p>
       <span class="link-box">
-        <a class="link" href="#" title="saber-mas">
+        <a class="link" href="index.php?page=recipes" title="saber-mas">
           <span>Know more</span>
           <i class="fas fa-angle-double-right arrow-icon"></i>
           <span class="border-move"></span>
@@ -36,7 +37,7 @@
       </h3>
       <p class="text">Make, save and use a diet plan. Create it based on the available recipes found on our site and adjust it to your total calories so you can get your objectives without any doubt</p>
       <span class="link-box">
-        <a class="link" href="#" title="saber-mas">
+        <a class="link" href="index.php?page=plan" title="saber-mas">
           <span>Know more</span>
           <i class="fas fa-angle-double-right arrow-icon"></i>
           <span class="border-move"></span>

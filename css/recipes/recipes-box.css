@@ -64,11 +64,15 @@
   height: auto;
   cursor: pointer;
   background-color: #ffff;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
 }
 #recipes-box .box-container .box .image-container .image {
   width: 100%;
   height: auto;
   transition:all 0.5s ease-in-out;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
 }
 #recipes-box .box-container .box .image-container:hover > .image {
   filter: brightness(0.2);
@@ -128,6 +132,8 @@
   flex-direction: column;
   align-items: center;
   background-color: #292929;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
 }
 #recipes-box .box-container .box .functions-box .add-container-global {
   width: 100%;
@@ -172,6 +178,10 @@
   transition: all 0.5s ease;
   font-weight: bold;
   font-size: 14px;
+}
+#recipes-box #know-more .link {
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
 }
 #recipes-box #add-plan .link:hover, #recipes-box #add-fav .link:hover, #recipes-box #know-more .link:hover {
   opacity: 0.5;

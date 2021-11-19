@@ -1,6 +1,6 @@
 <?php
-require_once ROOT.'/php/bbdd/bbdd.php';
-require_once ROOT.'/php/bbdd/session-functions.php';
+require_once 'php/bbdd/bbdd.php';
+require_once 'php/bbdd/session-functions.php';
 if (isset($_POST['register_user'])) {
   $credentials = array();
   $credentials['username'] = $_POST['username'];
