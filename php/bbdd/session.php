@@ -1,6 +1,6 @@
 <?php
-require_once ROOT.'/php/bbdd/bbdd.php';
-require_once ROOT.'/php/bbdd/session-functions.php';
+require_once 'php/bbdd/bbdd.php';
+require_once 'php/bbdd/session-functions.php';
 if (isset($_POST['register_user'])) {
   $credentials = array();
   $credentials['username'] = $_POST['username'];
@@ -34,9 +34,12 @@ if (isset($_POST['register_user'])) {
       if ($bbdd->logInUser($credentials)) {
         $_SESSION['username'] = $credentials['username'];
         changeLayoutUsername($credentials);
+        if ($bbdd->userHasPlan($_SESSION['username']))
+          $_SESSION['plan'] = 'true';
       } else {
         echo "User not logged in";
       }
+    $bbdd->close();
     } else
       echo "User not exists";
   }

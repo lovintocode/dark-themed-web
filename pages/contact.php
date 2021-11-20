@@ -1,3 +1,4 @@
+<link rel="stylesheet" type="text/css" href="css/contact/general.css">
 <div id="contact-wrapper">
   <div class="show">
     <div class="image-container">

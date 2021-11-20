@@ -32,6 +32,7 @@ function hideNavbar() {
 function showNavbar() {
   $('.navbar-nav').removeClass('show-navbar-nav')
   $('.hamburger-hidden').removeClass('is-active')
+  $('.hamburger-hidden').css('display', 'none')
 }
 
 function hamburgerClickHandler() {
@@ -42,6 +43,7 @@ function hamburgerClickHandler() {
 function hamburgerAction() {
   if ($('.hamburger').hasClass('is-active')){
     $('.hamburger-hidden').removeClass('is-active')
+    $('.hamburger-hidden').css('display', 'none')
     $('.navbar-nav').removeClass('show-navbar-nav')
     $('#wrapper').css({
       'height': 'auto',
@@ -53,6 +55,7 @@ function hamburgerAction() {
     },600)
   } else{
     $('.hamburger-hidden').addClass('is-active')
+    $('.hamburger-hidden').css('display', 'block')
     $('.navbar-nav').addClass('show-navbar-nav')
     $('.hamburger').attr('disabled', true)
     setTimeout(function() {

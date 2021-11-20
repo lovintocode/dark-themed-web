@@ -1,0 +1,67 @@
+#no-user {
+  width: 90%;
+  height: auto;
+  min-height: 50vh;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+#no-user .subtitle {
+  font-size: 22px;
+  color: #fff;
+  text-align: center;
+}
+#no-user .btn {
+  color: #ffff;
+  font-size: 18px;
+  border: 2px solid #c24141;
+  padding: 0.5em 1em;
+  border-radius: 5px;
+  background-color: #c24141;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  transition: all 0.5s ease;
+}
+#no-user .btn:hover {
+  background-color: #db4444;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+}
+@media only screen and (min-width: 768px) {
+  #no-user .subtitle {
+    font-size: 24px;
+  }
+}
+@media only screen and (min-width: 992px) {
+  #no-user {
+    min-height: 80vh;
+  }
+  #no-user .subtitle {
+    font-size: 26px;
+  }
+  #no-user .btn {
+    font-size: 20px;
+  }
+  #no-user .link .border-move {
+    border-bottom: 1px solid #ff4545;
+    transition: all 0.5s ease;
+  }
+}
+@media only screen and (min-width: 1200px) {
+  #no-user .subtitle {
+    font-size: 28px;
+  }
+}
+@media only screen and (min-width: 1500px) {
+  #no-user .subtitle {
+    font-size: 30px;
+  }
+  #no-user .btn {
+    font-size: 22px;
+  }
+}
+@media only screen and (min-width: 1920px) {
+  #no-user .subtitle {
+    font-size: 32px;
+  }
+}

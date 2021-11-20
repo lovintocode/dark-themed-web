@@ -1,7 +1,7 @@
 <?php
 session_start();
-require_once "config.php";
-require_once ROOT."/_templates/header.php";
+require_once 'config.php';
+require_once '_templates/header.php';
 ?>
 <div id="preloader">
   <img src="img/icons/preloader.gif" alt="preloader">
@@ -13,7 +13,7 @@ require_once ROOT."/_templates/header.php";
         if (isset($_SESSION['username']))
           echo $_SESSION['username'];
         else
-          echo "Not logged";
+          echo "Log In";
       ?>
     </span>
     <i class="icon fas fa-user"></i>
@@ -31,6 +31,8 @@ if (isset($_GET['page'])) {
     case 'contact': require_once "pages/contact.php";
     break;
     case 'recipes': require_once "pages/recipes.php";
+    break;
+    case 'plan': require_once "pages/plan.php";
     break;
     case 'session_layout': require_once "pages/session-layout.php";
     break;
