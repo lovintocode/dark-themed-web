@@ -11,9 +11,9 @@ class bbdd {
 		}
 		$this->connection->set_charset($charset);
 	}
-  function close() {
-    $this->connection = '';
-  }
+	function close() {
+		$this->connection = '';
+	}
 	function userAlreadyExists($credentials) {
 		$username = $credentials['username'];
 
@@ -81,33 +81,75 @@ class bbdd {
 		}
 		return $user_deleted;
 	}
-  function getAllUserData($username) {
-    $user_data = array();
+	function getAllUserData($username) {
+		$user_data = array();
 
-    $user_data_received = false;
-    $query = 'SELECT * FROM users WHERE username=?';
-    $stmt = $this->connection->prepare($query);
-    if ($stmt){
-      $stmt->bind_param("s", $username);
-      if ($stmt->execute()){
-        $result = $stmt->get_result();
-        if(mysqli_num_rows($result) > 0) {
-          while ($data = $result->fetch_assoc()) {
-            $user_data['username'] = $_SESSION['username'];
-            $user_data['email'] = $data['email'];
-            $user_data['bmr'] = $data['bmr'];
-            $user_data['weight'] = $data['weight'];
-            $user_data['height'] = $data['height'];
-            $user_data['age'] = $data['age'];
-            $user_data['activity'] = $data['activity'];
-            $user_data['body_type'] = $data['body_type'];
-            $user_data['objective'] = $data['objective'];
-          }
-        }
-      }
-      $stmt->close();
-    }
-    return $user_data;
-  }
+		$query = 'SELECT * FROM users WHERE username=?';
+		$stmt = $this->connection->prepare($query);
+		if ($stmt){
+			$stmt->bind_param("s", $username);
+			if ($stmt->execute()){
+				$result = $stmt->get_result();
+				if(mysqli_num_rows($result) > 0) {
+					while ($data = $result->fetch_assoc()) {
+						$user_data['username'] = $_SESSION['username'];
+						$user_data['email'] = $data['email'];
+						$user_data['bmr'] = $data['bmr'];
+						$user_data['weight'] = $data['weight'];
+						$user_data['height'] = $data['height'];
+						$user_data['age'] = $data['age'];
+						$user_data['activity'] = $data['activity'];
+						$user_data['body_type'] = $data['body_type'];
+						$user_data['objective'] = $data['objective'];
+					}
+				}
+			}
+			$stmt->close();
+		}
+		return $user_data;
+	}
+	function getId($table, $username) {
+		$id = 0;
+
+		$query = 'SELECT id FROM '.$table.' WHERE id IN 
+		(SELECT id FROM users WHERE username =?)';
+		$stmt = $this->connection->prepare($query);
+		if ($stmt) {
+			$stmt->bind_param('s', $username);
+			if ($stmt->execute()){
+				$result = $stmt->get_result();
+				$index = 0;
+				if(mysqli_num_rows($result) > 0) {
+					while ($data = $result->fetch_assoc()) {
+						$user_plans += ['data' => $data['data']];)
+						$user_plans[$index]['creation'] = $data['creation'];
+						$index++;
+					}
+				}
+			}
+		}
+	}
+	function getUserPlans($username) {
+		$user_plans = array();
+
+		$query = 'SELECT * FROM plans WHERE id_user =?';
+		$stmt = $this->connection->prepare($query);
+		if ($stmt){
+			$stmt->bind_param('s', $username);
+			if ($stmt->execute()){
+				$result = $stmt->get_result();
+				$index = 0;
+				if(mysqli_num_rows($result) > 0) {
+					while ($data = $result->fetch_assoc()) {
+						$user_plans += ['data' => $data['data']];)
+						$user_plans[$index]['creation'] = $data['creation'];
+						$index++;
+					}
+				}
+			}
+			$stmt->close();
+		}
+		return $user_plans;
+	}
 }
 ?>
