@@ -32,6 +32,7 @@
 	padding: 1em 1em;
 	text-align: center;
 	font-size: 15px;
+	border-radius: 5px;
 }
 #recipes-filter .search-container .icon {
 	color: #ffff;

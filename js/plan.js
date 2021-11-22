@@ -9,6 +9,13 @@ function planQuestionsHandler() {
     let options = []
     let container_id = $(this).closest('.question').attr('id')
     switch (container_id) {
+      case 'question-sex':
+      options = ['Male', 'Female']
+      value = $('#answer-sex').text()
+      if (options.includes(value)){
+        plan_requirements['sex'] = value
+        correct_answer = true
+      }
       case 'question-activity':
       options = ['Sedentary', 'Slightly Active', 'Moderately Active', 'Active', 'Very Active']
       value = $('#answer-activity').text()
@@ -39,6 +46,9 @@ function planQuestionsHandler() {
       let age = $('#question-age').val()
 
       if (checkPlanAnswers(weight, 2, 700) && checkPlanAnswers(height, 53, 272) && checkPlanAnswers(age, 18, 90)){
+        plan_requirements['weight'] = weight
+        plan_requirements['height'] = height
+        plan_requirements['age'] = age
         finish = true
         correct_answer = true
       } else {
@@ -90,7 +100,7 @@ function ajaxStoreUserData() {
   $.ajax({
     url: 'php/plan-management/plan-management.php',
     type: 'post',
-    data: {yes: "works"},
+    data: plan_requirements,
     success: function(data) {
       console.log("success")
       console.log(data)
@@ -100,40 +110,3 @@ function ajaxStoreUserData() {
     }
   });
 }
-// function sendAjaxRequest() {
-//   function sendAjaxRequest(data_object) {
-//     $.ajax({
-//       url: 'php/api-management/api-management.php',
-//       method: 'post',
-//       dataType: 'text',
-//       data: data_object,
-//       success: function(data){
-//       // Cuando se pasa la consulta aqui se muestran los datos data recibidos por el echo
-//       console.log(data)
-//       $('#recipes-filter .lds-ring').css('opacity', '0')
-//       let api_response = data.split('arr-separation')[0]
-//       if (pagination_urls.length == 0)
-//         first_page_url = data.split('arr-separation')[1]
-//       if (isStringJson(api_response)) {
-//         parsed_response = JSON.parse(api_response)
-//         if (!jQuery.isEmptyObject(parsed_response['hits'])){
-//           if (!jQuery.isEmptyObject(parsed_response['_links']))
-//             next_page_url = parsed_response['_links']['next']['href']
-//           printRecipes()
-//         } else {
-//           changeEmptyContainerContent('No matches found, please change your search criteria')
-//           page_reset = true
-//           managePaginationStyle()
-//         }
-//       } else {
-//         changeEmptyContainerContent('No matches found, please change your search criteria')
-//         page_reset = true
-//         managePaginationStyle()
-//       }
-//     },
-//     error: function() {
-//       console.log('error recipe')
-//     }
-//   });
-//   }
-// }

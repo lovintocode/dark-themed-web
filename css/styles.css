@@ -45,7 +45,7 @@ body {
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Atkinson Hyperlegible', sans-serif;
 }
-p, a, li, span, input, select, option {
+p, a, li, span, input, select, option, label {
   font-family: 'Poppins', sans-serif;
   text-decoration: none;
 }

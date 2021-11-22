@@ -3,8 +3,8 @@
 require_once 'php/bbdd/session.php';
 
 if (isset($_SESSION['username'])) {
-	include 'pages/user-panel.php';
+	include 'pages/subpages/session/user-panel.php';
 } else {
-	include 'pages/credentials-screen.php';
+	include 'pages/subpages/session/credentials-screen.php';
 }
 ?>

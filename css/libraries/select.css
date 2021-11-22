@@ -2,6 +2,7 @@
   position: relative;
   user-select: none;
   width: 100%;
+  border-radius: 5px;
 }
  .select {
   position: relative;
@@ -11,6 +12,7 @@
   border-width: 0 2px 0 2px;
   border-style: solid;
   border-color: #394a6d;
+  border-radius: 5px;
 }
  .selection-box {
   position: relative;
@@ -28,6 +30,7 @@
   border-width: 2px 0 2px 0;
   border-style: solid;
   border-color: #394a6d;
+  border-radius: 5px;
 }
  .custom-options {
   position: absolute;
@@ -43,6 +46,8 @@
   visibility: hidden;
   pointer-events: none;
   z-index: 2;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
 }
  .select.open .custom-options {
   opacity: 1;
