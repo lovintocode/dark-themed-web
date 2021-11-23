@@ -68,7 +68,7 @@
     <h2 class="subtitle">Add your personal measures</h2>
     <div class="measure-container">
       <label class="label" for="question-weight">Weight (Kg)</label>
-      <input class="input" type="text" id="question-weight" value="75">      
+      <input class="input" type="text" id="question-weight" value="75">
     </div>
     <div class="measure-container">
       <label class="label" for="question-height">Height (Cm)</label>

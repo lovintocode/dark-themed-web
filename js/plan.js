@@ -89,7 +89,6 @@ function checkPlanAnswers(value, min, max) {
   }
   return false;
 }
-
 function handlePlanDataInsertion() {
   $('#register-plan').click(function() {
     ajaxStoreUserData()
@@ -100,7 +99,7 @@ function ajaxStoreUserData() {
   $.ajax({
     url: 'php/plan-management/plan-management.php',
     type: 'post',
-    data: plan_requirements,
+    data: {'plan_requirements':plan_requirements},
     success: function(data) {
       console.log("success")
       console.log(data)

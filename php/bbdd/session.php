@@ -1,6 +1,10 @@
 <?php
 require_once 'php/bbdd/bbdd.php';
 require_once 'php/bbdd/session-functions.php';
+
+$response_text = '';
+$class_switch = '';
+
 if (isset($_POST['register_user'])) {
   $credentials = array();
   $credentials['username'] = $_POST['username'];
@@ -12,16 +16,20 @@ if (isset($_POST['register_user'])) {
     $bbdd = new bbdd();
     if (!$bbdd->userAlreadyExists($credentials)) {
       if ($bbdd->insertNewUser($credentials)) {
-        echo "user inserted";
+        $response_text = 'User registered';
+        $class_switch = 'valid';
       } else {
-        echo "user not inserted";
+        $response_text = 'User not registered';
+        $class_switch = 'invalid';
       }
     } else {
-      echo "user already exists";
+      $response_text = 'User already exists';
+      $class_switch = 'invalid';
     }
     $bbdd->close();
   } else {
-    echo "credentials not valid";
+    $response_text = "Credentials not valid";
+    $class_switch = 'invalid';
   }
 } else if (isset($_POST['login_user'])) {
   $credentials = array();
@@ -34,14 +42,19 @@ if (isset($_POST['register_user'])) {
       if ($bbdd->logInUser($credentials)) {
         $_SESSION['username'] = $credentials['username'];
         changeLayoutUsername($credentials);
-        if ($bbdd->userHasPlan($_SESSION['username']))
+        if (isset($_SESSION['username']) && $bbdd->userHasPlan($_SESSION['username']))
           $_SESSION['plan'] = 'true';
       } else {
-        echo "User not logged in";
+        $response_text = "User not logged in";
+        $class_switch = 'invalid';
       }
-    $bbdd->close();
+      $bbdd->close();
     } else
-      echo "User not exists";
+    $response_text = "User not exists";
+    $class_switch = 'invalid';
+  } else {
+     $response_text = "Credentials not valid";
+     $class_switch = 'invalid';
   }
 } else if (isset($_POST['logout'])) {
   session_destroy();

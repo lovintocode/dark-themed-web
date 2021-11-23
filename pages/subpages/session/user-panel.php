@@ -2,8 +2,6 @@
 $bbdd = new bbdd();
 $user_data = $bbdd->getAllUserData($_SESSION['username']);
 ?>
-
-
 <div id="user-wrapper">
   <div class="user-functions">
     <form action="" method="post">
