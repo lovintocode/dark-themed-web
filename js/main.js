@@ -33,6 +33,6 @@ $( document ).ready(function() {
   sessionHandler()
   // Handles plan questions
   planQuestionsHandler()
-  // Handles user plan data (bbdd insertion)
-  handlePlanDataInsertion()
+  // Handles plan clicks (bbdd insertion)
+  handlePlanClickers()
 })

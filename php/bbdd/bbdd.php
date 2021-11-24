@@ -171,9 +171,7 @@ function updateUserPlanDetails($plan_requirements, $username) {
   if ($stmt) {
     $stmt->bind_param('sssssssss', $bmr, $weight, $height, $age, $activity, $body_type, $objective, $plan_valid, $username);
     if ($stmt->execute()) {
-      $result = $stmt->get_result();
-      if (!empty($result) && mysqli_num_rows($result) > 0)
-        $details_inserted = true;
+      $details_inserted = true;
     }
     $stmt->close();
 

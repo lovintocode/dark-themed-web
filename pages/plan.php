@@ -1,7 +1,6 @@
 <link rel="stylesheet" type="text/css" href="css/plan/general.css">
 <div id="plan-wrapper">
   <?php
-  var_dump($_SESSION);
   if (isset($_SESSION['username'])){
     if (isset($_SESSION['plan']))
       require_once "pages/subpages/plan/plan-layout.php";

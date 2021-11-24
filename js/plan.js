@@ -89,23 +89,37 @@ function checkPlanAnswers(value, min, max) {
   }
   return false;
 }
-function handlePlanDataInsertion() {
+function handlePlanClickers() {
   $('#register-plan').click(function() {
     ajaxStoreUserData()
   })
+  $('#get_plan_data').click(function() {
+    ajaxLoadPlan()
+  })
 }
 function ajaxStoreUserData() {
-  console.log(plan_requirements)
   $.ajax({
     url: 'php/plan-management/plan-management.php',
     type: 'post',
     data: {'plan_requirements':plan_requirements},
     success: function(data) {
-      console.log("success")
+      location.reload(true)
+    },
+    error: function() {
+      console.log("error")
+    }
+  })
+}
+function ajaxLoadPlan() {
+  $.ajax({
+    url: 'php/plan-management/plan-management.php',
+    type: 'post',
+    data: {'get_plan_data': 'true'},
+    success: function(data) {
       console.log(data)
     },
     error: function() {
       console.log("error")
     }
-  });
+  })
 }

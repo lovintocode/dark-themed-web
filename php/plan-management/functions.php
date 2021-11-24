@@ -1,17 +1,15 @@
 <?php
 
-function manageUserCredentials() {
-  if (isset($_POST['plan_requirements'])) {
-    $plan_requirements = $_POST['plan_requirements'];
-    $bmr = '';
-    if (checkParams($plan_requirements)) {
-      $bmr = calculateBmr($plan_requirements['sex'], $plan_requirements['weight'], $plan_requirements['height'], $plan_requirements['age'], $plan_requirements['activity']);
-      $plan_requirements['bmr'] = $bmr;
-      $bbdd = new bbdd();
-      if (!$bbdd->updateUserPlanDetails($plan_requirements, $_SESSION['username'])) {
-        $_SESSION['plan'] = 'true';
-        header("Refresh:0");
-      }
+// Register user to plan
+function manageUserCredentials($plan_requirements) {
+
+  $bmr = '';
+  if (checkParams($plan_requirements)) {
+    $bmr = calculateBmr($plan_requirements['sex'], $plan_requirements['weight'], $plan_requirements['height'], $plan_requirements['age'], $plan_requirements['activity']);
+    $plan_requirements['bmr'] = $bmr;
+    $bbdd = new bbdd();
+    if ($bbdd->updateUserPlanDetails($plan_requirements, $_SESSION['username'])) {
+      $_SESSION['plan'] = 'true';
     }
   }
 }
@@ -82,4 +80,10 @@ function calculateBmr($sex, $weight, $height, $age, $activity) {
   }
   return $bmr;
 }
+
+// Plan management
+function getPlanData() {
+  $username = $_SESSION['username'];
+}
+
 ?>

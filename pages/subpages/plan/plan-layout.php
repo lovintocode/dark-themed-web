@@ -1,3 +1,5 @@
 <div id="plan-container">
-  <p>This is my evil plan</p>
+	<button id="create_plan">Create Plan</button>
+	<button id="get_plan_data">Check Plans</button>
+	<button id="update_plan">Update Plans</button>
 </div>
