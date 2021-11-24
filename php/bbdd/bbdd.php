@@ -25,45 +25,47 @@ class bbdd {
     $stmt = $this->connection->prepare($query);
     if ($stmt) {
       $stmt->bind_param('s', $username);
-      $stmt->execute();
-      if (mysqli_num_rows($stmt->get_result()) > 0)
-        while ($data = $result->fetch_assoc())
-          $id = $data['id'];
+      if ($stmt->execute()) {
+        $result = $stmt->get_result();
+        if (mysqli_num_rows($result) > 0){
+          while ($data = $result->fetch_assoc())
+            $id = $data['id'];
+        }
       }
-      $stmt->close();
-
-      return $id;
     }
-    function userAlreadyExists($credentials) {
-      $username = $credentials['username'];
-
-      $user_exists = false;
-      $query = 'SELECT * FROM users WHERE username=?';
-      $stmt = $this->connection->prepare($query);
-      if ($stmt){
-       $stmt->bind_param('s', $username);
-       $stmt->execute();
-       if(mysqli_num_rows($stmt->get_result()) > 0)
-        $user_exists = true;
-      $stmt->close();
-    }
-    return $user_exists;
+    $stmt->close(); 
+    return $id;
   }
-  function insertNewUser($credentials) {
+  function userAlreadyExists($credentials) {
     $username = $credentials['username'];
-    $email = $credentials['email'];
-    $password = password_hash($credentials['password'], CRYPT_BLOWFISH);
 
-    $user_inserted = false;
-    $query = 'INSERT INTO users (username, email, password) VALUES (?, ?, ?)';
+    $user_exists = false;
+    $query = 'SELECT * FROM users WHERE username=?';
     $stmt = $this->connection->prepare($query);
     if ($stmt){
-     $stmt->bind_param("sss", $username, $email, $password);
-     if ($stmt->execute())
-      $user_inserted = true;
+     $stmt->bind_param('s', $username);
+     $stmt->execute();
+     if(mysqli_num_rows($stmt->get_result()) > 0)
+      $user_exists = true;
     $stmt->close();
   }
-  return $user_inserted;
+  return $user_exists;
+}
+function insertNewUser($credentials) {
+  $username = $credentials['username'];
+  $email = $credentials['email'];
+  $password = password_hash($credentials['password'], CRYPT_BLOWFISH);
+
+  $user_inserted = false;
+  $query = 'INSERT INTO users (username, email, password) VALUES (?, ?, ?)';
+  $stmt = $this->connection->prepare($query);
+  if ($stmt){
+   $stmt->bind_param("sss", $username, $email, $password);
+   if ($stmt->execute())
+    $user_inserted = true;
+  $stmt->close();
+}
+return $user_inserted;
 }
 function logInUser($credentials) {
   $username = $credentials['username'];
@@ -116,16 +118,8 @@ function getAllUserData($username) {
     $result = $stmt->get_result();
     if(mysqli_num_rows($result) > 0) {
      while ($data = $result->fetch_assoc()) {
+      $user_data = $data;
       $user_data['username'] = $_SESSION['username'];
-      $user_data['email'] = $data['email'];
-      $user_data['bmr'] = $data['bmr'];
-      $user_data['weight'] = $data['weight'];
-      $user_data['height'] = $data['height'];
-      $user_data['age'] = $data['age'];
-      $user_data['activity'] = $data['activity'];
-      $user_data['body_type'] = $data['body_type'];
-      $user_data['objective'] = $data['objective'];
-      $user_data['plan'] = $data['plan'];
     }
   }
 }
@@ -143,13 +137,13 @@ function userHasPlan($username) {
    if ($stmt->execute()) {
     $result = $stmt->get_result();
     if(mysqli_num_rows($result) > 0) {
-     while ($data = $result->fetch_assoc()) {
-      if (!empty($data['plan']))
-       $plan_exists = true;
-   }
- }
-}
-$stmt->close();
+      while ($data = $result->fetch_assoc()) {
+        if (!empty($data['plan']))
+          $plan_exists = true;
+      }
+    }
+  }
+  $stmt->close();
 }
 return $plan_exists;
 }
@@ -174,9 +168,65 @@ function updateUserPlanDetails($plan_requirements, $username) {
       $details_inserted = true;
     }
     $stmt->close();
-
   }
   return $details_inserted;
+}
+function createPlan($username) {
+  $plan_created = false;
+
+  $user_id = getUserId($username);
+  $data = '';
+  $creation = array(
+    'date' => date('Y-m-d') ,
+    'time' => date('h:i:sa')
+  );
+  $creation_serialized = serialize($creation);
+  $query = 'INSERT INTO plans (data, creation, id_user) VALUES (?, ?, ?)';
+  $stmt = $this->connection->prepare($query);
+  if ($stmt) {
+    $stmt->bind_param('ss', $data, $creation_serialized, $user_id);
+    if ($stmt->execute()) {
+      $plan_created = true;
+    }
+    $stmt->close();
+  }
+  return $plan_created;
+}
+function updatePlan($plan_id, $updates) {
+  $plan_updated = false;
+
+  $prepared_string = str_repeat('s', count($updates['values']));
+  $query = 'UPDATE plans SET '.$updates['type'].' WHERE id=?';
+  $stmt = $this->connection->prepare($query);
+  if ($stmt) {
+    $stmt->bind_param($prepared_string, $updates['values']);
+    if ($stmt->execute()) {
+      $plan_updated = true;
+    }
+    $stmt->close();
+  }
+  return $plan_updated;
+}
+function getPlans($username) {
+  $plan_information = [];
+  $aux_arr = array();
+
+  $user_id = $this->getUserId($username);
+  $query = 'SELECT * FROM plans WHERE id_user=?';
+  $stmt = $this->connection->prepare($query);
+  if ($stmt) {
+    $stmt->bind_param('s', $user_id);
+    if ($stmt->execute()) {
+      $result = $stmt->get_result();
+      if(mysqli_num_rows($result) > 0) {
+        while ($data = $result->fetch_assoc()) {
+          array_push($plan_information, $data);
+        }
+      }
+    }
+    $stmt->close();
+  }
+  return $plan_information;
 }
 }
 ?>

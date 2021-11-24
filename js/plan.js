@@ -93,7 +93,14 @@ function handlePlanClickers() {
   $('#register-plan').click(function() {
     ajaxStoreUserData()
   })
-  $('#get_plan_data').click(function() {
+  $(document).on('click', '#add-plan', function(){
+    console.log("works")
+    // ajaxModifyPlan({'add_plan': 'true'})
+  });
+  $(document).on('click', '#create-plan', function() {
+    ajaxModifyPlan({'create_plan' : 'true'})
+  })
+  $('#get-plan-data').click(function() {
     ajaxLoadPlan()
   })
 }
@@ -104,6 +111,7 @@ function ajaxStoreUserData() {
     data: {'plan_requirements':plan_requirements},
     success: function(data) {
       location.reload(true)
+      console.log(data)
     },
     error: function() {
       console.log("error")
@@ -115,6 +123,19 @@ function ajaxLoadPlan() {
     url: 'php/plan-management/plan-management.php',
     type: 'post',
     data: {'get_plan_data': 'true'},
+    success: function(data) {
+      console.log(data)
+    },
+    error: function() {
+      console.log("error")
+    }
+  })
+}
+function ajaxModifyPlan(data_object) {
+  $.ajax({
+    url: 'php/plan-management/plan-management.php',
+    type: 'post',
+    data: data_object,
     success: function(data) {
       console.log(data)
     },

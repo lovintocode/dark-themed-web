@@ -1,5 +1,4 @@
 <?php
-
 // Register user to plan
 function manageUserCredentials($plan_requirements) {
 
@@ -11,6 +10,7 @@ function manageUserCredentials($plan_requirements) {
     if ($bbdd->updateUserPlanDetails($plan_requirements, $_SESSION['username'])) {
       $_SESSION['plan'] = 'true';
     }
+    $bbdd->close();
   }
 }
 function checkParams($plan_requirements) {
@@ -82,8 +82,38 @@ function calculateBmr($sex, $weight, $height, $age, $activity) {
 }
 
 // Plan management
-function getPlanData() {
-  $username = $_SESSION['username'];
+function loadPlans($username) {
+  $bbdd = new bbdd();
+  $plans = [];
+  $plans = $bbdd->getPlans($username);
+  $bbdd->close();
+  return $plans;
+}
+function getHealthLabelsHtml($nutrient_object) {
+  $added_html = '';
+
+  $added_html .= '<div class="health-info"><h3 class="subtitle">Health Labels</h3><ul class="health-item">';
+  for($i = 0; $i < count($nutrient_object); $i++) {
+    $added_html .= '<li class="list-item"><span>'+$nutrient_object[$i]+'</span></li>';
+  }
+  $added_html .= '</ul></div>';
+
+  return $added_html;
+}
+
+function createPlan($username) {
+  $bbdd = new bbdd();
+  if ($bbdd->createPlan($username)) {
+    echo 'Plan created';
+  }
+  $bbdd->close();
+}
+function updatePlan($plan_id) {
+  $bbdd = new bbdd();
+  if ($bbdd->updatePlan()) {
+    
+  }
+  $bbdd->close();
 }
 
 ?>
