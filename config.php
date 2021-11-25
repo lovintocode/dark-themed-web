@@ -1,7 +1,7 @@
 <?php
 // Server config
-ini_set('session.gc_maxlifetime', 3600);
-session_set_cookie_params(3600);
+ini_set('session.gc_maxlifetime', 86400);
+session_set_cookie_params(86400);
 session_start();
 // Bbdd config
 /*define('HOST', 'db5005386872.hosting-data.io');*/

@@ -86,222 +86,6 @@
   <!-- Recipe results -->
 
   <div id="recipes-box">
-    <!-- [1] -->
-    <!-- <div class="modal micromodal-slide" id="modal-1" aria-hidden="true">
-      <div class="modal__overlay" tabindex="-1" data-micromodal-close>
-        <div class="modal__container" role="dialog" aria-modal="true" aria-labelledby="modal-1-title">
-          <header class="modal__header">
-            <button class="modal__close" aria-label="Close modal" data-micromodal-close></button>
-          </header>
-          <main class="modal__content" id="modal-1-content">
-            <div class="image-title-container">
-              <img class="image" src="img/photos/recipe-card.jpg" alt="">
-              <h3 class="title">This is my title recipe and i hope you respect it</h3>
-            </div>
-            <div class="general-info">
-              <h3 class="subtitle">General Information</h3>
-              <ul class="general-item">
-                <li class="list-item">
-                  <h4>Calories</h4>
-                  <span>5000</span>
-                </li>
-                <li class="list-item">
-                  <h4>Cusine Type</h4>
-                  <span>American</span>
-                </li>
-                <li class="list-item">
-                  <h4>Meal Type</h4>
-                  <span>Dinner</span>
-                </li>
-                <li class="list-item">
-                  <h4>Dish Type</h4>
-                  <span>Salad</span>
-                </li>
-                <li class="list-item">
-                  <h4>Serves</h4>
-                  <span>4</span>
-                </li>
-                <li class="list-item">
-                  <h4>Health Labels</h4>
-                  <span> Vegetarian</span>
-                </li>
-                <li class="list-item diet-label">
-                  <h4>Diet Labels</h4>
-                  <span>Low Carb, Low Carb, Low Carb</span>
-                </li>
-              </ul>
-            </div>
-            <div class="health-info">
-              <h3 class="subtitle">Health Labels</h3>
-              <ul class="health-item">
-                  <li class="list-item">
-                    <span></span>
-                  </li>
-                  <li class="list-item">
-                    <span></span>
-                  </li>
-              </ul>
-            </div>
-            <div class="nutritional-info">
-              <h3 class="subtitle">Nutritional Information</h3>
-              <ul class="nutritional-item">
-                <div class="title-container">
-                  <h4 class="list-title">Protein</h4>
-                  <i class="fas fa-chevron-down icon"></i>
-                </div>
-                <div class="list-container">
-                  <li class="list-item">
-                    <span class="left">Total</span>
-                    <span class="right">500</span>
-                  </li>
-                </div>
-              </ul>
-              <ul class="nutritional-item">
-                <div class="title-container">
-                  <h4 class="list-title">Carbs</h4>
-                  <i class="fas fa-chevron-down icon"></i>
-                </div>
-                <div class="list-container">
-                  <li class="list-item">
-                    <span class="left">Total</span>
-                    <span class="right">500</span>
-                  </li>
-                  <li class="list-item">
-                    <span class="left">Fiber</span>
-                    <span class="right">500</span>
-                  </li>
-                  <li class="list-item">
-                    <span class="left">Sugars</span>
-                    <span class="right">500</span>
-                  </li>
-                  <li class="list-item">
-                    <span class="left">Sugars Added</span>
-                    <span class="right">500</span>
-                  </li>
-                </div>
-              </ul>
-              <ul class="nutritional-item">
-                <div class="title-container">
-                  <h4 class="list-title">Fats</h4>
-                  <i class="fas fa-chevron-down icon"></i>
-                </div>
-                <div class="list-container">
-                  <li class="list-item">
-                    <span class="left">Total</span>
-                    <span class="right">500</span>
-                  </li>
-                  <li class="list-item">
-                    <span class="left">Trans</span>
-                    <span class="right">500</span>
-                  </li>
-                  <li class="list-item">
-                    <span class="left">Saturated</span>
-                    <span class="right">500</span>
-                  </li>
-                  <li class="list-item">
-                    <span class="left">Monounsaturated</span>
-                    <span class="right">500</span>
-                  </li>
-                  <li class="list-item">
-                    <span class="left">Polyunsaturated</span>
-                    <span class="right">500</span>
-                  </li>
-                </div>
-              </ul>
-              <ul class="nutritional-item">
-                <div class="title-container">
-                  <h4 class="list-title">Vitamins</h4>
-                  <i class="fas fa-chevron-down icon"></i>
-                </div>
-                <div class="list-container">
-                  <li class="list-item">
-                    <span class="left">A</span>
-                    <span class="right">500</span>
-                  </li>
-                  <li class="list-item">
-                    <span class="left">C</span>
-                    <span class="right">500</span>
-                  </li>
-                  <li class="list-item">
-                    <span class="left">B1</span>
-                    <span class="right">500</span>
-                  </li>
-                  <li class="list-item">
-                    <span class="left">B2</span>
-                    <span class="right">500</span>
-                  </li>
-                  <li class="list-item">
-                    <span class="left">B3</span>
-                    <span class="right">500</span>
-                  </li>
-                  <li class="list-item">
-                    <span class="left">B6</span>
-                    <span class="right">500</span>
-                  </li>
-                  <li class="list-item">
-                    <span class="left">B9</span>
-                    <span class="right">500</span>
-                  </li>
-                  <li class="list-item">
-                    <span class="left">B12</span>
-                    <span class="right">500</span>
-                  </li>
-                  <li class="list-item">
-                    <span class="left">D</span>
-                    <span class="right">500</span>
-                  </li>
-                  <li class="list-item">
-                    <span class="left">E</span>
-                    <span class="right">500</span>
-                  </li>
-                  <li class="list-item">
-                    <span class="left">K</span>
-                    <span class="right">500</span>
-                  </li>
-                </div>
-              </ul>
-              <ul class="nutritional-item">
-                <div class="title-container">
-                  <h4 class="list-title">Minerals</h4>
-                  <i class="fas fa-chevron-down icon"></i>
-                </div>
-                <div class="list-container">
-                  <li class="list-item">
-                    <span class="left">Sodium</span>
-                    <span class="right">500</span>
-                  </li>
-                  <li class="list-item">
-                    <span class="left">Calcium</span>
-                    <span class="right">500</span>
-                  </li>
-                  <li class="list-item">
-                    <span class="left">Magnesium</span>
-                    <span class="right">500</span>
-                  </li>
-                  <li class="list-item">
-                    <span class="left">Potassium</span>
-                    <span class="right">500</span>
-                  </li>
-                  <li class="list-item">
-                    <span class="left">Iron</span>
-                    <span class="right">500</span>
-                  </li>
-                  <li class="list-item">
-                    <span class="left">Zinc</span>
-                    <span class="right">500</span>
-                  </li>
-                  <li class="list-item">
-                    <span class="left">Phosphorous</span>
-                    <span class="right">500</span>
-                  </li>
-                </div>
-              </ul>
-            </div>
-          </main>
-        </div>
-      </div>
-    </div> -->
-    <!-- <button type="button" id="modal-trigger" data-micromodal-trigger="modal-1">Open Modal</button> -->
     <div class="no-recipes-search">
       <p class="text">Introduce any food search and start discovering</p>
       <div class="image-container">
@@ -318,6 +102,16 @@
       </div>
     </div>
   </div>
+  <div class="modal micromodal-slide" id="add-recipe" aria-hidden="false">
+      <div class="modal__overlay" tabindex="-1" data-micromodal-close="">
+        <div class="modal__container" role="dialog" aria-modal="true" aria-labelledby="modal-1-title">
+          <header class="modal__header"><button class="modal__close" aria-label="Close modal" data-micromodal-close=""></button></header>
+          <main class="modal__content" id="modal-add-content">
+            <p>Works</p>
+          </main>
+        </div>
+      </div>
+    </div>
   <div id="page-change">
     <div class="page-change-container">
       <span class="prev-page" id="prev_page_url"><i class="fas fa-chevron-left"></i></span>

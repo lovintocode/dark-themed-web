@@ -6,7 +6,7 @@
 }
 #plan-container .text-container {
 	width: 100%;
-	min-height: 100vh;
+	min-height: 80vh;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -26,7 +26,7 @@
 	min-height: 100vh;
 	height: 100%;
 	float: left;
-	background-color: #979090;
+	background-color: #3b3535;
 }
 #plan-container .left-container .plan-btn {
 	width: 100%;
@@ -43,19 +43,18 @@
 	float: left;
 }
 #plan-container .right-container .plan {
-	width: 80%;
-	min-height: 100vh;
+	width: 0%;
+  height: 0;
 	margin: 0 auto;
+  overflow: hidden;
+  transition: all 1s ease;
 }
-#plan-container .right-container .Monday:hover + .Monday-container {
-	width: 100%;
-	height: 4em;
-	opacity: 1;
-	margin-top: -0.6em;
+#plan-container .right-container #plan1 {
+  width: 80%;
+  min-height: 100vh;
 }
 #plan-container .right-container .days-container .day-time-container {
 	position: relative;
-	margin-top: 4em;
 }
 #plan-container .right-container .times-container {
 	position: absolute;
@@ -66,9 +65,11 @@
 	display: flex;
 	justify-content: space-around;
 	transition: opacity 1s ease, height 0.5s ease, width 0.7s ease;
+  padding: 0.5em 0;
 }
 #plan-container .right-container .days-container {
-	display: flex;
+	min-height: 100vh;
+  display: flex;
 	justify-content: space-evenly;
 	flex-direction: column;
 	align-items: center;
@@ -82,6 +83,7 @@
 	border: 0;
 	color: rgba(255, 255, 255, 0.9);
 	cursor: pointer;
+  overflow: hidden;
 }
 #plan-container .right-container .day:hover {
 	background-color: #e53939;
@@ -90,5 +92,5 @@
 #plan-container .right-container .times-container .time {
 	display: flex;
 	align-items: center;
-	margin-top: 1em;
 }
+

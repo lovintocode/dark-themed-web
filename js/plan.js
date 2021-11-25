@@ -94,9 +94,11 @@ function handlePlanClickers() {
     ajaxStoreUserData()
   })
   $(document).on('click', '#add-plan', function(){
-    console.log("works")
-    // ajaxModifyPlan({'add_plan': 'true'})
+    loadUserPlans()
   });
+  $(document).on('click', '#close-add-plan', function() {
+    hideModal()
+  })
   $(document).on('click', '#create-plan', function() {
     ajaxModifyPlan({'create_plan' : 'true'})
   })
@@ -104,6 +106,7 @@ function handlePlanClickers() {
     ajaxLoadPlan()
   })
 }
+
 function ajaxStoreUserData() {
   $.ajax({
     url: 'php/plan-management/plan-management.php',

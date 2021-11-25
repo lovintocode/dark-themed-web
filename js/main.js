@@ -19,7 +19,7 @@ $( document ).ready(function() {
   if ($('.lazy').length > 0)
     lazyLoader()
   // Sets move on certain images on web (when scroll reaches certain point)
-  loadDinamicImages()
+  // loadDinamicImages()
   // Equal height on divs (del)
   equalHeightHandler()
   // Manages selection boxes and filtering
@@ -35,4 +35,6 @@ $( document ).ready(function() {
   planQuestionsHandler()
   // Handles plan clicks (bbdd insertion)
   handlePlanClickers()
+  // Handles plan styling
+  manageDisplays()
 })

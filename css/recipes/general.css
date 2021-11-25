@@ -6,3 +6,7 @@
   height: auto;
   transition: all 0.6s ease;
 }
+#add-recipe .modal__container {
+  width: 90%;
+  min-height: 90vh;
+}

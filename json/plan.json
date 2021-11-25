@@ -5,7 +5,7 @@
         "total_calories": 0,
         "times":
         {
-          "breakfast":
+          "Breakfast":
           {
             "title": "",
             "img": "",
@@ -64,7 +64,7 @@
             "preparation_url": "",
             "cholesterol": 0
           },
-          "lunch":
+          "Lunch":
           {
             "title": "",
             "img": "",
@@ -123,7 +123,7 @@
             "preparation_url": "",
             "cholesterol": 0
           },
-          "snack":
+          "Snack":
           {
             "title": "",
             "img": "",
@@ -182,7 +182,7 @@
             "preparation_url": "",
             "cholesterol": 0
           },
-          "dinner":
+          "Dinner":
           {
             "title": "",
             "img": "",
@@ -248,7 +248,7 @@
         "total_calories": 0,
         "times":
         {
-          "breakfast":
+          "Breakfast":
           {
             "title": "",
             "img": "",
@@ -307,7 +307,7 @@
             "preparation_url": "",
             "cholesterol": 0
           },
-          "lunch":
+          "Lunch":
           {
             "title": "",
             "img": "",
@@ -366,7 +366,7 @@
             "preparation_url": "",
             "cholesterol": 0
           },
-          "snack":
+          "Snack":
           {
             "title": "",
             "img": "",
@@ -425,7 +425,7 @@
             "preparation_url": "",
             "cholesterol": 0
           },
-          "dinner":
+          "Dinner":
           {
             "title": "",
             "img": "",
@@ -491,7 +491,7 @@
         "total_calories": 0,
         "times":
         {
-          "breakfast":
+          "Breakfast":
           {
             "title": "",
             "img": "",
@@ -550,7 +550,7 @@
             "preparation_url": "",
             "cholesterol": 0
           },
-          "lunch":
+          "Lunch":
           {
             "title": "",
             "img": "",
@@ -609,7 +609,7 @@
             "preparation_url": "",
             "cholesterol": 0
           },
-          "snack":
+          "Snack":
           {
             "title": "",
             "img": "",
@@ -668,7 +668,7 @@
             "preparation_url": "",
             "cholesterol": 0
           },
-          "dinner":
+          "Dinner":
           {
             "title": "",
             "img": "",
@@ -734,7 +734,7 @@
         "total_calories": 0,
         "times":
         {
-          "breakfast":
+          "Breakfast":
           {
             "title": "",
             "img": "",
@@ -793,7 +793,7 @@
             "preparation_url": "",
             "cholesterol": 0
           },
-          "lunch":
+          "Lunch":
           {
             "title": "",
             "img": "",
@@ -852,7 +852,7 @@
             "preparation_url": "",
             "cholesterol": 0
           },
-          "snack":
+          "Snack":
           {
             "title": "",
             "img": "",
@@ -911,7 +911,7 @@
             "preparation_url": "",
             "cholesterol": 0
           },
-          "dinner":
+          "Dinner":
           {
             "title": "",
             "img": "",
@@ -977,7 +977,7 @@
         "total_calories": 0,
         "times":
         {
-          "breakfast":
+          "Breakfast":
           {
             "title": "",
             "img": "",
@@ -1036,7 +1036,7 @@
             "preparation_url": "",
             "cholesterol": 0
           },
-          "lunch":
+          "Lunch":
           {
             "title": "",
             "img": "",
@@ -1095,7 +1095,7 @@
             "preparation_url": "",
             "cholesterol": 0
           },
-          "snack":
+          "Snack":
           {
             "title": "",
             "img": "",
@@ -1154,7 +1154,7 @@
             "preparation_url": "",
             "cholesterol": 0
           },
-          "dinner":
+          "Dinner":
           {
             "title": "",
             "img": "",
@@ -1220,7 +1220,7 @@
         "total_calories": 0,
         "times":
         {
-          "breakfast":
+          "Breakfast":
           {
             "title": "",
             "img": "",
@@ -1279,7 +1279,7 @@
             "preparation_url": "",
             "cholesterol": 0
           },
-          "lunch":
+          "Lunch":
           {
             "title": "",
             "img": "",
@@ -1338,7 +1338,7 @@
             "preparation_url": "",
             "cholesterol": 0
           },
-          "snack":
+          "Snack":
           {
             "title": "",
             "img": "",
@@ -1397,7 +1397,7 @@
             "preparation_url": "",
             "cholesterol": 0
           },
-          "dinner":
+          "Dinner":
           {
             "title": "",
             "img": "",
@@ -1463,7 +1463,7 @@
         "total_calories": 0,
         "times":
         {
-          "breakfast":
+          "Breakfast":
           {
             "title": "",
             "img": "",
@@ -1522,7 +1522,7 @@
             "preparation_url": "",
             "cholesterol": 0
           },
-          "lunch":
+          "Lunch":
           {
             "title": "",
             "img": "",
@@ -1581,7 +1581,7 @@
             "preparation_url": "",
             "cholesterol": 0
           },
-          "snack":
+          "Snack":
           {
             "title": "",
             "img": "",
@@ -1640,7 +1640,7 @@
             "preparation_url": "",
             "cholesterol": 0
           },
-          "dinner":
+          "Dinner":
           {
             "title": "",
             "img": "",

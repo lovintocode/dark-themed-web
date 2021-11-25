@@ -133,3 +133,65 @@ function sessionHandler() {
     }, 1200)
   })
 }
+function planStyle() {
+  manageDisplays()
+}
+function manageDisplays() {
+  // Shows plans
+  $('#plan-container .left-container .plan-btn').click(function() {
+    $('#plan-container .plan-btn').prop('disabled', true)
+    var btn_id = $(this).attr('id')
+    $('#plan-container .right-container .plan').each(function(index, el) {
+      var element = $(this)
+      if (element.hasClass('plan-active') && element.attr('id') != btn_id) {
+        element.removeClass('plan-active')
+        element.css('width', '0')
+        setTimeout(function() {
+          element.css({
+            'min-height': '0',
+            'height': '0'
+          })
+        }, 550)
+      } else {
+        if (element.attr('id') == btn_id) {
+          element.addClass('plan-active')
+          setTimeout(function() {
+            element.css({
+              'width': '80%',
+              'min-height': '100vh'
+            })
+            $('#plan-container .plan-btn').prop('disabled', false)
+            $('#plan-container .right-container .times-container').each(function(index, el) {
+              $(this).removeClass('day-active')
+              $(this).css({
+                'width': '0',
+                'height': '0',
+                'opacity': '0'
+              })
+            });
+          }, 750)
+        }
+      }
+    });
+  })
+  // Shows days buttons
+  $('#plan-container .right-container .day').click(function() {
+    var element = $(this).siblings('.times-container')
+    $('#plan-container .right-container .times-container').each(function(index, el) {
+      $(this).removeClass('day-active')
+      $(this).css({
+        'width': '0',
+        'height': '0',
+        'opacity': '0'
+      })
+    });
+
+    element.addClass('day-active')
+    element.css({
+      'width': '100%',
+      'height': '4em',
+      'opacity': '1'
+    })
+
+  })
+}
