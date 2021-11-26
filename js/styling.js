@@ -133,16 +133,16 @@ function sessionHandler() {
     }, 1200)
   })
 }
-function planStyle() {
-  manageDisplays()
-}
-function manageDisplays() {
+
+function managePlanDisplays() {
   // Shows plans
   $('#plan-container .left-container .plan-btn').click(function() {
     $('#plan-container .plan-btn').prop('disabled', true)
     var btn_id = $(this).attr('id')
     $('#plan-container .right-container .plan').each(function(index, el) {
       var element = $(this)
+
+      
       if (element.hasClass('plan-active') && element.attr('id') != btn_id) {
         element.removeClass('plan-active')
         element.css('width', '0')
@@ -194,4 +194,10 @@ function manageDisplays() {
     })
 
   })
+}
+function showPlan() {
+
+}
+function hidePlan() {
+  
 }

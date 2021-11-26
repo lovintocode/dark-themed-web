@@ -1,5 +1,5 @@
 <?php
-if (isset($_POST['plan_requirements'])){
+if (isset($_POST['plan_requirements']) || isset($_POST['get_user_response']) ||isset($_POST['create_plan']) || isset($_POST['get_plans'])){
   require_once "../../config.php";
   require_once "../bbdd/bbdd.php";
   require_once "functions.php";
@@ -8,12 +8,17 @@ if (isset($_POST['plan_requirements'])){
   require_once "php/bbdd/bbdd.php";
   require_once "functions.php";
 }
+$username = '';
+if (isset($_SESSION['username']))
+  $username = $_SESSION['username'];
 if (isset($_POST['plan_requirements']))
 	manageUserCredentials($_POST['plan_requirements']);
+else if (isset($_POST['get_user_response']))
+  getUserResponse($username);
 else if (isset($_POST['create_plan']))
-  createPlan($_SESSION['username']);
-else if (isset($_POST['get_plan_data']))
-	getPlanData($_SESSION['username']);
-else if (isset($_POST['update_plan']))
-  updatePlan();
+  createPlan($username);
+else if (isset($_POST['get_plans']))
+	loadPlans($username);
+// else if (isset($_POST['update_plan']))
+//   updatePlan();
 ?>

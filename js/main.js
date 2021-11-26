@@ -36,5 +36,5 @@ $( document ).ready(function() {
   // Handles plan clicks (bbdd insertion)
   handlePlanClickers()
   // Handles plan styling
-  manageDisplays()
+  managePlanDisplays()
 })

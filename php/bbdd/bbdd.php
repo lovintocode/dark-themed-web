@@ -173,22 +173,27 @@ function updateUserPlanDetails($plan_requirements, $username) {
 }
 function createPlan($username) {
   $plan_created = false;
+  $user_plan_count = $this->countUserPlans($username);
 
-  $user_id = getUserId($username);
-  $data = '';
-  $creation = array(
-    'date' => date('Y-m-d') ,
-    'time' => date('h:i:sa')
-  );
-  $creation_serialized = serialize($creation);
-  $query = 'INSERT INTO plans (data, creation, id_user) VALUES (?, ?, ?)';
-  $stmt = $this->connection->prepare($query);
-  if ($stmt) {
-    $stmt->bind_param('ss', $data, $creation_serialized, $user_id);
-    if ($stmt->execute()) {
-      $plan_created = true;
+  if ($user_plan_count < 5) {
+    $user_id = $this->getUserId($username);
+    $data = 'true';
+    $creation = array(
+      'date' => date('Y-m-d') ,
+      'time' => date('h:i:sa')
+    );
+    $last_modified = $creation;
+    $creation_serialized = serialize($creation);
+    $last_modified_serialized = serialize($last_modified);
+    $query = 'INSERT INTO plans (data, creation, last_modified, id_user) VALUES (?, ?, ?, ?)';
+    $stmt = $this->connection->prepare($query);
+    if ($stmt) {
+      $stmt->bind_param('ssss', $data, $creation_serialized, $last_modified_serialized, $user_id);
+      if ($stmt->execute()) {
+        $plan_created = true;
+      }
+      $stmt->close();
     }
-    $stmt->close();
   }
   return $plan_created;
 }
@@ -227,6 +232,21 @@ function getPlans($username) {
     $stmt->close();
   }
   return $plan_information;
+}
+function countUserPlans($username) {
+  $plan_count = 0;
+
+  $user_id = $this->getUserId($username);
+  $query = 'SELECT * FROM plans WHERE id_user=?';
+  $stmt = $this->connection->prepare($query);
+  if ($stmt) {
+    $stmt->bind_param('s', $user_id);
+    if ($stmt->execute()) {
+      $result = $stmt->get_result();
+      $plan_count = mysqli_num_rows($result);
+    }
+  }
+  return $plan_count;
 }
 }
 ?>

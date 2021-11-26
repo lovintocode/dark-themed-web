@@ -107,7 +107,6 @@
         <div class="modal__container" role="dialog" aria-modal="true" aria-labelledby="modal-1-title">
           <header class="modal__header"><button class="modal__close" aria-label="Close modal" data-micromodal-close=""></button></header>
           <main class="modal__content" id="modal-add-content">
-            <p>Works</p>
           </main>
         </div>
       </div>

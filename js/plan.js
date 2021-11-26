@@ -90,20 +90,19 @@ function checkPlanAnswers(value, min, max) {
   return false;
 }
 function handlePlanClickers() {
+  // Plan register
   $('#register-plan').click(function() {
     ajaxStoreUserData()
   })
+  // Pan add from recipes
   $(document).on('click', '#add-plan', function(){
-    loadUserPlans()
+    $('#add-recipe .modal__content').empty()
+    ajaxGetUserResponse()
   });
-  $(document).on('click', '#close-add-plan', function() {
-    hideModal()
-  })
+  // Create new empty plan
   $(document).on('click', '#create-plan', function() {
-    ajaxModifyPlan({'create_plan' : 'true'})
-  })
-  $('#get-plan-data').click(function() {
-    ajaxLoadPlan()
+    $('#add-recipe .modal__content').empty()
+    ajaxCreatePlan()
   })
 }
 
@@ -114,19 +113,51 @@ function ajaxStoreUserData() {
     data: {'plan_requirements':plan_requirements},
     success: function(data) {
       location.reload(true)
-      console.log(data)
     },
     error: function() {
       console.log("error")
     }
   })
 }
+function ajaxGetUserResponse() {
+  $.ajax({
+    url: 'php/plan-management/plan-management.php',
+    type: 'post',
+    data: {'get_user_response': 'true'},
+    success: function(data) {
+      var parsed_data = JSON.parse(data)
+      var html_data = getHtmlUserResponse(parsed_data)
+      // $('#add-recipe .modal__content').append(data)
+    },
+    error: function() {
+      console.log("error")
+    }
+  })
+}
+function ajaxCreatePlan() {
+  $.ajax({
+    url: 'php/plan-management/plan-management.php',
+    type: 'post',
+    data: {'create_plan': 'true'},
+    success: function(data) {
+      // must load plans
+      // console.log(data)
+      var parsed_data = JSON.parse(data)
+      showPlans(parsed_data)
+    },
+    error: function() {
+      console.log("error")
+    }
+  })
+}
+
 function ajaxLoadPlan() {
   $.ajax({
     url: 'php/plan-management/plan-management.php',
     type: 'post',
-    data: {'get_plan_data': 'true'},
+    data: {'get_plans': 'true'},
     success: function(data) {
+      $('#add-recipe .modal__content').append(data)
       console.log(data)
     },
     error: function() {
@@ -134,7 +165,8 @@ function ajaxLoadPlan() {
     }
   })
 }
-function ajaxModifyPlan(data_object) {
+
+function ajaxUpdatePlan() {
   $.ajax({
     url: 'php/plan-management/plan-management.php',
     type: 'post',
@@ -146,4 +178,21 @@ function ajaxModifyPlan(data_object) {
       console.log("error")
     }
   })
+}
+function getHtmlUserResponse(parsed_data) {
+  let plan_counter = 0
+  let plan_type = parsed_data['type']
+  let plan_data = parsed_data['data']
+  let plan_html = parsed_data['html']
+
+  if (parsed_data['type'] == 'has-plan') {
+    showPlans(parsed_data['data'])
+  } else {
+    $('#add-recipe .modal__content').append(plan_html)
+  }
+}
+// Shows user's plans
+function showPlans(plans) {
+  var html_content = '<div></div>'
+  $('#add-recipe .modal__content').append('Hello marshall')
 }
