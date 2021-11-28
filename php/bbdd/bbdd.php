@@ -177,14 +177,14 @@ function createPlan($username) {
 
   if ($user_plan_count < 5) {
     $user_id = $this->getUserId($username);
-    $data = 'true';
+    $data = json_encode(file_get_contents("../../json/plan-empty.json"));
     $creation = array(
       'date' => date('Y-m-d') ,
       'time' => date('h:i:sa')
     );
     $last_modified = $creation;
-    $creation_serialized = serialize($creation);
-    $last_modified_serialized = serialize($last_modified);
+    $creation_serialized = json_encode($creation);
+    $last_modified_serialized = json_encode($last_modified);
     $query = 'INSERT INTO plans (data, creation, last_modified, id_user) VALUES (?, ?, ?, ?)';
     $stmt = $this->connection->prepare($query);
     if ($stmt) {

@@ -141,8 +141,7 @@ function managePlanDisplays() {
     var btn_id = $(this).attr('id')
     $('#plan-container .right-container .plan').each(function(index, el) {
       var element = $(this)
-
-      
+ 
       if (element.hasClass('plan-active') && element.attr('id') != btn_id) {
         element.removeClass('plan-active')
         element.css('width', '0')
@@ -194,10 +193,4 @@ function managePlanDisplays() {
     })
 
   })
-}
-function showPlan() {
-
-}
-function hidePlan() {
-  
 }

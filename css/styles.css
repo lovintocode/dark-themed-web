@@ -233,3 +233,60 @@ ul, ol {
   margin-bottom: 0.5em;
 }
 /* End session general */
+/* Plan buttons display*/
+#add-recipe .user-plans {
+  min-height: 78vh;
+}
+.plan-container {
+  width: 80%;
+  min-height: auto;
+  margin: 0 auto;
+  overflow: hidden;
+  transition: all 1s ease;
+}
+.plan {
+
+}
+.days-container .day-time-container {
+  position: relative;
+}
+.days-container {
+  height: auto;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.times-container {
+  position: absolute;
+  width: 0;
+  height: 0;
+  opacity: 0;
+  overflow: hidden;
+  display: flex;
+  justify-content: space-around;
+  transition: opacity 1s ease, height 0.5s ease, width 0.7s ease;
+  padding: 0.5em 0;
+}
+.day-container {
+  float: left;
+  width: 25%;
+}
+.day {
+  font-size: 20px;
+  width: 500px;
+  padding: 1em 0;
+  border-radius: 5px;
+  background-color: #b03e3e;
+  border: 0;
+  color: rgba(255, 255, 255, 0.9);
+  cursor: pointer;
+  overflow: hidden;
+}
+.day:hover {
+  background-color: #e53939;
+}
+.times-container .time {
+  display: flex;
+  align-items: center;
+}
+/* End Plan buttons display*/

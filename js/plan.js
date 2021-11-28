@@ -126,8 +126,9 @@ function ajaxGetUserResponse() {
     data: {'get_user_response': 'true'},
     success: function(data) {
       var parsed_data = JSON.parse(data)
+      /*console.log(data)*/
       var html_data = getHtmlUserResponse(parsed_data)
-      // $('#add-recipe .modal__content').append(data)
+      console.log(html_data)
     },
     error: function() {
       console.log("error")
@@ -188,11 +189,59 @@ function getHtmlUserResponse(parsed_data) {
   if (parsed_data['type'] == 'has-plan') {
     showPlans(parsed_data['data'])
   } else {
-    $('#add-recipe .modal__content').append(plan_html)
+    /*$('#add-recipe .modal__content').append(plan_html)*/
   }
 }
 // Shows user's plans
 function showPlans(plans) {
-  var html_content = '<div></div>'
-  $('#add-recipe .modal__content').append('Hello marshall')
+  var html_content = ''
+  var content = '' 
+  empty_plan = false
+
+  html_content += '<div class="user-plans">'
+  // plans loop
+  console.log(plans)
+  let plan_counter = 1
+  plans.forEach(function(plan){
+    data = JSON.parse(JSON.parse(plan['data']))
+    plan_id = plan['id']
+    creation = JSON.parse(plan['creation'])
+    last_mod = JSON.parse(plan['last_modified'])
+    // plan container
+    html_content += '<div id="plan'+plan_id+'" class="plan-container">'
+    html_content += '<a id="" class="plan btn btn-primary">Plan '+plan_counter+'</a>'
+    // day-time-container
+    html_content += '<div class="days-container">'
+    // days loop
+    for (let [day, day_value] of Object.entries(data['days'])) {
+      var total_day_calories = day_value['total_calories']
+      // day-container
+      html_content += '<div class="day-container">'
+      html_content += '<a id="" class="day btn btn-secondary">'+day+'</a>'
+      // times loop
+      for (let [time, recipe] of Object.entries(day_value['times'])) {
+        // time-container
+        html_content += '<div class="times-container">'  
+        if (recipe.length > 0) {
+          html += '<a id="show-recipe" class="time" data-plan="'+plan_id+'" data-day="'+day+'" data-time="'+time+'>'+time+'</a>'
+        } else {
+          html_content += '<a id="add-time-recipe" class="time" data-plan="'+plan_id+'" data-day="'+day+'" data-time="'+time+'">Add Recipe to '+time+'</a>'
+        }
+        // end time container
+        html_content += '</div>'
+      }
+      // end day-container
+      html_content += '</div>'
+    }
+    // end day-time-container
+    html_content += '</div>'
+    // end plan container
+    html_content += '</div>'
+  })
+  html_content += '</div>'
+  if ($('#recipes-wrapper').length > 0) {
+    $('#add-recipe .modal__content').append(html_content)
+  } else if ($('#plan-wrapper').length > 0) {
+    $('#show-recipe').append(html_content)
+  }
 }

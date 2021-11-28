@@ -1,0 +1,81 @@
+  {
+    "days": {
+      "Monday":
+      {
+        "total_calories": 0,
+        "times":
+        {
+          "Breakfast": {},
+          "Lunch": {},
+          "Snack": {},
+          "Dinner": {}
+        }
+      },
+      "Tuesday":
+      {
+        "total_calories": 0,
+        "times":
+        {
+           "Breakfast": {},
+          "Lunch": {},
+          "Snack": {},
+          "Dinner": {}
+        }
+      },
+      "Wednesday":
+      {
+        "total_calories": 0,
+        "times":
+        {
+          "Breakfast": {},
+          "Lunch": {},
+          "Snack": {},
+          "Dinner": {}
+        }
+      },
+      "Thursday":
+      {
+        "total_calories": 0,
+        "times":
+        {
+          "Breakfast": {},
+          "Lunch": {},
+          "Snack": {},
+          "Dinner": {}
+        }
+      },
+      "Friday":
+      {
+        "total_calories": 0,
+        "times":
+        {
+          "Breakfast": {},
+          "Lunch": {},
+          "Snack": {},
+          "Dinner": {}
+        }
+      },
+      "Saturday":
+      {
+        "total_calories": 0,
+        "times":
+        {
+          "Breakfast": {},
+          "Lunch": {},
+          "Snack": {},
+          "Dinner": {}
+        }
+      },
+      "Sunday":
+      {
+        "total_calories": 0,
+        "times":
+        {
+          "Breakfast": {},
+          "Lunch": {},
+          "Snack": {},
+          "Dinner": {}
+        }
+      }
+    }
+  }
