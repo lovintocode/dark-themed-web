@@ -248,5 +248,48 @@ function countUserPlans($username) {
   }
   return $plan_count;
 }
+function addRecipe($recipe) {
+  $recipe_added = false;
+ 
+  $plan_id = $recipe['plan_id'];
+ $day = $recipe['day'];
+  $time = $recipe['time'];
+  $recipe_data = $recipe['recipe'];
+  $last_modified = json_encode(array(
+    'date' => date('Y-m-d') ,
+    'time' => date('h:i:sa')
+  ));
+  $plan = $this->getPlan($plan_id);
+  $plan = json_decode(json_decode($plan, true), true);
+  $plan['days'][$day]['times'][$time] = $recipe_data;
+  $recipe_inserted = json_encode(json_encode($plan));
+  $query = 'UPDATE plans SET data=?, last_modified=? WHERE id=?';
+  $stmt = $this->connection->prepare($query);
+  if ($stmt){
+    $stmt->bind_param("sss", $recipe_inserted, $last_modified, $plan_id);
+    if ($stmt->execute())
+      $recipe_added = true;
+  }
+  $stmt->close();
+  return $recipe_added;
+}
+function getPlan($plan_id) {
+  $plan = '';
+
+  $query = 'SELECT data FROM plans WHERE id=?';
+  $stmt = $this->connection->prepare($query);
+  if ($stmt) {
+    $stmt->bind_param('s', $plan_id);
+    if ($stmt->execute()) {
+      $result = $stmt->get_result();
+      if (mysqli_num_rows($result) > 0){
+        while ($data = $result->fetch_assoc())
+          $plan = $data['data'];
+      }
+    }
+  }
+  $stmt->close(); 
+  return $plan;
+}
 }
 ?>

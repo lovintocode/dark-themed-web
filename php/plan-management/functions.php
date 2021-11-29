@@ -206,4 +206,12 @@ function loadPlanButtons($plans) {
     $count++;
   }
 }
+function addRecipe($recipe) {
+  $bbdd = new bbdd();
+  if ($bbdd->addRecipe($recipe))
+    echo "insertd";
+  else
+    echo "not inseted";
+  $bbdd->close();
+}
 ?>

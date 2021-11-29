@@ -109,24 +109,23 @@ function handlePlanClickers() {
     var time = $(this).data('time')
     if ($('.confirmation-box').length <= 0)
       $(this).parent().append(confirmationBox(time))
-    // ajaxAddRecipe()
   });
   $(document).on('click', '#confirmation-true', function() {
-    var plan_insert = {}
+    var recipe_insert = {}
 
     var recipe_id = ''
     var time = $(this).data('time')
     var elements = $(this).closest('.confirmation-box').siblings('.time')
     elements.each(function(index, el) {
       if ($(this).data('time') == time) {
-        plan_insert['plan_id'] = $(this).data('plan')
-        plan_insert['day'] = $(this).data('day')
-        plan_insert['time'] = $(this).data('time')
+        recipe_insert['plan_id'] = $(this).data('plan')
+        recipe_insert['day'] = $(this).data('day')
+        recipe_insert['time'] = $(this).data('time')
         recipe_id = $(this).data('recipe')
       }
     });
-
-    plan_insert['recipe'] = getRecipe(recipe_id)
+    recipe_insert['recipe'] = getRecipe(recipe_id)
+    ajaxAddRecipe(recipe_insert)
   })
   $(document).on('click', '#confirmation-false', function() {
     $(this).closest('.confirmation-box').remove()
@@ -146,7 +145,7 @@ function getRecipe(recipe_id) {
 }
 function getRecipeValues(recipe_box) {
   var recipe_data = {}
-
+  console.log(recipe_box)
   // General
   recipe_data['image'] = recipe_box.find('.image').attr('src')
   recipe_data['title'] = recipe_box.find('.title').text()
@@ -157,10 +156,11 @@ function getRecipeValues(recipe_box) {
   recipe_data['dish_type'] = recipe_box.find('.dish-type').text()
   recipe_data['diet_labels'] = recipe_box.find('.diet-labels').text().split(',')
   recipe_data['health_labels'] = getHealthLabels(recipe_box)
-
   // Nutritional Info
   var carbs = recipe_box.find('.carbs').end()
   var fat = recipe_box.find('.fat').end()
+  var vitamins = recipe_box.find('.vitamins').end()
+  var minerals = recipe_box.find('minerals').end()
   recipe_data['nutritional_info'] =
   {
     'protein':
@@ -182,9 +182,34 @@ function getRecipeValues(recipe_box) {
       'monounsaturated': fat.find('.monounsaturated').text(),
       'polyunsaturated': fat.find('.polyunsaturated').text(),
 
+    },
+    'vitamins':
+    {
+      'total': vitamins.find('.total').text(),
+      'a': vitamins.find('.a').text(),
+      'c': vitamins.find('.c').text(),
+      'b1': vitamins.find('.b1').text(),
+      'b2': vitamins.find('.b2').text(),
+      'b3': vitamins.find('.b3').text(),
+      'b6': vitamins.find('.b6').text(),
+      'b9': vitamins.find('.b9').text(),
+      'b12': vitamins.find('.b12').text(),
+      'd': vitamins.find('.d').text(),
+      'e': vitamins.find('.e').text(),
+      'k': vitamins.find('.k').text(),
+    },
+    'minerals':
+    {
+      'sodium': minerals.find('.sodium').text(),
+      'calcium': minerals.find('.calcium').text(),
+      'magnesium': minerals.find('.magnesium').text(),
+      'potassium': minerals.find('.potassium').text(),
+      'iron': minerals.find('.iron').text(),
+      'zinc': minerals.find('.zinc').text(),
+      'phosphorus': minerals.find('.phosphorus').text(),
     }
   }
-  console.log(recipe_data['nutritional_info'])
+  return recipe_data
 }
 function getHealthLabels(recipe_box) {
   var health_labels = []
@@ -216,7 +241,6 @@ function ajaxGetUserResponse(recipe_id) {
     data: {'get_user_response': recipe_id},
     success: function(data) {
       var parsed_data = JSON.parse(data)
-      /*console.log(data)*/
       var html_data = getHtmlUserResponse(parsed_data)
     },
     error: function() {
@@ -256,13 +280,14 @@ function ajaxLoadPlan() {
   })
 }
 
-function ajaxAddRecipe(data) {
+function ajaxAddRecipe(recipe) {
   $.ajax({
     url: 'php/plan-management/plan-management.php',
     type: 'post',
-    data: {'add_recipe': data},
+    data: {'add_recipe': recipe},
     success: function(data) {
       // $('#add-recipe .modal__content').append(data)
+      console.log('data inserted bitch')
       console.log(data)
     },
     error: function() {
@@ -279,6 +304,9 @@ function getHtmlUserResponse(parsed_data) {
 
   if (parsed_data['type'] == 'has-plan') {
     showPlans(plan_data, recipe_id)
+  } else {
+    console.log(parsed_data)
+    $('#show-plans .modal__content').append(parsed_data['html'])
   }
 }
 // Shows user's plans
@@ -292,6 +320,7 @@ function showPlans(plans, recipe_id) {
   console.log(plans)
   let plan_counter = 1
   plans.forEach(function(plan){
+    console.log(JSON.parse(JSON.parse(plan['data'])))
     data = JSON.parse(JSON.parse(plan['data']))
     plan_id = plan['id']
     creation = JSON.parse(plan['creation'])
@@ -311,8 +340,9 @@ function showPlans(plans, recipe_id) {
       html_content += '<div class="times-container">'
       // times loop
       for (let [time, recipe] of Object.entries(day_value['times'])) {
-        if (recipe.length > 0) {
-          html += '<a id="show-recipe" class="time" data-plan="'+plan_id+'" data-day="'+day+'" data-time="'+time+'>'+time+'</a>'
+        if (Object.keys(recipe).length > 0) {
+          console.log("works")
+          html_content += '<a id="show-recipe" class="time" data-plan="'+plan_id+'" data-day="'+day+'" data-time="'+time+'">'+time+'</a>'
         } else {
           html_content += '<a id="add-time-recipe" class="time" data-recipe="'+recipe_id+'" data-plan="'+plan_id+'" data-day="'+day+'" data-time="'+time+'">Add '+time+'</a>'
         }
