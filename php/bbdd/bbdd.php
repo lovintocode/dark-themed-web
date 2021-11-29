@@ -183,12 +183,12 @@ function createPlan($username) {
       'time' => date('h:i:sa')
     );
     $last_modified = $creation;
-    $creation_serialized = json_encode($creation);
-    $last_modified_serialized = json_encode($last_modified);
+    $creation_encoded = json_encode($creation);
+    $last_mod_encoded = json_encode($last_modified);
     $query = 'INSERT INTO plans (data, creation, last_modified, id_user) VALUES (?, ?, ?, ?)';
     $stmt = $this->connection->prepare($query);
     if ($stmt) {
-      $stmt->bind_param('ssss', $data, $creation_serialized, $last_modified_serialized, $user_id);
+      $stmt->bind_param('ssss', $data, $creation_encoded, $last_mod_encoded, $user_id);
       if ($stmt->execute()) {
         $plan_created = true;
       }

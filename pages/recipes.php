@@ -113,7 +113,7 @@
       <span class="next-page" id="next_page_url"><i class="fas fa-chevron-right"></i></span>
     </div>
   </div>
-  <div class="modal micromodal-slide" id="add-recipe" aria-hidden="false">
+  <div class="modal micromodal-slide" id="show-plans" aria-hidden="false">
     <div class="modal__overlay" tabindex="-1" data-micromodal-close="">
       <div class="modal__container" role="dialog" aria-modal="true" aria-labelledby="modal-1-title">
         <header class="modal__header"><button class="modal__close" aria-label="Close modal" data-micromodal-close=""></button></header>

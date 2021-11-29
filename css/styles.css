@@ -234,59 +234,110 @@ ul, ol {
 }
 /* End session general */
 /* Plan buttons display*/
-#add-recipe .user-plans {
-  min-height: 78vh;
+#show-plans .user-plans {
+  width: 100%;
+  height: auto;
+}
+.modal__content {
+  min-height: 75vh;
 }
 .plan-container {
   width: 80%;
   min-height: auto;
   margin: 0 auto;
-  overflow: hidden;
   transition: all 1s ease;
+  margin-top: 2em;
 }
 .plan {
-
+  width: 100%;
+  height: auto;
+  display: block;
+  text-align: center;
 }
-.days-container .day-time-container {
-  position: relative;
+.plan-container .create {
+  display: block;
+  text-align: center;
+  margin-top: 2em;
 }
 .days-container {
-  height: auto;
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
+  width: 0%;
+  height: 0;
+  overflow: hidden;
+  transition: all 0.5s ease;
 }
 .times-container {
-  position: absolute;
+  position: relative;
   width: 0;
   height: 0;
   opacity: 0;
   overflow: hidden;
-  display: flex;
-  justify-content: space-around;
   transition: opacity 1s ease, height 0.5s ease, width 0.7s ease;
-  padding: 0.5em 0;
 }
 .day-container {
   float: left;
   width: 25%;
+  width: 100%;
+  text-align: center;
+  margin-top: 2em;
 }
 .day {
-  font-size: 20px;
-  width: 500px;
-  padding: 1em 0;
-  border-radius: 5px;
-  background-color: #b03e3e;
-  border: 0;
-  color: rgba(255, 255, 255, 0.9);
-  cursor: pointer;
-  overflow: hidden;
-}
-.day:hover {
-  background-color: #e53939;
+  display: block;
 }
 .times-container .time {
-  display: flex;
-  align-items: center;
+  width: 50%;
+  min-width: 200px;
+  display: block;
+  float: left;
+  margin-top: 1em;
+  color: rgba(255, 255, 255, 0.9);
+  background-color: #241f1f;
+  padding: 0.5em;
+  border-radius: 5px;
+  transition: all 0.5s ease;
+}
+.times-container .time:hover {
+  background-color: #5b5151;
+  cursor: pointer;
+}
+/* Dinamic plan show */
+.show-days {
+  width: 100%;
+  height: auto;
+}
+.day-active {
+  width: 100%;
+  height: 14em;
+  opacity: 1;
 }
 /* End Plan buttons display*/
+/* Confirmation box */
+.confirmation-box {
+  width: 80%;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  z-index: 999;
+  transform: translate(-50%, -50%);
+  background-color: #1e1b1b;
+  color: #ffff;
+  padding: 2em;
+  border-radius: 5px;
+  max-width: 500px;
+}
+.confirmation-box .text {
+  text-align: center;
+  display: block;
+  font-size: 20px;
+}
+.confirmation-box .btn-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  margin-top: 2em;
+}
+.confirmation-box .btn-box a {
+    padding: 0.5em 1.5em;
+    border-radius: 5px;
+    font-size: 18px;
+}
+/* End Confirmation box */

@@ -84,6 +84,7 @@ function calculateBmr($sex, $weight, $height, $age, $activity) {
 
 // Get user response depending on lvl //
 function getUserResponse($username) {
+  $recipe_id = $_POST['get_user_response'];
   $bbdd = new bbdd();
   $response = [
     'html' => '',
@@ -111,6 +112,7 @@ function getUserResponse($username) {
     }
   }
   $response['html'] .= '</div>';
+  $response['recipe_id'] = $recipe_id;
   echo json_encode($response);
 }
 // End Get user response depending on lvl //
