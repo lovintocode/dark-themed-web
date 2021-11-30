@@ -76,7 +76,6 @@ function planQuestionsHandler() {
         $('#questions-container .test-end').fadeIn()
         $('#questions-container .test-end').css('display', 'flex')
       }, 500)
-      console.log(plan_requirements)
       plan_requirements['plan_requirements'] = 'true'
     }
   });
@@ -121,18 +120,33 @@ function handlePlanClickers() {
         recipe_insert['plan_id'] = $(this).data('plan')
         recipe_insert['day'] = $(this).data('day')
         recipe_insert['time'] = $(this).data('time')
-        recipe_id = $(this).data('recipe')
+        recipe_insert['id'] = $(this).data('recipe').substr(recipe_id.length - 1);
       }
     });
-    recipe_insert['recipe'] = getRecipe(recipe_id)
+    recipe_insert['recipe'] = getRecipe(recipe_insert['id'])
     ajaxAddRecipe(recipe_insert)
+    $(this).closest('.confirmation-box').remove()
   })
   $(document).on('click', '#confirmation-false', function() {
     $(this).closest('.confirmation-box').remove()
   })
+  $(document).on('click', '#show-modal-recipe', function() {
+    var request_data = {}
+    let el = $(this)
+    request_data['plan_id'] = el.data('plan')
+    request_data['day'] = el.data('day')
+    request_data['time'] = el.data('time')
+    ajaxGetRecipe(request_data)
+    $('#show-recipe .modal__content').append('')
+  })
+  $(document).on('click', '#close-recipe', function() {
+    $('#show-recipe').removeClass('is-open')
+  })
+}
+function confirmationBox(time) {
+  return '<div class="confirmation-box"><span class="text">Do you want to add the recipe ?</span><div class="btn-box"><a id="confirmation-true" data-time="'+time+'" class="btn btn-secondary">Yes</a><a id="confirmation-false" class="btn btn-primary">No</a></div></div>'
 }
 function getRecipe(recipe_id) {
-  recipe_id = recipe_id.substr(recipe_id.length - 1);
   var recipe_box = ''
   $('#recipes-box .modal__content').each(function(index, el) {
     var box_id = $(this).attr('id')
@@ -145,7 +159,6 @@ function getRecipe(recipe_id) {
 }
 function getRecipeValues(recipe_box) {
   var recipe_data = {}
-  console.log(recipe_box)
   // General
   recipe_data['image'] = recipe_box.find('.image').attr('src')
   recipe_data['title'] = recipe_box.find('.title').text()
@@ -160,7 +173,7 @@ function getRecipeValues(recipe_box) {
   var carbs = recipe_box.find('.carbs').end()
   var fat = recipe_box.find('.fat').end()
   var vitamins = recipe_box.find('.vitamins').end()
-  var minerals = recipe_box.find('minerals').end()
+  var minerals = recipe_box.find('.minerals').end()
   recipe_data['nutritional_info'] =
   {
     'protein':
@@ -209,6 +222,7 @@ function getRecipeValues(recipe_box) {
       'phosphorus': minerals.find('.phosphorus').text(),
     }
   }
+  console.log(recipe_data)
   return recipe_data
 }
 function getHealthLabels(recipe_box) {
@@ -218,9 +232,7 @@ function getHealthLabels(recipe_box) {
   });
   return health_labels
 }
-function confirmationBox(time) {
-  return '<div class="confirmation-box"><span class="text">Do you want to add the recipe ?</span><div class="btn-box"><a id="confirmation-true" data-time="'+time+'" class="btn btn-secondary">Yes</a><a id="confirmation-false" class="btn btn-primary">No</a></div></div>'
-}
+
 function ajaxStoreUserData() {
   $.ajax({
     url: 'php/plan-management/plan-management.php',
@@ -240,8 +252,9 @@ function ajaxGetUserResponse(recipe_id) {
     type: 'post',
     data: {'get_user_response': recipe_id},
     success: function(data) {
+      // console.log(data)
       var parsed_data = JSON.parse(data)
-      var html_data = getHtmlUserResponse(parsed_data)
+      getHtmlUserResponse(parsed_data)
     },
     error: function() {
       console.log("error")
@@ -254,10 +267,11 @@ function ajaxCreatePlan() {
     type: 'post',
     data: {'create_plan': 'true'},
     success: function(data) {
-      // must load plans
-      // console.log(data)
-      var parsed_data = JSON.parse(data)
-      showPlans(parsed_data)
+      $('#wrapper').append('<div class="result-box valid"><span class="text">The plan has been succefully added</span></div>')
+      setTimeout(function() {
+        $('#wrapper .result-box').remove()
+      }, 3000)
+      $('#show-plans').removeClass('is-open')
     },
     error: function() {
       console.log("error")
@@ -286,29 +300,69 @@ function ajaxAddRecipe(recipe) {
     type: 'post',
     data: {'add_recipe': recipe},
     success: function(data) {
-      // $('#add-recipe .modal__content').append(data)
-      console.log('data inserted bitch')
-      console.log(data)
+      $('#show-plans').removeClass('is-open')
+      $('#wrapper').append('<div class="result-box valid"><span class="text">The recipe has been succefully created</span></div>')
+      setTimeout(function() {
+        $('#wrapper .result-box').remove()
+      }, 3000)
+      ajaxGetUserResponse(data)
     },
     error: function() {
       console.log("error")
     }
   })
 }
-function getHtmlUserResponse(parsed_data) {
-  let plan_counter = 0
-  let plan_type = parsed_data['type']
-  let plan_data = parsed_data['data']
-  let plan_html = parsed_data['html']
-  let recipe_id = parsed_data['recipe_id']
-
-  if (parsed_data['type'] == 'has-plan') {
-    showPlans(plan_data, recipe_id)
-  } else {
-    console.log(parsed_data)
-    $('#show-plans .modal__content').append(parsed_data['html'])
-  }
+function ajaxGetRecipe(request_data) {
+  $.ajax({
+    url: 'php/plan-management/plan-management.php',
+    type: 'post',
+    data: {'get_recipe': request_data},
+    success: function(data) {
+      var parsed_data = JSON.parse(data)
+      insertRecipeModal(parsed_data)
+      $('#show-recipe').addClass('is-open')
+    },
+    error: function() {
+      console.log("error")
+    }
+  })
 }
+function insertRecipeModal(parsed_data) {
+    // Get api general data
+    var title = parsed_data['title']
+    var image = parsed_data['image']
+    var calories = parsed_data['calories']
+    var cuisine_type = parsed_data['cuisineType']
+    var serves = parsed_data['serves']
+    var meal_type = parsed_data['meal_type']
+    var diet_labels = parsed_data['diet_labels'].join(', ')
+    var dish_type = parsed_data['dish_type']
+    var health_labels = getHealthLabelsHtml(parsed_data['health_labels'])
+    // var preparation_url = parsed_data['url']
+
+    // Nutritional info
+    var nutritional_info = parsed_data['nutritional_info']
+    var proteins = nutritional_info['protein']['total']
+    var carbs = nutritional_info['carbs']
+    var fat = nutritional_info['fat']
+    var vitamins = nutritional_info['vitamins']
+    var minerals = nutritional_info['minerals']
+    $('#show-recipe .modal__content').empty()
+    $('#show-recipe .modal__content').append('<div class="image-title-container"><img class="image" src="'+image+'" alt="'+title+'"><h2 class="title">'+title+'</h3></div><div class="general-info"><h3 class="subtitle">General Information</h2><ul class="general-item"><li class="list-item"><h4 class="list-title">Calories</h4><span class="calories">'+calories+'</span></li><li class="list-item"><h4 class="list-title">Cusine Type</h4><span class="cuisine-type">'+cuisine_type+'</span></li><li class="list-item"><h4 class="list-title">Meal Type</h4><span class="meal-type">'+meal_type+'</span></li><li class="list-item"><h4 class="list-title">Dish Type</h4><span class="dish-type">'+dish_type+'</span></li><li class="list-item"><h4 class="list-title">Serves</h4><span class="serves">'+serves+'</span></li><li class="list-item"><h4 class="list-title">Diet Labels</h4><span class="diet-labels">'+diet_labels+'</span></li></ul></div>'+health_labels+'<div class="nutritional-info"><h3 class="subtitle">Nutritional Information</h3><ul class="nutritional-item proteins"><div class="title-container"><h4 class="list-title">Protein</h4><i class="fas fa-chevron-down icon"></i></div><div class="list-container"><li class="list-item"><span class="left">Total</span><span class="right total">'+proteins+'</span></li></div></ul><ul class="nutritional-item carbs"><div class="title-container"><h4 class="list-title">Carbs</h4><i class="fas fa-chevron-down icon"></i></div><div class="list-container"><li class="list-item"><span class="left">Total</span><span class="right total">'+carbs['total']+'</span></li><li class="list-item"><span class="left">Fiber</span><span class="right fiber">'+carbs['fiber']+'</span></li><li class="list-item"><span class="left">Sugars</span><span class="right sugar">'+carbs['sugar']+'</span></li><li class="list-item"><span class="left">Sugars Added</span><span class="right sugar-added">'+carbs['sugar-added']+'</span></li></div></ul><ul class="nutritional-item fat"><div class="title-container"><h4 class="list-title">Fats</h4><i class="fas fa-chevron-down icon"></i></div><div class="list-container"><li class="list-item"><span class="left">Total</span><span class="right total">'+fat['total']+'</span></li><li class="list-item"><span class="left">Trans</span><span class="right trans">'+fat['trans']+'</span></li><li class="list-item"><span class="left">Saturated</span><span class="right saturated">'+fat['saturated']+'</span></li><li class="list-item"><span class="left">Monounsaturated</span><span class="right monounsaturated">'+fat['monounsaturated']+'</span></li><li class="list-item"><span class="left">Polyunsaturated</span><span class="right polyunsaturated">'+fat['polyunsaturated']+'</span></li></div></ul><ul class="nutritional-item vitamins"><div class="title-container"><h4 class="list-title">Vitamins</h4><i class="fas fa-chevron-down icon"></i></div><div class="list-container"><li class="list-item"><span class="left">A</span><span class="right a">'+vitamins['a']+'</span></li><li class="list-item"><span class="left">C</span><span class="right c">'+vitamins['c']+'</span></li><li class="list-item"><span class="left">B1</span><span class="right b1">'+vitamins['b1']+'</span></li><li class="list-item"><span class="left">B2</span><span class="right b2">'+vitamins['b2']+'</span></li><li class="list-item"><span class="left">B3</span><span class="right b3">'+vitamins['b3']+'</span></li><li class="list-item"><span class="left">B6</span><span class="right b6">'+vitamins['b6']+'</span></li><li class="list-item"><span class="left">B9</span><span class="right b9">'+vitamins['b9']+'</span></li><li class="list-item"><span class="left">B12</span><span class="right b12">'+vitamins['b12']+'</span></li><li class="list-item"><span class="left">D</span><span class="right d">'+vitamins['d']+'</span></li><li class="list-item"><span class="left">E</span><span class="right e">'+vitamins['e']+'</span></li><li class="list-item"><span class="left">K</span><span class="right k">'+vitamins['k']+'</span></li></div></ul><ul class="nutritional-item minerals"><div class="title-container"><h4 class="list-title">Minerals</h4><i class="fas fa-chevron-down icon"></i></div><div class="list-container"><li class="list-item"><span class="left">Sodium</span><span class="right sodium">'+minerals['sodium']+'</span></li><li class="list-item"><span class="left">Calcium</span><span class="right calcium">'+minerals['calcium']+'</span></li><li class="list-item"><span class="left">Magnesium</span><span class="right magnesium">'+minerals['magnesium']+'</span></li><li class="list-item"><span class="left">Potassium</span><span class="right potassium">'+minerals['potassium']+'</span></li><li class="list-item"><span class="left">Iron</span><span class="right iron">'+minerals['iron']+'</span></li><li class="list-item"><span class="left">Zinc</span><span class="right zinc">'+minerals['zinc']+'</span></li><li class="list-item"><span class="left">Phosphorus</span><span class="right phosphorus">'+minerals['phosphorus']+'</span></li></div></ul></div>')
+  }
+  function getHtmlUserResponse(parsed_data) {
+    let plan_counter = 0
+    let plan_type = parsed_data['type']
+    let plan_data = parsed_data['data']
+    let plan_html = parsed_data['html']
+    let recipe_id = parsed_data['recipe_id']
+
+    if (parsed_data['type'] == 'has-plan') {
+      showPlans(plan_data, recipe_id)
+    } else {
+      $('#show-plans .modal__content').append(parsed_data['html'])
+    }
+  }
 // Shows user's plans
 function showPlans(plans, recipe_id) {
   var html_content = ''
@@ -317,10 +371,8 @@ function showPlans(plans, recipe_id) {
 
   html_content += '<div class="user-plans">'
   // plans loop
-  console.log(plans)
   let plan_counter = 1
   plans.forEach(function(plan){
-    console.log(JSON.parse(JSON.parse(plan['data'])))
     data = JSON.parse(JSON.parse(plan['data']))
     plan_id = plan['id']
     creation = JSON.parse(plan['creation'])
@@ -341,8 +393,7 @@ function showPlans(plans, recipe_id) {
       // times loop
       for (let [time, recipe] of Object.entries(day_value['times'])) {
         if (Object.keys(recipe).length > 0) {
-          console.log("works")
-          html_content += '<a id="show-recipe" class="time" data-plan="'+plan_id+'" data-day="'+day+'" data-time="'+time+'">'+time+'</a>'
+          html_content += '<a id="show-modal-recipe" data-micromodal-trigger="show-recipe" class="time" data-plan="'+plan_id+'" data-day="'+day+'" data-time="'+time+'">'+time+'</a>'
         } else {
           html_content += '<a id="add-time-recipe" class="time" data-recipe="'+recipe_id+'" data-plan="'+plan_id+'" data-day="'+day+'" data-time="'+time+'">Add '+time+'</a>'
         }
@@ -364,6 +415,6 @@ function showPlans(plans, recipe_id) {
   if ($('#recipes-wrapper').length > 0) {
     $('#show-plans .modal__content').append(html_content)
   } else if ($('#plan-wrapper').length > 0) {
-    $('#show-recipe').append(html_content)
+    $('#plan-container .right-container').append(html_content)
   }
 }

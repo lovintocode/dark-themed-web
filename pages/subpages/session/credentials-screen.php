@@ -1,5 +1,5 @@
 <div id="credentials-wrapper">
-  <div class="credentials-result <?php echo $class_switch; ?>">
+  <div class="result-box <?php echo $class_switch; ?>">
     <span class="text"><?php echo $response_text;?></span>
   </div>
   <div class="box-containers">

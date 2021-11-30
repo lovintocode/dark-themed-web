@@ -129,7 +129,7 @@ function printRecipes() {
 
     $('#recipes-box').append
     (
-      '<div class="box-container" id="recipe-'+id_counter+'"><div class="box"><div class="image-container"><img class="image" src="'+image+'" alt="Recipe Card" onerror="imgError(this)"><div class="calories-container"><span class="calories">'+calories+' Cal</span></div></div><div class="data-container"><h3 class="title">'+title+'</h3><div class="data-box-container"><span class="data-box"><i class="fas fa-globe icon"></i><span class="cuisine_type">'+cuisine_type+'</span></span><span class="data-box"><i class="fas fa-users icon"></i><span class="yield"><span>Serves</span> '+serves+'</span></span><span class="data-box"><i class="fas fa-utensils icon"></i><span class="meal_type">'+meal_type+'</span></span></div></div><div class="functions-box"><div class="add-container-global"><div id="add-plan" class="add-container"><a class="link" title="" data-micromodal-trigger="show-plans"><i class="fas fa-plus icon"></i><span class="text">Add Plan</span></a></div><div id="add-fav" class="add-container"><a class="link" title=""><i class="fas fa-heart icon"></i><span class="text">Favorite</span></a></div></div><div id="know-more" class="function-container"><a class="link" id="modal-trigger" data-micromodal-trigger="modal-'+id_counter+'" title=""><i class="fas fa-info icon"></i><span class="text">More info</span></a></div></div></div></div>'
+      '<div class="box-container" id="recipe-'+id_counter+'"><div class="box"><div class="image-container"><img class="image" src="'+image+'" alt="Recipe Card" onerror="imgError(this)"><div class="calories-container"><span class="calories">'+calories+' Cal</span></div></div><div class="data-container"><h3 class="title">'+title+'</h3><div class="data-box-container"><span class="data-box"><i class="fas fa-globe icon"></i><span class="cuisine_type">'+cuisine_type+'</span></span><span class="data-box"><i class="fas fa-users icon"></i><span class="yield"><span>Serves</span> '+serves+'</span></span><span class="data-box"><i class="fas fa-utensils icon"></i><span class="meal_type">'+meal_type+'</span></span></div></div><div class="functions-box"><div class="add-container-global"><div id="add-plan" class="add-container"><a class="link" data-micromodal-trigger="show-plans"><i class="fas fa-plus icon"></i><span class="text">Add Plan</span></a></div><div id="add-fav" class="add-container"><a class="link" title=""><i class="fas fa-heart icon"></i><span class="text">Favorite</span></a></div></div><div id="know-more" class="function-container"><a class="link" id="modal-trigger" data-micromodal-trigger="modal-'+id_counter+'" title=""><i class="fas fa-info icon"></i><span class="text">More info</span></a></div></div></div></div>'
       )
     $('#recipes-box').append
     (
@@ -304,15 +304,11 @@ function firstToUpperCase(array=[]) {
   }
   return stringified_arr;
 }
-function modalHandler() {
-  var micromodal = new MicroModal.init({
-    onShow: modal => $('.link').css('position', 'static'),
-    onClose: modal => $('.link').css('position', 'relative')
-  })
-  $('.modal .nutritional-info .title-container').click(function() {
+function nutritionalModalHandler() {
+  $(document).on('click', '.modal .nutritional-info .title-container', function() {
+    console.log("works")
     let list_height = '0'
     let type = $(this).children('.list-title').text()
-    console.log($(this).siblings('.list-container').css('height'))
     switch (type) {
       case 'Protein': list_height = '4em'
       break
@@ -331,6 +327,12 @@ function modalHandler() {
       $(this).siblings('.list-container').css('height', '0em')
     }
   });
+}
+function modalHandler() {
+  var micromodal = new MicroModal.init({
+    onShow: modal => $('.link').css('position', 'static'),
+    onClose: modal => $('.link').css('position', 'relative')
+  })
 }
 
 // Gets data from protein and carbs

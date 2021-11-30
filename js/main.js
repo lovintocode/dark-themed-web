@@ -37,4 +37,8 @@ $( document ).ready(function() {
   handlePlanClickers()
   // Handles plan styling
   managePlanDisplays()
+  nutritionalModalHandler()
+  if ($('#plan-container').length > 0) {
+    ajaxGetUserResponse('')
+  }
 })

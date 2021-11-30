@@ -250,9 +250,9 @@ function countUserPlans($username) {
 }
 function addRecipe($recipe) {
   $recipe_added = false;
- 
+
   $plan_id = $recipe['plan_id'];
- $day = $recipe['day'];
+  $day = $recipe['day'];
   $time = $recipe['time'];
   $recipe_data = $recipe['recipe'];
   $last_modified = json_encode(array(
@@ -288,8 +288,21 @@ function getPlan($plan_id) {
       }
     }
   }
-  $stmt->close(); 
+  $stmt->close();
   return $plan;
+}
+function getRecipe($request_data) {
+  $recipe = array();
+
+  $plan_id = $request_data['plan_id'];
+  $day = $request_data['day'];
+  $time = $request_data['time'];
+
+  $plan = $this->getPlan($plan_id);
+  $plan = json_decode(json_decode($plan, true), true);
+  $recipe = $plan['days'][$day]['times'][$time];
+
+  return json_encode($recipe);
 }
 }
 ?>

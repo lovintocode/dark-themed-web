@@ -187,6 +187,25 @@
   opacity: 0.5;
   background-color: rgba(255, 255, 255, 0.2);
 }
+.user-response {
+  position: absolute;
+  width: 100%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 2em;
+}
+.user-response span {
+  color: #ffff;
+  font-size: 22px;
+  text-align: center;
+}
+.user-response a {
+  margin-top: 4em;
+}
 @media only screen and (min-width: 500px) {
   #recipes-box .box-container {
     width: 50%;

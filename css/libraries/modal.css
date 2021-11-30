@@ -19,6 +19,7 @@
   background-color: #3d3c3c;
   padding: 30px;
   max-width: 90%;
+  min-width: 90%;
   max-height: 90vh;
   border-radius: 4px;
   overflow-y: auto;
