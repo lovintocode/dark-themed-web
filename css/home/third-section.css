@@ -20,23 +20,29 @@
 	width: 80%;
 	height: auto;
 	display: flex;
-    align-items: center;
-    flex-direction: column;
-	background-color: #232222;
-	padding: 2em;
-	color: #ffff;
-	margin: 2em 0;
+  align-items: center;
+  flex-direction: column;
+  background-color: #232222;
+  justify-content: space-between;
+  padding: 2em;
+  color: #ffff;
+  margin: 2em 0;
+  border: 2px solid transparent;
+  border-radius: 5px;
+}
+#quotes .box-container .box:hover {
+  border-color: rgba(255, 255, 255, 0.8);
 }
 #quotes .box-container .box .icon {
 	font-size: 40px;
 }
 #quotes .box-container .box .text {
 	margin-top: 2em;
-	width: 350px;
 	text-align: center;
 	font-size: 18px;
-	line-height: 36px;
-	color: rgba(255, 255, 255, 0.9);
+  padding: 0 2em;
+  line-height: 36px;
+  color: rgba(255, 255, 255, 0.9);
 }
 #quotes .box-container .box .author {
 	margin-top: 2em;
@@ -51,9 +57,24 @@
 	}
 	#quotes .box-container .box {
     width: 45%;
-		max-width: 500px;
-		padding: 2em 0.5em;
-	}
-  #quotes .box-container .box .author {
+    max-width: 500px;
+    padding: 2em 0.5em;
   }
 }
+@media only screen and (min-width: 1500px) {
+  #quotes .box-container .box {
+    max-width: 600px;
+  }
+}
+@media only screen and (min-width: 1920px) {
+  #quotes .box-container .box .text {
+    font-size: 20px;
+  }
+  #quotes .box-container .box .author {
+    font-size: 24px;
+  }
+  #quotes .box-container .box .icon {
+    font-size: 44px;
+  }
+}
+

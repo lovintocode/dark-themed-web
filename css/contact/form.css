@@ -1,41 +1,45 @@
 #contact-wrapper .form-container {
-	width: 100%;
-	padding: 4em 0;
+  width: 100%;
+  padding: 4em 0;
 }
 #contact-wrapper .form-container .title {
-	color: #ffff;
-	font-size: 40px;
-	text-align: center;
-	margin-bottom: 1em;
+  color: #ffff;
+  font-size: 40px;
+  text-align: center;
+  margin-bottom: 1em;
 }
 #contact-wrapper .form-container .form {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
 }
 #contact-wrapper .form-container .form .form-input {
-	width: 400px;
-	padding: 1em;
-	font-size: 20px;
-	margin-top: 1em;
+  width: 100%;
+  max-width: 600px;
+  padding: 1em;
+  font-size: 20px;
+  margin-top: 1em;
+  border-radius: 5px;
 }
 #contact-wrapper .form-container .form .btn {
-	padding: 1em 4em;
-	font-size: 20px;
-	margin-top: 1em;
-	background-color: #2c3e50;
-	cursor: pointer;
-	border: 0;
-	color: #ffff;
-	transition: all 0.5s ease;
+  padding: 1em 4em;
+  font-size: 20px;
+  margin-top: 1em;
+  background-color: #2c3e50;
+  cursor: pointer;
+  border: 0;
+  color: #ffff;
+  transition: all 0.5s ease;
 }
 #contact-wrapper .form-container .form .btn:hover {
-	background-image: linear-gradient(
+  background-image: linear-gradient(
 147deg, #121212 0%, #2c3e50 74%);
 }
 @media only screen and (min-width: 768px) {
-	#contact-wrapper .form-container .form
-	#contact-wrapper .form-container .title {
+  #contact-wrapper .form-container .form
+  #contact-wrapper .form-container .title {
 
-	}
+  }
 }

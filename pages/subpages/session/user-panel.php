@@ -38,19 +38,19 @@ $user_data = $bbdd->getAllUserData($_SESSION['username']);
         <ul class="list">
           <li class="list-item">
             <span class="attribute">BMR</span>
-            <span class="value"><?php echo $user_data['bmr'];?></span>
+            <span class="value"><?php echo $user_data['bmr'];?> cal</span>
           </li>
           <li class="list-item">
             <span class="attribute">Weight</span>
-            <span class="value"><?php echo $user_data['weight'];?></span>
+            <span class="value"><?php echo $user_data['weight'];?> kg</span>
           </li>
           <li class="list-item">
             <span class="attribute">Height</span>
-            <span class="value"><?php echo $user_data['height'];?></span>
+            <span class="value"><?php echo $user_data['height'];?> cm</span>
           </li>
           <li class="list-item">
             <span class="attribute">Age</span>
-            <span class="value"><?php echo $user_data['age'];?></span>
+            <span class="value"><?php echo $user_data['age'];?> years</span>
           </li>
           <li class="list-item">
             <span class="attribute">Activity</span>

@@ -14,13 +14,15 @@
   width: fit-content;
   font-size: 26px;
   color: #ffffff;
-  border-left: 1px solid #fff;
+  border-left: 3px solid #b03e3e;
   padding-left: 1em;
 }
 #presentation .box .text {
   color: rgba(255, 255, 255, 0.9);
   margin-top: 2em;
   font-size: 18px;
+  letter-spacing: 1px;
+  line-height: 38px;
 }
 #presentation .box .link-box {
   display: flex;
@@ -32,11 +34,11 @@
   width: fit-content;
   align-items: center;
   color: #ff4545;
-  font-size: 15px;
+  font-size: 16px;
 }
 #presentation .box .link-box .link .border-move {
   border-bottom: 1px solid #ff4545;
-  transition: 1s;
+  transition: 0.5s ease all;
 }
 #presentation .box .link-box .link:hover > .arrow-icon {
   transform: translate(0.5em, 0em);
@@ -51,7 +53,7 @@
     width: 75%;
   }
   #presentation .box .title {
-    font-size: 18px;
+    font-size: 22px;
   }
   #presentation .box .text {
     font-size: 14px;

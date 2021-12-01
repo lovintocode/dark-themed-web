@@ -198,6 +198,7 @@
       margin: 0;
     }
     .modal__content .general-info {
+      padding: 1em 0;
       margin-bottom: 12em;
     }
     .modal__content .general-info .general-item .list-item {
@@ -211,10 +212,6 @@
     .modal__content .nutritional-info, .modal__content .health-info, .modal__content .general-info, .modal__content .image-title-container {
       width: 50%;
       float: left;
-    }
-    .modal__content .general-info {
-      padding: 1em 0;
-      margin-bottom: 8em;
     }
     .modal__content .nutritional-info, .modal__content .health-info {
       padding: 0;

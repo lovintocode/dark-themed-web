@@ -3,7 +3,6 @@
 	display: flex;
 	flex-direction: column;
 	justify-content: space-evenly;
-	padding: 4em 2em;
 	background-color: #232222;
 }
 #contact-wrapper .team .card {
@@ -13,27 +12,40 @@
 	justify-content: center;
 	align-items: center;
 	color: #ffff;
-	margin-top: 4em;
+  padding: 4em 0;
+  border: 2px solid transparent;
+}
+#contact-wrapper .team .card:nth-child(2) {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+#contact-wrapper .team .card:hover {
+  border: 2px solid rgba(255, 255, 255, 0.9);
 }
 #contact-wrapper .team .card .image {
-	width: 350px;
+  width: 70%;
+  min-width: 300px;
 	height: auto;
 	border-radius: 50%;
 }
 #contact-wrapper .team .card .name {
 	margin-top: 2em;
 	font-size: 28px;
+  letter-spacing: 2px;
 }
 #contact-wrapper .team .card .position {
 	margin-top: 1em;
 	font-size: 20px;
+  color: #c24141;
+  font-size: 24px;
+  letter-spacing: 1px;
 }
 #contact-wrapper .team .card .experience {
 	color: #b1b1b1;
-	width: 250px;
+	width: 80%;
 	text-align: center;
 	margin-top: 1em;
 	font-size: 18px;
+  letter-spacing: 1px;
 }
 
 @media only screen and (min-width: 992px) {
