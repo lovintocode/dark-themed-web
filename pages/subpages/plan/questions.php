@@ -3,7 +3,7 @@
     <h2 class="subtitle">Are you male or female ?</h2>
     <div class="select-wrapper">
       <div class="select">
-        <div class="selection-box"><span id="answer-sex">Male</span>
+        <div class="selection-box"><span class="answer" id="answer-sex">Male</span>
           <div class="arrow"></div>
         </div>
         <div class="custom-options">
@@ -18,7 +18,7 @@
     <h2 class="subtitle">You would describe your lifestyle as ...</h2>
     <div class="select-wrapper">
       <div class="select">
-        <div class="selection-box"><span id="answer-activity">Sedentary</span>
+        <div class="selection-box"><span class="answer" id="answer-activity">Sedentary</span>
           <div class="arrow"></div>
         </div>
         <div class="custom-options">
@@ -30,13 +30,14 @@
         </div>
       </div>
     </div>
+    <p class="help">Your job is in a desk and you don't do any active exercice</p>
     <button type="button" class="trigger btn btn-secondary">Next</button>
   </div>
   <div class="question" id="question-body">
     <h2 class="subtitle">Your body structure is like ...</h2>
     <div class="select-wrapper">
       <div class="select">
-        <div class="selection-box"><span id="answer-body">Ectomorph</span>
+        <div class="selection-box"><span class="answer" id="answer-body">Ectomorph</span>
           <div class="arrow"></div>
         </div>
         <div class="custom-options">
@@ -46,13 +47,14 @@
         </div>
       </div>
     </div>
+    <img class="image" src="img/photos/ectomorph.png" alt="body-image">
     <button type="button" class="trigger btn btn-secondary" disabled>Next</button>
   </div>
   <div class="question" id="question-objective">
     <h2 class="subtitle">You would like to ...</h2>
     <div class="select-wrapper">
       <div class="select">
-        <div class="selection-box"><span id="answer-objective">Maintain Weight</span>
+        <div class="selection-box"><span class="answer" id="answer-objective">Maintain Weight</span>
           <div class="arrow"></div>
         </div>
         <div class="custom-options">

@@ -16,10 +16,10 @@ function swiperHandler() {
     },
     direction: 'horizontal',
     loop: true,
-    effect: 'cube',
-    cubeEffect: {
-      slideShadows: true,
-    },
+    // effect: 'cube',
+    // cubeEffect: {
+    //   slideShadows: true,
+    // },
     allowTouchMove: true,
     autoplay: {
      delay: 5000

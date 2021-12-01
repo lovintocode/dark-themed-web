@@ -79,6 +79,7 @@ function planQuestionsHandler() {
       plan_requirements['plan_requirements'] = 'true'
     }
   });
+  planHelpHints()
 }
 function checkPlanAnswers(value, min, max) {
   if (value.length > 0 && !isNaN(value)) {
@@ -87,6 +88,32 @@ function checkPlanAnswers(value, min, max) {
     }
   }
   return false;
+}
+function planHelpHints() {
+  $('#questions-container .select').click(function() {
+    var options = {
+      'activity': {
+        'Sedentary': 'Your job is in a desk and you do not do any active exercice',
+        'Slightly Active': 'Your job is on your feet for the most part, you do 30 minutes of light exercice',
+        'Moderately Active': 'Your job is on your feet for the most part, you do about an hour of light exercice',
+        'Active': 'Your job includes physical activity, you do intense workout about 3 - 5 days a week',
+        'Very Active': 'Most of your day includes heavy physical activity, you do intense workout about 5 - 7 days a week'
+      },
+      'body': {
+        'Ectomorph': 'img/photos/ectomorph.png',
+        'Mesomorph': 'img/photos/mesomorph.png',
+        'Endomorph': 'img/photos/endomorph.png'
+      }
+    }
+    var activity = $('#answer-activity').text()
+    var body = $('#answer-body').text()
+    if (activity in options['activity']) {
+      $('#question-activity .help').text(options['activity'][activity])
+    }
+    if (body in options['body']) {
+      $('#question-body .image').attr('src', options['body'][body])
+    }
+  })
 }
 function handlePlanClickers() {
   // Plan register

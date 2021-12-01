@@ -62,11 +62,22 @@
 #questions-container .select-wrapper {
   width: fit-content;
 }
+#questions-container .help {
+  width: 100%;
+  min-width: 500px;
+  min-height: 3em;
+  font-size: 20px;
+  color: #ffff;
+}
+#questions-container .image {
+  width: 100px;
+  height: auto;
+}
 #questions-container .btn-secondary {
   padding: 0.6em 2em;
 }
 @media only screen and (min-width: 768px) {
-  #questions-container .question .subtitle {
+  #questions-container .subtitle {
     width: fit-content;
     min-width: 300px;
     font-size: 24px;
@@ -81,7 +92,7 @@
   }
 }
 @media only screen and (min-width: 1500px) {
-  #questions-container .question .subtitle {
+  #questions-container .subtitle {
     font-size: 30px;
   }
 }
