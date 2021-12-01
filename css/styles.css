@@ -250,6 +250,7 @@ ul, ol {
   margin-top: 2em;
 }
 .modal .plan {
+  position: relative;
   width: 100%;
   height: auto;
   display: block;
@@ -303,6 +304,19 @@ ul, ol {
 .times-container .time:hover {
   background-color: #5b5151;
   cursor: pointer;
+}
+.plan .plan-functions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.plan .plan-functions .delete {
+  position: absolute;
+  right: 2em;
+  transition: all 0.5s ease;
+}
+.plan .plan-functions .delete:hover {
+  color: black;
 }
 /* End Plan buttons display*/
 /* Dinamic plan show */

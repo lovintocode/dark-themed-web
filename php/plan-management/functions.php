@@ -178,4 +178,12 @@ function getRecipe($request_data) {
   $bbdd->close();
   echo $recipe;
 }
+function removePlan($plan_id) {
+  $plan_removed = false;
+  $bbdd = new bbdd();
+  if ($bbdd->removePlan($plan_id))
+    $plan_removed = true;
+  $bbdd->close();
+  echo $plan_removed;
+}
 ?>
