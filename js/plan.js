@@ -360,7 +360,10 @@ function insertRecipeModal(parsed_data) {
     if (parsed_data['type'] == 'has-plan') {
       showPlans(plan_data, recipe_id)
     } else {
-      $('#show-plans .modal__content').append(parsed_data['html'])
+      if ($('#plan-container').length > 0)
+        $('#plan-container').append(parsed_data['html'])
+      else
+        $('#show-plans .modal__content').append(parsed_data['html'])
     }
   }
 // Shows user's plans
@@ -379,7 +382,7 @@ function showPlans(plans, recipe_id) {
     last_mod = JSON.parse(plan['last_modified'])
     // plan container
     html_content += '<div id="plan'+plan_id+'" class="plan-container">'
-    html_content += '<a id="" class="plan btn btn-primary">Plan '+plan_counter+'</a>'
+    html_content += '<a class="plan btn btn-primary"><div class="plan-functions"><span>Plan '+plan_counter+'</span><i class="far fa-trash-alt delete"></i></div></a>'
     // days container
     html_content += '<div class="days-container">'
     // days loop
@@ -393,9 +396,13 @@ function showPlans(plans, recipe_id) {
       // times loop
       for (let [time, recipe] of Object.entries(day_value['times'])) {
         if (Object.keys(recipe).length > 0) {
-          html_content += '<a id="show-modal-recipe" data-micromodal-trigger="show-recipe" class="time" data-plan="'+plan_id+'" data-day="'+day+'" data-time="'+time+'">'+time+'</a>'
+          console.log(recipe)
+          html_content += '<a id="show-modal-recipe" data-micromodal-trigger="show-recipe" class="time full" data-plan="'+plan_id+'" data-day="'+day+'" data-time="'+time+'">'+time+' - '+recipe['title']+'</a>'
         } else {
-          html_content += '<a id="add-time-recipe" class="time" data-recipe="'+recipe_id+'" data-plan="'+plan_id+'" data-day="'+day+'" data-time="'+time+'">Add '+time+'</a>'
+          if ($('#plan-wrapper').length > 0)
+            html_content += '<a class="time" data-plan="'+plan_id+'" data-day="'+day+'" data-time="'+time+'">There is no recipe</a>'
+          else
+            html_content += '<a id="add-time-recipe" class="time" data-recipe="'+recipe_id+'" data-plan="'+plan_id+'" data-day="'+day+'" data-time="'+time+'">Add '+time+'</a>'
         }
       }
       // end time container
@@ -415,6 +422,7 @@ function showPlans(plans, recipe_id) {
   if ($('#recipes-wrapper').length > 0) {
     $('#show-plans .modal__content').append(html_content)
   } else if ($('#plan-wrapper').length > 0) {
-    $('#plan-container .right-container').append(html_content)
+    $('#plan-container .user-plans').remove()
+    $('#plan-container').append(html_content)
   }
 }

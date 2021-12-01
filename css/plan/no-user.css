@@ -9,8 +9,8 @@
   justify-content: space-evenly;
 }
 #no-user .subtitle {
+  color: #ffff;
   font-size: 22px;
-  color: #fff;
   text-align: center;
 }
 #no-user .btn {
