@@ -134,24 +134,29 @@ function handlePlanClickers() {
   $(document).on('click', '#add-time-recipe', function(){
     var time = $(this).data('time')
     if ($('.confirmation-box').length <= 0)
-      $(this).parent().append(confirmationBox(time))
+      $(this).parent().append(confirmationBox('Do you want to add the recipe ?', 'data-time="'+time+'"'))
   });
   $(document).on('click', '#confirmation-true', function() {
-    var recipe_insert = {}
+    if ($(this).data('time')) {
+      var recipe_insert = {}
 
-    var recipe_id = ''
-    var time = $(this).data('time')
-    var elements = $(this).closest('.confirmation-box').siblings('.time')
-    elements.each(function(index, el) {
-      if ($(this).data('time') == time) {
-        recipe_insert['plan_id'] = $(this).data('plan')
-        recipe_insert['day'] = $(this).data('day')
-        recipe_insert['time'] = $(this).data('time')
-        recipe_insert['id'] = $(this).data('recipe').substr(recipe_id.length - 1);
-      }
-    });
-    recipe_insert['recipe'] = getRecipe(recipe_insert['id'])
-    ajaxAddRecipe(recipe_insert)
+      var recipe_id = ''
+      var time = $(this).data('time')
+      var elements = $(this).closest('.confirmation-box').siblings('.time')
+      elements.each(function(index, el) {
+        if ($(this).data('time') == time) {
+          recipe_insert['plan_id'] = $(this).data('plan')
+          recipe_insert['day'] = $(this).data('day')
+          recipe_insert['time'] = $(this).data('time')
+          recipe_insert['id'] = $(this).data('recipe').substr(recipe_id.length - 1);
+        }
+      });
+      recipe_insert['recipe'] = getRecipe(recipe_insert['id'])
+      ajaxAddRecipe(recipe_insert)
+    } else {
+      var plan_id = $(this).data('plan')
+      ajaxRemovePlan(plan_id)
+    }
     $(this).closest('.confirmation-box').remove()
   })
   $(document).on('click', '#confirmation-false', function() {
@@ -169,9 +174,14 @@ function handlePlanClickers() {
   $(document).on('click', '#close-recipe', function() {
     $('#show-recipe').removeClass('is-open')
   })
+  $(document).on('click', '.plan-functions .far', function() {
+    var plan_id = $(this).closest('.plan-container').attr('id')
+    plan_id = plan_id.match(/\d+/)[0]
+    $(this).parent().append(confirmationBox('Do you want to remove the plan ?', 'data-plan="'+plan_id+'"'))             
+  })
 }
-function confirmationBox(time) {
-  return '<div class="confirmation-box"><span class="text">Do you want to add the recipe ?</span><div class="btn-box"><a id="confirmation-true" data-time="'+time+'" class="btn btn-secondary">Yes</a><a id="confirmation-false" class="btn btn-primary">No</a></div></div>'
+function confirmationBox(string, data) {
+  return '<div class="confirmation-box"><span class="text">'+string+'</span><div class="btn-box"><a id="confirmation-true" '+data+' class="btn btn-secondary">Yes</a><a id="confirmation-false" class="btn btn-primary">No</a></div></div>'
 }
 function getRecipe(recipe_id) {
   var recipe_box = ''
@@ -354,6 +364,20 @@ function ajaxGetRecipe(request_data) {
     }
   })
 }
+function ajaxRemovePlan(plan_id) {
+  $.ajax({
+    url: 'php/plan-management/plan-management.php',
+    type: 'post',
+    data: {'remove_plan': plan_id},
+    success: function(data) {
+      $('.user-plans').remove()
+      ajaxGetUserResponse('')
+    }, 
+    error: function() {
+      console.log("error")
+    }
+  }) 
+}
 function insertRecipeModal(parsed_data) {
     // Get api general data
     var title = parsed_data['title']
@@ -387,7 +411,10 @@ function insertRecipeModal(parsed_data) {
     if (parsed_data['type'] == 'has-plan') {
       showPlans(plan_data, recipe_id)
     } else {
-      $('#show-plans .modal__content').append(parsed_data['html'])
+      if ($('#plan-container').length > 0)
+        $('#plan-container').append(parsed_data['html'])
+      else
+        $('#show-plans .modal__content').append(parsed_data['html'])
     }
   }
 // Shows user's plans
@@ -406,7 +433,7 @@ function showPlans(plans, recipe_id) {
     last_mod = JSON.parse(plan['last_modified'])
     // plan container
     html_content += '<div id="plan'+plan_id+'" class="plan-container">'
-    html_content += '<a id="" class="plan btn btn-primary">Plan '+plan_counter+'</a>'
+    html_content += '<a class="plan btn btn-primary"><div class="plan-functions"><span>Plan '+plan_counter+'</span><i class="far fa-trash-alt delete"></i></div></a>'
     // days container
     html_content += '<div class="days-container">'
     // days loop
@@ -420,9 +447,13 @@ function showPlans(plans, recipe_id) {
       // times loop
       for (let [time, recipe] of Object.entries(day_value['times'])) {
         if (Object.keys(recipe).length > 0) {
-          html_content += '<a id="show-modal-recipe" data-micromodal-trigger="show-recipe" class="time" data-plan="'+plan_id+'" data-day="'+day+'" data-time="'+time+'">'+time+'</a>'
+          console.log(recipe)
+          html_content += '<a id="show-modal-recipe" data-micromodal-trigger="show-recipe" class="time full" data-plan="'+plan_id+'" data-day="'+day+'" data-time="'+time+'">'+time+' - '+recipe['title']+'</a>'
         } else {
-          html_content += '<a id="add-time-recipe" class="time" data-recipe="'+recipe_id+'" data-plan="'+plan_id+'" data-day="'+day+'" data-time="'+time+'">Add '+time+'</a>'
+          if ($('#plan-wrapper').length > 0)
+            html_content += '<a class="time" data-plan="'+plan_id+'" data-day="'+day+'" data-time="'+time+'">There is no recipe</a>'
+          else
+            html_content += '<a id="add-time-recipe" class="time" data-recipe="'+recipe_id+'" data-plan="'+plan_id+'" data-day="'+day+'" data-time="'+time+'">Add '+time+'</a>'
         }
       }
       // end time container
@@ -442,6 +473,8 @@ function showPlans(plans, recipe_id) {
   if ($('#recipes-wrapper').length > 0) {
     $('#show-plans .modal__content').append(html_content)
   } else if ($('#plan-wrapper').length > 0) {
-    $('#plan-container .right-container').append(html_content)
+    $('#plan-container .user-plans').remove()
+    $('#plan-container .user-response').remove()
+    $('#plan-container').append(html_content)
   }
 }

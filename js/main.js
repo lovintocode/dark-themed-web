@@ -40,5 +40,8 @@ $( document ).ready(function() {
   nutritionalModalHandler()
   if ($('#plan-container').length > 0) {
     ajaxGetUserResponse('')
+    $(document).on('click', '#create-plan', function() {
+      ajaxGetUserResponse('')
+    })
   }
 })

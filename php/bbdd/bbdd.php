@@ -304,5 +304,19 @@ function getRecipe($request_data) {
 
   return json_encode($recipe);
 }
+function removePlan($plan_id) {
+  $plan_removed = false;
+
+  $query = 'DELETE FROM plans WHERE id=?';
+  $stmt = $this->connection->prepare($query);
+  if ($stmt) {
+    $stmt->bind_param('s', $plan_id);
+    if ($stmt->execute()) {
+      $plan_removed = true;
+    }
+  }
+  $stmt->close();
+  return $plan_removed;
+}
 }
 ?>
