@@ -1,7 +1,7 @@
 <!-- Second Section -->
 <div id="image-gallery">
   <a class="box-link" href="index.php?page=plan">
-    <div class="card moving-box">
+    <div class="card">
       <div class="image-container">
         <img class="image lazy" src="img/photos/card1.jpg" alt="suit">
       </div>
@@ -17,7 +17,7 @@
     </div>
   </a>
   <a class="box-link" href="index.php?page=recipes">
-    <div class="card moving-box">
+    <div class="card">
       <div class="image-container">
         <img class="image lazy" src="img/photos/card2.jpg" alt="girl">
       </div>
@@ -33,7 +33,7 @@
     </div>
   </a>
   <a class="box-link" href="index.php?page=contact">
-    <div class="card moving-box">
+    <div class="card">
       <div class="image-container">
         <img class="image lazy" src="img/photos/card3.jpg" alt="fire-man">
       </div>
