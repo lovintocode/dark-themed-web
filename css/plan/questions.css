@@ -68,6 +68,7 @@
   min-height: 3em;
   font-size: 20px;
   color: #ffff;
+  text-align: center;
 }
 #questions-container .image {
   width: 100px;

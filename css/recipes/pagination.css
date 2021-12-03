@@ -6,6 +6,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 4em 0;
 }
 #page-change .page-change-container .prev-page, #page-change .page-change-container .next-page {
   font-size: 40px;

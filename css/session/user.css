@@ -1,7 +1,11 @@
 #user-wrapper {
   width: 100%;
   height: auto;
+  min-height: 80vh;
   transition: all 0.6s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 #user-wrapper .user-functions {
   width: 90%;

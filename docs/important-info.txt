@@ -1,5 +1,3 @@
-Mutation Observer (js)
-https://stackoverflow.com/questions/27541004/detect-paragraph-element-change-with-jquery
 Calculate width and height of element (js)
 https://www.javascripttutorial.net/javascript-dom/javascript-width-height/
 Color Picker (html)
